@@ -6,7 +6,7 @@
   <link href="https://ratears.github.io/dev.ratears.life/atom.xml" rel="self"/>
   
   <link href="https://ratears.github.io/dev.ratears.life/"/>
-  <updated>2023-02-06T00:18:07.000Z</updated>
+  <updated>2023-02-11T09:26:36.000Z</updated>
   <id>https://ratears.github.io/dev.ratears.life/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux 常用基础操作</title>
+    <link href="https://ratears.github.io/dev.ratears.life/Linux-%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/"/>
+    <id>https://ratears.github.io/dev.ratears.life/Linux-%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</id>
+    <published>2023-02-11T09:26:36.000Z</published>
+    <updated>2023-02-11T09:26:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<br><br><br><h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote><p>1</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure><img src="" width="70%"><br>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;br&gt;
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+&lt;h1 id=&quot;学习备注&quot;&gt;&lt;a href=&quot;#学习备注&quot; class=&quot;headerlink&quot; title=&quot;学习备注&quot;&gt;&lt;/a&gt;学习备注&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure cla</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>《阿里新零售数据库设计与实战》study notes</title>
