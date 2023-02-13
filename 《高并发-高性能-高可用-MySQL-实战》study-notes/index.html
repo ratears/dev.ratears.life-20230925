@@ -223,17 +223,47 @@
     </span>
     
     
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Categories/DataBase/">DataBase</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="../Categories/DataBase/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Tags/MySQL/">MySQL</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="../Tags/DataBase/">DataBase</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>18 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
         </span>
     
     
@@ -251,7 +281,203 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <br>
+                <h1 id="第1章-课程介绍"><a href="#第1章-课程介绍" class="headerlink" title="第1章 课程介绍"></a>第1章 课程介绍</h1><h2 id="问卷调查"><a href="#问卷调查" class="headerlink" title="问卷调查"></a>问卷调查</h2><ol>
+<li>你真的搞懂MySQL底层原理了吗?</li>
+<li>你知道如何改善慢查询性能吗?</li>
+<li>你知道如何架设高性能集群吗?</li>
+<li>你知道未来数据库的发展趋势吗?</li>
+</ol>
+<br>
+
+<ul>
+<li>以上，这些问题很重要! 因为<ul>
+<li>工作中: MySQL高性能集群越来越流行</li>
+<li>面试中:深入考察MySQL原理、性能调优</li>
+<li>职业规划:需要根据技术发展方向选择职业路径</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="精通MySQL，应该怎么学"><a href="#精通MySQL，应该怎么学" class="headerlink" title="精通MySQL，应该怎么学"></a>精通MySQL，应该怎么学</h2><blockquote>
+<ol>
+<li>以技术原理作为坚实基础</li>
+<li>以真实场景作为学习环境</li>
+<li>以架构思维作为学习目标</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>下面三点是课程主线：</p>
+</blockquote>
+<br>
+
+<h3 id="（1）从理论到实战"><a href="#（1）从理论到实战" class="headerlink" title="（1）从理论到实战"></a>（1）从理论到实战</h3><ul>
+<li>从数据表逻辑结构，到优化数据表的性能</li>
+<li>从数据查询原理，到改善慢SQL性能</li>
+<li>从事务原理，到优化事务执行效率</li>
+</ul>
+<br>
+
+<h3 id="（2）从单点到集群"><a href="#（2）从单点到集群" class="headerlink" title="（2）从单点到集群"></a>（2）从单点到集群</h3><ul>
+<li>从学习单点原理，到掌握集群原理</li>
+<li>从高性能单点，到高性能集群</li>
+<li>从单点快速部署，到集群快速部署</li>
+</ul>
+<br>
+
+<h3 id="（3）从现在到未来"><a href="#（3）从现在到未来" class="headerlink" title="（3）从现在到未来"></a>（3）从现在到未来</h3><ul>
+<li>从5.x版本，到8.0版本</li>
+<li>从原生单体数据库，到原生分布式数据库</li>
+<li>从学习技术原理，到理解技术趋势</li>
+</ul>
+<br>
+
+<h2 id="什么是“三高”"><a href="#什么是“三高”" class="headerlink" title="什么是“三高”"></a>什么是“三高”</h2><ul>
+<li>高并发：同时处理的事务数高</li>
+<li>高性能：事务/SQL的执行速度高</li>
+<li>高可用：系统可用时间高</li>
+</ul>
+<br>
+
+<ul>
+<li><strong>“三高”只是目的，不是手段。手段有：复制、扩展、切换</strong></li>
+</ul>
+<br>
+
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><ul>
+<li>目的:数据冗余</li>
+<li>手段: binlog传送</li>
+<li>收获:并发量提升、可用性提升</li>
+<li>问题:占用更多硬件资源</li>
+</ul>
+<br>
+
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><ul>
+<li>目的:扩展数据库容量</li>
+<li>手段:数据分片分库、分表</li>
+<li>收获:性能、并发量的提升</li>
+<li>问题:可能降低可用性</li>
+</ul>
+<br>
+
+<h3 id="切换"><a href="#切换" class="headerlink" title="切换"></a>切换</h3><ul>
+<li>目的:提高可用性</li>
+<li>手段:主从身份切换</li>
+<li>收获:并发量的提升</li>
+<li>问题:丢失切换时期数据</li>
+</ul>
+<br>
+
+<h2 id="“三高”的实现"><a href="#“三高”的实现" class="headerlink" title="“三高”的实现"></a>“三高”的实现</h2><ul>
+<li>高并发:通过复制和拓展，将数据分散至多节点</li>
+<li>高性能:复制提升速度，拓展提升容量</li>
+<li>高可用:节点间身份切换保证随时可用</li>
+</ul>
+<br>
+
+<ul>
+<li><strong>“三高”的集群也是以单点的高性能作为保障的。学习“三高”之前，应该学习如何提高单点性能</strong></li>
+</ul>
+<br>
+
+<h2 id="如何提升单点性能"><a href="#如何提升单点性能" class="headerlink" title="如何提升单点性能"></a>如何提升单点性能</h2><ul>
+<li><strong>建表:表结构合理，索引高效</strong><ul>
+<li>B+树的数据结构与InnoDB的存储结构</li>
+<li>InnoDB行记录格式的历史与原理</li>
+<li>索引、数据约束、视图的注意事项</li>
+</ul>
+</li>
+<li><strong>查询:优化SQL语句，选择正确索引</strong><ul>
+<li>覆盖索引、索引下推、松散索引的原理与实战</li>
+<li>排序、随机选取、COUNT的优化方法</li>
+<li>索引失效时的排查方向</li>
+</ul>
+</li>
+<li><strong>更新:正确使用锁，合理优化事务</strong><ul>
+<li>MySQL和InnoDB日志体系</li>
+<li>全局锁、表锁、元数据锁、行锁、间隙锁</li>
+<li>死锁的原理与优化方法</li>
+<li>事务与MVCC的原理与性能优化</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="未来数据库发展趋势"><a href="#未来数据库发展趋势" class="headerlink" title="未来数据库发展趋势"></a>未来数据库发展趋势</h2><ul>
+<li>MySQL8.0新特性</li>
+<li>NewSQL数据库</li>
+<li>新一代分布式数据库CockroachDB</li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第2章-环境搭建"><a href="#第2章-环境搭建" class="headerlink" title="第2章 环境搭建"></a>第2章 环境搭建</h1><ul>
+<li>准备CentOS7环境</li>
+</ul>
+<br>
+
+<h2 id="安装MySQL-5-7"><a href="#安装MySQL-5-7" class="headerlink" title="安装MySQL 5.7"></a>安装MySQL 5.7</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cd /install</span><br><span class="line"></span><br><span class="line">wget https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.33-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line"></span><br><span class="line">tar -xvf mysql-5.7.33-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line"></span><br><span class="line">rpm -qa|grep  mariadb</span><br><span class="line">rpm -e --nodeps mariadb-libs-5.5.68-1.el7.x86_64</span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-common-5.7.33-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh --force --nodeps  mysql-community-libs-5.7.33-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh mysql-community-client-5.7.33-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">rpm -ivh --force --nodeps  mysql-community-server-5.7.33-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line">which mysql</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="MySQL的启停"><a href="#MySQL的启停" class="headerlink" title="MySQL的启停"></a>MySQL的启停</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld.service</span><br><span class="line"></span><br><span class="line">systemctl start mysqld.service</span><br><span class="line"></span><br><span class="line">systemctl stop mysqld.service</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查询安装后的初始化密码</span></span><br><span class="line">grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set password=password(&quot;Happy2023@&quot;);</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password_policy=LOW;</span><br><span class="line"></span><br><span class="line">set global validate_password_length=4;</span><br><span class="line"></span><br><span class="line">set password=password(&quot;root&quot;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">永久打开防火墙3306端口</span></span><br><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;root&#x27; WITH GRANT OPTION;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第3章-一个SQL语句如何执行"><a href="#第3章-一个SQL语句如何执行" class="headerlink" title="第3章 一个SQL语句如何执行"></a>第3章 一个SQL语句如何执行</h1><ul>
+<li>有了电子表格，为什么还要数据库?</li>
+</ul>
+<blockquote>
+<ol>
+<li>数据库理论上没有行数上限。单机数据库若行数太多遇到性能问题，可以通过分库分表等技术解决</li>
+<li>数据库有完备的结构化查询语言 (SQL)。Excel结构化查询功能不如数据库强大</li>
+<li>数据库面向软件，提供软件接口。（Excel是文件级别的，直接面向终端用户）</li>
+<li>数据库事务是关系型数据库的核心优势。（Excel没有事务，无法做到不同人的工作同时进行）</li>
+<li>分布式 - 数据库的潜力巨大。数据库具有主备复制、高可用、分布式等形态。Excel天生是单体的，面向文件的</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>电子表格面向个人，以文件为基础，拓展性差</p>
+<p>数据库面向软件，支持事务、拓展性好</p>
+</blockquote>
+<br>
+
+<h2 id="数据库软件的典型架构是怎样的"><a href="#数据库软件的典型架构是怎样的" class="headerlink" title="数据库软件的典型架构是怎样的?"></a>数据库软件的典型架构是怎样的?</h2><h2 id="常见软件架构"><a href="#常见软件架构" class="headerlink" title="常见软件架构"></a>常见软件架构</h2><h3 id="MVC-分层架构"><a href="#MVC-分层架构" class="headerlink" title="MVC 分层架构"></a>MVC 分层架构</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.6ezeek610880.webp" width="60%">
+
+<br>
+
+<h3 id="事件驱动架构"><a href="#事件驱动架构" class="headerlink" title="事件驱动架构"></a>事件驱动架构</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.7ad2smjsads0.webp" width="60%">
+
+<br>
+
+<h3 id="管道-过滤器架构"><a href="#管道-过滤器架构" class="headerlink" title="管道-过滤器架构"></a>管道-过滤器架构</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.4r8jvxiitds0.webp" width="60%">
+
+<br>
+
+<h3 id="微核架构"><a href="#微核架构" class="headerlink" title="微核架构"></a>微核架构</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.jf0g5tzqe2o.webp" width="60%">
+
+<br>
+
+<h2 id="MySQL软件架构是怎样的？"><a href="#MySQL软件架构是怎样的？" class="headerlink" title="MySQL软件架构是怎样的？"></a>MySQL软件架构是怎样的？</h2><br>
 
 <br>
 
@@ -296,6 +522,18 @@
                 </div>
             
 
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/MySQL/">#MySQL</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/DataBase/">#DataBase</a>&nbsp;
+                        </li>
+                    
+                </ul>
             
 
             
@@ -413,7 +651,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">1.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">第1章 课程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5"><span class="nav-number">1.1.</span> <span class="nav-text">问卷调查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%BE%E9%80%9AMySQL%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%AD%A6"><span class="nav-number">1.2.</span> <span class="nav-text">精通MySQL，应该怎么学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E6%88%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）从理论到实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E4%BB%8E%E5%8D%95%E7%82%B9%E5%88%B0%E9%9B%86%E7%BE%A4"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）从单点到集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E4%BB%8E%E7%8E%B0%E5%9C%A8%E5%88%B0%E6%9C%AA%E6%9D%A5"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）从现在到未来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E4%B8%89%E9%AB%98%E2%80%9D"><span class="nav-number">1.3.</span> <span class="nav-text">什么是“三高”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6"><span class="nav-number">1.3.1.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">1.3.2.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8D%A2"><span class="nav-number">1.3.3.</span> <span class="nav-text">切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E4%B8%89%E9%AB%98%E2%80%9D%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.</span> <span class="nav-text">“三高”的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E5%8D%95%E7%82%B9%E6%80%A7%E8%83%BD"><span class="nav-number">1.5.</span> <span class="nav-text">如何提升单点性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="nav-number">1.6.</span> <span class="nav-text">未来数据库发展趋势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">第2章 环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85MySQL-5-7"><span class="nav-number">2.1.</span> <span class="nav-text">安装MySQL 5.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E7%9A%84%E5%90%AF%E5%81%9C"><span class="nav-number">2.2.</span> <span class="nav-text">MySQL的启停</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">初始化配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-%E4%B8%80%E4%B8%AASQL%E8%AF%AD%E5%8F%A5%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">第3章 一个SQL语句如何执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%B8%E5%9E%8B%E6%9E%B6%E6%9E%84%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84"><span class="nav-number">3.1.</span> <span class="nav-text">数据库软件的典型架构是怎样的?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.</span> <span class="nav-text">常见软件架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.1.</span> <span class="nav-text">MVC 分层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.2.</span> <span class="nav-text">事件驱动架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E9%81%93-%E8%BF%87%E6%BB%A4%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.3.</span> <span class="nav-text">管道-过滤器架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%A0%B8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.4.</span> <span class="nav-text">微核架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">MySQL软件架构是怎样的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
