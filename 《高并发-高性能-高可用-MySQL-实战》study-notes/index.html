@@ -258,12 +258,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.3k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.6k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>9 Mins</span>
         </span>
     
     
@@ -477,18 +477,212 @@
 
 <br>
 
-<h2 id="MySQL软件架构是怎样的？"><a href="#MySQL软件架构是怎样的？" class="headerlink" title="MySQL软件架构是怎样的？"></a>MySQL软件架构是怎样的？</h2><br>
+<h2 id="MySQL软件架构是怎样的？"><a href="#MySQL软件架构是怎样的？" class="headerlink" title="MySQL软件架构是怎样的？"></a>MySQL软件架构是怎样的？</h2><ul>
+<li>MySQL的软件架构</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.7cr8et2ktx00.webp" width="70%">
+
+<br>
+
+<ul>
+<li>以分层架构看MySQL架构</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.57w74vaulpw0.webp" width="70%">
+
+<br>
+
+<ul>
+<li>以管道过滤器-架构看MySQL架构</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.32mzf6nvr1q0.webp" width="70%">
+
+<br>
+
+<ul>
+<li>以微核-架构看MySQL架构</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.76a2jv90tok0.webp" width="70%">
+
+<br>
+
+<ul>
+<li>软件工程当中有很多经典的架构设计</li>
+<li>大型软件往往不是使用单一的架构设计，而是多种混合</li>
+<li>研究问题要有清晰的视野，分清楚微观和宏观</li>
+<li>理论要灵活实践，不要死读书</li>
+</ul>
+<br>
+
+<h2 id="客户端怎样连接MySQL数据库"><a href="#客户端怎样连接MySQL数据库" class="headerlink" title="客户端怎样连接MySQL数据库"></a>客户端怎样连接MySQL数据库</h2><h3 id="客户端与MySQL的连接方式"><a href="#客户端与MySQL的连接方式" class="headerlink" title="客户端与MySQL的连接方式"></a>客户端与MySQL的连接方式</h3><ul>
+<li><strong>TCP/IP 连接</strong><ul>
+<li>TCP/IP 连接是MySQL在任何平台上都提供的连接方法</li>
+<li>TCP/IP是目前互联网最主流的网络连接方式</li>
+</ul>
+</li>
+<li><strong>命名管道</strong><ul>
+<li>命名管道:同一台服务器通讯 (Windows)</li>
+<li>命名管道开启方式:–enable-named-pipe</li>
+</ul>
+</li>
+<li><strong>共享内存</strong><ul>
+<li>服务端:配置-shared-memory</li>
+<li>客户端:配置-protocol=memory</li>
+</ul>
+</li>
+<li><strong>UNIX套接字</strong><ul>
+<li>服务端:配置-socket=/tmp/mysql.sock</li>
+<li>客户端:配置-S =/tmp/mysql.sock</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="MySQL-TCP通讯协议"><a href="#MySQL-TCP通讯协议" class="headerlink" title="MySQL TCP通讯协议"></a>MySQL TCP通讯协议</h3><ul>
+<li><strong>三次握手建立TCP连接</strong></li>
+<li><strong>认证连接</strong><ul>
+<li>服务端-&gt;客户端:发送握手初始化包</li>
+<li>客户端-&gt;服务端:发送验证</li>
+<li>服务端-&gt;客户端:认证结果消息</li>
+</ul>
+</li>
+<li><strong>认证通过之后，客户端开始与服务端之间交互</strong><ul>
+<li>客户端-&gt;服务端:发送命令包(Command Packet)</li>
+<li>服务端-&gt;客户端:发送回应包</li>
+</ul>
+</li>
+<li><strong>断开MySQL连接</strong><ul>
+<li>客户端-&gt;服务器:发送退出命令包</li>
+</ul>
+</li>
+<li><strong>四次握手断开TCP连接</strong></li>
+</ul>
+<br>
+
+<ul>
+<li>MySQL TCP 报文格式<ul>
+<li>消息头:3字节报文长度、1字节序号</li>
+<li>消息体:1字节指令、其余为参数</li>
+<li>指令举例: 切换数据库(0x02)、查询命令(0x03)</li>
+</ul>
+</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.19gzatr3rmio.webp" width="70%">
+
+<br>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>TCP/IP 连接是MySQL最常用的连接方式</li>
+<li>TCP/IP连接报文可以作为其他C/S架构的参考</li>
+<li>其他连接方式均限于本机连接，使用范围有限</li>
+</ul>
+<br>
+
+<h2 id="一个SQL语句是怎样执行的"><a href="#一个SQL语句是怎样执行的" class="headerlink" title="一个SQL语句是怎样执行的"></a>一个SQL语句是怎样执行的</h2><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/e9facc452b4200abad559eb2c9f4c39.380nurymdlm0.webp" width="70%">
+
+<br>
+
+<h3 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h3><ul>
+<li>之前执行过的语句会KV的形式缓存在内存中</li>
+<li>查询之前先查找之前执行过的相同语句</li>
+<li>不推荐使用缓存:数据表修改后，会删除所有相关缓存</li>
+</ul>
+<br>
+
+<h3 id="分析器"><a href="#分析器" class="headerlink" title="分析器"></a>分析器</h3><ul>
+<li>分析器的作用是知道你要“干什么“</li>
+<li>先做词法分析，识别SQL语句中的关键字</li>
+<li>再做句法分析，判断SQL语句是否符合语法</li>
+</ul>
+<br>
+
+<h3 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h3><ul>
+<li>优化器的作用是要知道“怎么做”</li>
+<li>优化器的主要工作是决定如何使用索引</li>
+</ul>
+<br>
+
+<h3 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h3><ul>
+<li>执行器的主要工作是校验权限、调用存储引擎</li>
+<li>执行器首先校验此用户对目标数据有无权限</li>
+<li>执行器会以行为粒度，调用存储引擎，执行SQL</li>
+<li>在没有索引的情况下，执行器会循环查询所有行</li>
+</ul>
+<br>
+
+<h3 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h3><ul>
+<li>存储引擎的任务是将执行器的指令落实在数据文件上</li>
+<li>不同存储引擎的原理和执行方法有很大不同</li>
+</ul>
+<br>
+
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>SQL语句执行的过程涉及到了MySQL几乎所有的模块</li>
+<li>一个SQL语句是按照分析-优化-执行-落盘的步骤执行的</li>
+<li>MySQL8.0之后已经停用了缓存功能</li>
+</ul>
+<br>
+
+<h2 id="四种常见的MySQL存储引擎"><a href="#四种常见的MySQL存储引擎" class="headerlink" title="四种常见的MySQL存储引擎"></a>四种常见的MySQL存储引擎</h2><ul>
+<li><strong>InnoDB</strong><ul>
+<li>MySQL5.5.5之后的默认存储引擎</li>
+<li>支持事务、外键</li>
+<li>支持崩溃修复能力和并发控制</li>
+</ul>
+</li>
+<li><strong>MyISAM</strong><ul>
+<li>MySQL 5.5.5之前的默认存储引擎</li>
+<li>插入数据快</li>
+<li>空间利用率高</li>
+<li>不支持事务</li>
+</ul>
+</li>
+<li><strong>Memory</strong><ul>
+<li>所有的数据都在内存中，速度快</li>
+<li>数据安全性差</li>
+</ul>
+</li>
+<li><strong>Archive</strong><ul>
+<li>数据压缩、空间利用率高</li>
+<li>插入速度快</li>
+<li>不支持索引，查询性能差</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>InnoDB是目前最主流的存储引擎，适合各种互联网业务</li>
+<li>查询效率要求非常高的可以考虑MyISAM</li>
+<li>日志信息归档可以考虑Archive</li>
+<li>临时表可以考虑MEMORY</li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第4章-如何建表更符合业务"><a href="#第4章-如何建表更符合业务" class="headerlink" title="第4章 如何建表更符合业务"></a>第4章 如何建表更符合业务</h1><h2 id="索引组织表-Index-Organized-Table"><a href="#索引组织表-Index-Organized-Table" class="headerlink" title="索引组织表(Index Organized Table)"></a>索引组织表(Index Organized Table)</h2><ul>
+<li>索引组织表不是一种“组织表“</li>
+<li>索引组织表是由索引“组织起来的”表</li>
+<li>InnoDB中，表都是根据主键顺序组织存放的</li>
+</ul>
+<br>
 
 <br>
 
 <br>
 
 <h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote>
-<p>1</p>
+<ol>
+<li>大多数情况下，都应该举一反三，比如课程中讲的mysql架构，应该好好熟悉。但是还有呢对应的课程专门讲解mysql架构，所以在本门课程中，我们只需要熟悉最核心的知识，或者熟悉本门课程的知识即可，其它重要的知识点在其它课程中好好学习即可。所以学习其它知识、课程亦是如此。（把握每个课程的重点，各个击破。达到系统掌握整体的目的）</li>
+<li>注意识别课程中提到的知识，哪些是特别重要的，比如本门课程中，常见架构很重要，但是本门课并不专门讲解架构，所以应该后续找对应的课程，学习架构知识。</li>
+<li>课程提到的mysql架构、tcp连接，都是很重要的知识，需要再深入理解。（一些底层基础知识很重要）</li>
+</ol>
 </blockquote>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure>
 
-<img src="" width="70%">
+<img src="" width="50%">
 
 <br>
             </div>
@@ -538,6 +732,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="../%E3%80%8AMySQL-%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8Bstudy-notes/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">《MySQL 必知必会》study notes</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
@@ -651,7 +860,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">第1章 课程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5"><span class="nav-number">1.1.</span> <span class="nav-text">问卷调查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%BE%E9%80%9AMySQL%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%AD%A6"><span class="nav-number">1.2.</span> <span class="nav-text">精通MySQL，应该怎么学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E6%88%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）从理论到实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E4%BB%8E%E5%8D%95%E7%82%B9%E5%88%B0%E9%9B%86%E7%BE%A4"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）从单点到集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E4%BB%8E%E7%8E%B0%E5%9C%A8%E5%88%B0%E6%9C%AA%E6%9D%A5"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）从现在到未来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E4%B8%89%E9%AB%98%E2%80%9D"><span class="nav-number">1.3.</span> <span class="nav-text">什么是“三高”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6"><span class="nav-number">1.3.1.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">1.3.2.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8D%A2"><span class="nav-number">1.3.3.</span> <span class="nav-text">切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E4%B8%89%E9%AB%98%E2%80%9D%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.</span> <span class="nav-text">“三高”的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E5%8D%95%E7%82%B9%E6%80%A7%E8%83%BD"><span class="nav-number">1.5.</span> <span class="nav-text">如何提升单点性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="nav-number">1.6.</span> <span class="nav-text">未来数据库发展趋势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">第2章 环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85MySQL-5-7"><span class="nav-number">2.1.</span> <span class="nav-text">安装MySQL 5.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E7%9A%84%E5%90%AF%E5%81%9C"><span class="nav-number">2.2.</span> <span class="nav-text">MySQL的启停</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">初始化配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-%E4%B8%80%E4%B8%AASQL%E8%AF%AD%E5%8F%A5%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">第3章 一个SQL语句如何执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%B8%E5%9E%8B%E6%9E%B6%E6%9E%84%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84"><span class="nav-number">3.1.</span> <span class="nav-text">数据库软件的典型架构是怎样的?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.</span> <span class="nav-text">常见软件架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.1.</span> <span class="nav-text">MVC 分层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.2.</span> <span class="nav-text">事件驱动架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E9%81%93-%E8%BF%87%E6%BB%A4%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.3.</span> <span class="nav-text">管道-过滤器架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%A0%B8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.4.</span> <span class="nav-text">微核架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">MySQL软件架构是怎样的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">第1章 课程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5"><span class="nav-number">1.1.</span> <span class="nav-text">问卷调查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%BE%E9%80%9AMySQL%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%AD%A6"><span class="nav-number">1.2.</span> <span class="nav-text">精通MySQL，应该怎么学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E4%BB%8E%E7%90%86%E8%AE%BA%E5%88%B0%E5%AE%9E%E6%88%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）从理论到实战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E4%BB%8E%E5%8D%95%E7%82%B9%E5%88%B0%E9%9B%86%E7%BE%A4"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）从单点到集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E4%BB%8E%E7%8E%B0%E5%9C%A8%E5%88%B0%E6%9C%AA%E6%9D%A5"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）从现在到未来</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E4%B8%89%E9%AB%98%E2%80%9D"><span class="nav-number">1.3.</span> <span class="nav-text">什么是“三高”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6"><span class="nav-number">1.3.1.</span> <span class="nav-text">复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-number">1.3.2.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8D%A2"><span class="nav-number">1.3.3.</span> <span class="nav-text">切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E4%B8%89%E9%AB%98%E2%80%9D%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.4.</span> <span class="nav-text">“三高”的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E5%8D%95%E7%82%B9%E6%80%A7%E8%83%BD"><span class="nav-number">1.5.</span> <span class="nav-text">如何提升单点性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E6%9D%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF"><span class="nav-number">1.6.</span> <span class="nav-text">未来数据库发展趋势</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">第2章 环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85MySQL-5-7"><span class="nav-number">2.1.</span> <span class="nav-text">安装MySQL 5.7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E7%9A%84%E5%90%AF%E5%81%9C"><span class="nav-number">2.2.</span> <span class="nav-text">MySQL的启停</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.</span> <span class="nav-text">初始化配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-%E4%B8%80%E4%B8%AASQL%E8%AF%AD%E5%8F%A5%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">第3章 一个SQL语句如何执行</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%85%B8%E5%9E%8B%E6%9E%B6%E6%9E%84%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84"><span class="nav-number">3.1.</span> <span class="nav-text">数据库软件的典型架构是怎样的?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.</span> <span class="nav-text">常见软件架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC-%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.1.</span> <span class="nav-text">MVC 分层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.2.</span> <span class="nav-text">事件驱动架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E9%81%93-%E8%BF%87%E6%BB%A4%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.3.</span> <span class="nav-text">管道-过滤器架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%A0%B8%E6%9E%B6%E6%9E%84"><span class="nav-number">3.2.4.</span> <span class="nav-text">微核架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">MySQL软件架构是怎样的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5MySQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.4.</span> <span class="nav-text">客户端怎样连接MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8EMySQL%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">3.4.1.</span> <span class="nav-text">客户端与MySQL的连接方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL-TCP%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.4.2.</span> <span class="nav-text">MySQL TCP通讯协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">3.4.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AASQL%E8%AF%AD%E5%8F%A5%E6%98%AF%E6%80%8E%E6%A0%B7%E6%89%A7%E8%A1%8C%E7%9A%84"><span class="nav-number">3.5.</span> <span class="nav-text">一个SQL语句是怎样执行的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%BC%93%E5%AD%98"><span class="nav-number">3.5.1.</span> <span class="nav-text">查询缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E5%99%A8"><span class="nav-number">3.5.2.</span> <span class="nav-text">分析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%99%A8"><span class="nav-number">3.5.3.</span> <span class="nav-text">优化器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%99%A8"><span class="nav-number">3.5.4.</span> <span class="nav-text">执行器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-number">3.5.5.</span> <span class="nav-text">存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">3.5.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84MySQL%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-number">3.6.</span> <span class="nav-text">四种常见的MySQL存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-number">3.6.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-%E5%A6%82%E4%BD%95%E5%BB%BA%E8%A1%A8%E6%9B%B4%E7%AC%A6%E5%90%88%E4%B8%9A%E5%8A%A1"><span class="nav-number">4.</span> <span class="nav-text">第4章 如何建表更符合业务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E7%BB%84%E7%BB%87%E8%A1%A8-Index-Organized-Table"><span class="nav-number">4.1.</span> <span class="nav-text">索引组织表(Index Organized Table)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">5.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
