@@ -9,7 +9,7 @@
     
     <title>
         
-            《阿里新零售数据库设计与实战》study notes |
+            《Java分布式架构设计与开发实战》study notes |
         
         ratears&#39;s blog
     </title>
@@ -191,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">《阿里新零售数据库设计与实战》study notes</span>
+                <span class="title-hover-animation">《Java分布式架构设计与开发实战》study notes</span>
             </div>
 
             
@@ -213,13 +213,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-02-06 08:18:07</span>
-        <span class="mobile">2023-02-06 08:18</span>
+        <span class="pc">2023-02-22 12:06:25</span>
+        <span class="mobile">2023-02-22 12:06</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-06 08:18:07</span>
+        <span class="pc">2023-02-22 12:06:25</span>
     </span>
     
     
@@ -228,11 +228,7 @@
             <ul>
                 
                     <li>
-                        <a href="../Categories/DataBase/">DataBase</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="../Categories/DataBase/MySQL/">MySQL</a>&nbsp;
+                        <a href="../Categories/distributed/">distributed</a>&nbsp;
                     </li>
                 
             </ul>
@@ -244,11 +240,7 @@
             <ul>
                 
                     <li>
-                        <a href="../Tags/DataBase/">DataBase</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="../Tags/MySQL/">MySQL</a>&nbsp;
+                        <a href="../Tags/distributed/">distributed</a>&nbsp;
                     </li>
                 
             </ul>
@@ -258,12 +250,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>804 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
         </span>
     
     
@@ -281,153 +273,21 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li>从设计到落地，提升数据库“技术&amp;业务”综合能力</li>
-<li>相当于参与了真实项目的数据库设计[开发经验很难得]</li>
-<li>具备设计完整数据库平台的能力[设计思想要跟上]</li>
-<li>驾驭新零售数据库混合式集群[特别牛的技术]</li>
+                <h1 id="课程导学与学习指南"><a href="#课程导学与学习指南" class="headerlink" title="课程导学与学习指南"></a>课程导学与学习指南</h1><ul>
+<li>课程内容设计（结合实际应用场景）</li>
 </ul>
-<br>
-
-<br>
-
-<br>
-
-<h1 id="新零售是什么"><a href="#新零售是什么" class="headerlink" title="新零售是什么"></a>新零售是什么</h1><ul>
-<li>雷军：新零售是更高效率的零售，我们要从线上回到线下</li>
-<li>马云：线下与线上零售将深度结合，加上现代物流平台，构成未来的新零售</li>
-<li>商务部：以消费者为中心，以技术创新为驱动的零售模新式</li>
-</ul>
-<ul>
-<li>新零售线上业务仅是电商吗？</li>
-</ul>
-<blockquote>
-<p>线上业务不局限于电商，还包括了在线教育、医疗服务，以及金融业务等等</p>
-</blockquote>
-<ul>
-<li>新零售的线下业务</li>
-</ul>
-<blockquote>
-<p>利用云计算、大数据，以及人工智能技术，将客户分流到线下门店中，让用户体验到定制化的服务</p>
-</blockquote>
-<ul>
-<li>新零售平台构成</li>
-</ul>
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.2hkwqsnfv780.webp" width="60%">
-
-<br>
-
-<br>
-
-<br>
-
-<h1 id="前导知识"><a href="#前导知识" class="headerlink" title="前导知识"></a>前导知识</h1><h2 id="Linux环境准备"><a href="#Linux环境准备" class="headerlink" title="Linux环境准备"></a>Linux环境准备</h2><h3 id="关闭SELinux"><a href="#关闭SELinux" class="headerlink" title="关闭SELinux"></a>关闭SELinux</h3><ul>
-<li>SELinux是Linux2.6以上版本捆绑的一个安全模块</li>
-<li>SELinux配置复杂，容易跟其他程序冲突，所以建议关闭</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/selinux/config</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置SELINUX=disabled，重启系统</span></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h3 id="替换yum源"><a href="#替换yum源" class="headerlink" title="替换yum源"></a>替换yum源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo mirrors.163.com/.help/CentOS7-Base-163.repo</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新缓存</span></span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><h3 id="在线安装MySQL"><a href="#在线安装MySQL" class="headerlink" title="在线安装MySQL"></a>在线安装MySQL</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载rpm文件</span></span><br><span class="line">yum localinstall https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装MySQL</span></span><br><span class="line">yum install mysal-community-server -y</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h3 id="本地安装MySQL"><a href="#本地安装MySQL" class="headerlink" title="本地安装MySQL"></a>本地安装MySQL</h3><ul>
-<li>离线下载安装</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载MySQL压缩包文件，并上传到/root/mysql目录</span></span><br><span class="line">mysql-8.0.11-1.el7.x86 64.rpm-bundle.tar</span><br><span class="line"></span><br><span class="line">tar xvf mysgl-8.0.11-1.el7.x86 64.rpm-bundle.tar</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装第三方依赖包</span></span><br><span class="line">yum install perl -y</span><br><span class="line">yum install net-tools -y</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">卸载系统自带的mariadb</span></span><br><span class="line">rpm -qa |grep mariadb</span><br><span class="line">rpm -e mariadb-libs-5.5.68-1.el7.x86_64 --nodeps</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装MySQL程序包</span></span><br><span class="line">rpm -ivh mysql-community-common-8.0.11-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-8.0.11-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-client-8.0.11-1.el7.x86 64.rpm</span><br><span class="line">rpm -ivh mysql-community-server-8.0.11-1.el7.x86 64.rpm</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改/var/lib/mysql目录访问权限</span></span><br><span class="line">chmod -R 777 /var/lib/mysql/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">初始化，初始化数据目录，生成必要的文件，生成root密码</span></span><br><span class="line">mysqld --initialize</span><br><span class="line">chmod -R 777 /var/lib/mysql/*</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动数据库</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在线安装使用：</span></span><br><span class="line">service mysql start</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">离线本地安装使用：</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看初始化密码</span></span><br><span class="line">grep&#x27;temporary password’ /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>修改root密码</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">本地登录数据库</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改root密码</span></span><br><span class="line">alter user user)) identified by &quot;abc123456&quot;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>允许root远程登录</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">允许远程使用root账户</span></span><br><span class="line">UPDATE user SET host = %&#x27; WHERE user =&#x27;root&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改/etc/my.cnf文件</span></span><br><span class="line">character set server = utf8</span><br><span class="line">bind-address = 0.0.0.0</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>系统防火墙开放3306端口</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd--zone=public  --add-port=3306/tcp --permanent</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="业务数据库设计流程"><a href="#业务数据库设计流程" class="headerlink" title="业务数据库设计流程"></a>业务数据库设计流程</h2><ul>
-<li>需求分析：根据用户的需求，分析出需要记录的数据</li>
-<li>概要设计：根据分析出的数据，设计ER图</li>
-<li>详细设计：将ER图转换成数据库模型图和数据表</li>
-</ul>
-<br>
-
-<h2 id="业务数据设计模型"><a href="#业务数据设计模型" class="headerlink" title="业务数据设计模型"></a>业务数据设计模型</h2><ul>
-<li>瀑布模型</li>
-</ul>
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.3aas4yr220e0.webp" width="40%">
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.73j7o3a193k0.webp" width="70%">
 
 <br>
 
 <ul>
-<li>螺旋模型</li>
+<li>内容兼具深度、广度</li>
 </ul>
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.66x4m6vejbk0.webp" width="40%">
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.oxikmcilqsw.webp" width="70%">
 
 <br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.41p3fu3lo7i0.webp" width="70%">
 
 <br>
 
@@ -435,6 +295,198 @@
 
 <br>
 
+<h1 id="硅步千里，分布式理论加强内功修炼"><a href="#硅步千里，分布式理论加强内功修炼" class="headerlink" title="硅步千里，分布式理论加强内功修炼"></a>硅步千里，分布式理论加强内功修炼</h1><h2 id="本章节目标"><a href="#本章节目标" class="headerlink" title="本章节目标"></a>本章节目标</h2><ul>
+<li>了解大型互联网系统演进</li>
+<li>掌握架构设计思想</li>
+<li>掌握CAP理论</li>
+<li>掌握BASE理论</li>
+</ul>
+<br>
+
+<ul>
+<li>中国互联网发展历程<ul>
+<li>1994 - 2000年:从四大门户到搜索</li>
+<li>2001-2009年:从搜索到社交化网络</li>
+<li>2010- 至今:移动互联网和自媒体</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="单体应用架构到分布式架构的演进"><a href="#单体应用架构到分布式架构的演进" class="headerlink" title="单体应用架构到分布式架构的演进"></a>单体应用架构到分布式架构的演进</h2><ul>
+<li>单体应用架构<ul>
+<li>Linux+Apache+MySQL+PHP</li>
+<li>网站刚起步的时候，流量少。用一台服务器就可以满足</li>
+</ul>
+</li>
+<li>应用服务与数据服务分离<ul>
+<li>访问增加，带来更大压力</li>
+<li>增加配置解决临时问题</li>
+<li>从横向进行扩展，一分为多</li>
+</ul>
+</li>
+<li>不同服务器配置要求不同</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">服务器类型</th>
+<th align="center">不同配置要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">应用服务器</td>
+<td align="center">CPU配置高</td>
+</tr>
+<tr>
+<td align="center">数据库服务器</td>
+<td align="center">磁盘IO快和稳，内存足够大</td>
+</tr>
+<tr>
+<td align="center">文件服务器</td>
+<td align="center">磁盘足够大</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>开始引入缓存</p>
+<ul>
+<li>大量交易访问数据库压力增大，响应延迟</li>
+<li>给数据库减负，把请求在前面就处理完</li>
+<li>在数据库前面加入缓存</li>
+</ul>
+</li>
+<li><p>应用服务器集群部署</p>
+<ul>
+<li>所有的请求直接打到负载均衡组件</li>
+<li>单台服务器 &gt;多台服务器</li>
+<li>软件: Apache / Nginx / HaProxy / LVS</li>
+<li>硬件:F5</li>
+</ul>
+</li>
+<li><p>数据库的读写分离</p>
+<ul>
+<li>并非所有请求都操作缓存，且存在缓存失效场景，对数据库访问造成压力</li>
+<li>利用数据库主从复制机制，将读和写操作分开，进一步提升性能</li>
+</ul>
+</li>
+<li><p>数据库访问模块</p>
+<ul>
+<li>对接多个数据源、处理读写分离、甚至分库分表等</li>
+<li>独立于应用程序存在的</li>
+<li>Apache ShardingSphere</li>
+</ul>
+</li>
+<li><p>内容分发网络 - CDN</p>
+</li>
+<li><p>CDN服务进行资源加速</p>
+<ul>
+<li>把静态资源提前缓存到各地的边缘服务器</li>
+<li>可以有效地降低DDoS攻击</li>
+</ul>
+</li>
+<li><p>全面分布式化</p>
+<ul>
+<li>随着规模不断发展产生数据越来越多，单文件件服务器、单数据库服务器也渐渐地达到瓶颈。利用集群化横向扩展解决问题</li>
+<li>HDFS、TFS、FastDFS</li>
+<li>NoSQL &amp; 搜索引擎<ul>
+<li>Lucene是一个搜索引擎的开发工具包:全文检索</li>
+<li>Solr和Elasticsearch它们是基于Lucene开发的</li>
+<li>常见的NoSQL有Mongodb和ELasticsearch</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>单体应用面临诸多问题和挑战</strong></p>
+<ul>
+<li>单体应用的代码膨胀，研发成本变高，难实现敏捷交付</li>
+<li>代码维护成本变高，开发人员交接困难</li>
+<li>测试成本变高，回归的工作量变大，给测试带来巨大工作量</li>
+<li>可扩展性差，技术升级时需考虑整体，无法单独调整</li>
+</ul>
+</li>
+<li><p>“大而全的单体”拆分为多个“独立的应用”</p>
+</li>
+<li><p>应用拆分和解耦</p>
+<ul>
+<li>对应用模块进行拆分之后，通过消息中间件进行交互</li>
+<li>此外还有异步处理应用解耦、流量削峰等作用</li>
+</ul>
+</li>
+<li><p>常见的消息中间件</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">消息中间件特性</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ActiveMQ</td>
+<td>历史悠久，使用Java语言编写的，功能全面，基本上MQ的功能它都有，因此也比较复杂。</td>
+</tr>
+<tr>
+<td align="center">RabbitMQ</td>
+<td>目前主流之一，跟Spring框架师出同门，因此Spring对RabbitMQ的支持最好</td>
+</tr>
+<tr>
+<td align="center">Kafka</td>
+<td>高性能方面比较有优势。但一开始是基于大吞吐量数据场景设计，在消息可靠性方面比较弱</td>
+</tr>
+<tr>
+<td align="center">RocketMQ</td>
+<td>它相对前面几个，有后发优势，结合了各方优点综合能力比较好。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>模块拆分引发的问题<ul>
+<li>代码冗余，多处相同的代码维护起来困难</li>
+<li>复杂度扩散</li>
+<li>共用一套数据库资源</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="引入服务化架构"><a href="#引入服务化架构" class="headerlink" title="引入服务化架构"></a>引入服务化架构</h2><h3 id="SOA与微服务对比"><a href="#SOA与微服务对比" class="headerlink" title="SOA与微服务对比"></a>SOA与微服务对比</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.2zz2vosvmw60.webp" width="70%">
+
+<br>
+
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th>SOA</th>
+<th>微服务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">共同点</td>
+<td>都是在分布式环境下，以服务为中心的松耦合应用架构模式服务之间是通过定义明确的接口和协议来进行相互通信</td>
+<td>都是在分布式环境下，以服务为中心的松耦合应用架构模式服务之间是通过定义明确的接口和协议来进行相互通信</td>
+</tr>
+<tr>
+<td align="center">目标</td>
+<td>解决的是异构系统的服务化</td>
+<td>解决互联网系统快速交付</td>
+</tr>
+<tr>
+<td align="center">规模</td>
+<td>相对粗粒度</td>
+<td>细粒度</td>
+</tr>
+<tr>
+<td align="center">适用性</td>
+<td>跨企业、大企业跨部门的复杂应用系统建设</td>
+<td>适合小型团队的持续化发布</td>
+</tr>
+</tbody></table>
+<h1 id="为快不破，分布式缓存提升系统性能"><a href="#为快不破，分布式缓存提升系统性能" class="headerlink" title="为快不破，分布式缓存提升系统性能"></a>为快不破，分布式缓存提升系统性能</h1><br>
+
+<br>
+
+<br>
 
 <h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote>
 <p>1</p>
@@ -452,16 +504,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">Post title</span>: <span class="content">《阿里新零售数据库设计与实战》study notes</span>
+            <span class="type">Post title</span>: <span class="content">《Java分布式架构设计与开发实战》study notes</span>
         </li>
         <li class="post-author">
             <span class="type">Post author</span>: <span class="content">ratears</span>
         </li>
         <li class="post-time">
-            <span class="type">Create time</span>: <span class="content">2023-02-06 08:18:07</span>
+            <span class="type">Create time</span>: <span class="content">2023-02-22 12:06:25</span>
         </li>
         <li class="post-link">
-            <span class="type">Post link</span>: <span class="content">《阿里新零售数据库设计与实战》study-notes/</span>
+            <span class="type">Post link</span>: <span class="content">《Java分布式架构设计与开发实战》study-notes/</span>
         </li>
         <li class="post-license">
             <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
@@ -479,11 +531,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="../Tags/DataBase/">#DataBase</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="../Tags/MySQL/">#MySQL</a>&nbsp;
+                            <a href="../Tags/distributed/">#distributed</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -495,18 +543,33 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="../Linux-%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/"
+                               href="../%E3%80%8AJava%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E6%8E%8C%E6%8F%A1%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E9%A1%B9%E7%9B%AE%E6%96%B9%E6%A1%88%E3%80%8Bstudy-notes/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux 常用基础操作</span>
+                                <span class="post-nav-title-item">《Java分布式系统解决方案 掌握企业级分布式项目方案》study notes</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
                         </div>
                     
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="../Redis-study-notes/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Redis study notes</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
                     
                 </div>
             
@@ -604,7 +667,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E9%9B%B6%E5%94%AE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">新零售是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E5%AF%BC%E7%9F%A5%E8%AF%86"><span class="nav-number">3.</span> <span class="nav-text">前导知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">3.1.</span> <span class="nav-text">Linux环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%ADSELinux"><span class="nav-number">3.1.1.</span> <span class="nav-text">关闭SELinux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2yum%E6%BA%90"><span class="nav-number">3.1.2.</span> <span class="nav-text">替换yum源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85MySQL"><span class="nav-number">3.2.</span> <span class="nav-text">安装MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85MySQL"><span class="nav-number">3.2.1.</span> <span class="nav-text">在线安装MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85MySQL"><span class="nav-number">3.2.2.</span> <span class="nav-text">本地安装MySQL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">业务数据库设计流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E6%95%B0%E6%8D%AE%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.4.</span> <span class="nav-text">业务数据设计模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%AF%BC%E5%AD%A6%E4%B8%8E%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97"><span class="nav-number">1.</span> <span class="nav-text">课程导学与学习指南</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%85%E6%AD%A5%E5%8D%83%E9%87%8C%EF%BC%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E5%8A%A0%E5%BC%BA%E5%86%85%E5%8A%9F%E4%BF%AE%E7%82%BC"><span class="nav-number">2.</span> <span class="nav-text">硅步千里，分布式理论加强内功修炼</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E7%AB%A0%E8%8A%82%E7%9B%AE%E6%A0%87"><span class="nav-number">2.1.</span> <span class="nav-text">本章节目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="nav-number">2.2.</span> <span class="nav-text">单体应用架构到分布式架构的演进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E6%9C%8D%E5%8A%A1%E5%8C%96%E6%9E%B6%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">引入服务化架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SOA%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.1.</span> <span class="nav-text">SOA与微服务对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E5%BF%AB%E4%B8%8D%E7%A0%B4%EF%BC%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98%E6%8F%90%E5%8D%87%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">为快不破，分布式缓存提升系统性能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
