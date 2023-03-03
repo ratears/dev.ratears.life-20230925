@@ -262,12 +262,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>3.3k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.7k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>12 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>13 Mins</span>
         </span>
     
     
@@ -505,7 +505,59 @@
 
 <br>
 
-<h2 id="AOF-文件格式"><a href="#AOF-文件格式" class="headerlink" title="AOF 文件格式"></a>AOF 文件格式</h2><br>
+<h2 id="AOF-文件格式"><a href="#AOF-文件格式" class="headerlink" title="AOF 文件格式"></a>AOF 文件格式</h2><ul>
+<li>AOF 文件包含三类文件：基本文件、增量文件与清单文件。其中基本文件一般为 rdb 格式</li>
+</ul>
+<br>
+
+<h3 id="Redis-协议"><a href="#Redis-协议" class="headerlink" title="Redis 协议"></a>Redis 协议</h3><ul>
+<li>增量文件扩展名为.aof，采用 AOF 格式。AOF 格式其实就是 Redis 通讯协议格式，AOF持久化文件的本质就是基于 Redis 通讯协议的文本，将命令以纯文本的方式写入到文件中。</li>
+<li>Redis 协议规定，Redis 文本是以行来划分，每行以\r\n 行结束。每一行都有一个消息头，以表示消息类型。消息头由六种不同的符号表示，其意义如下：<ul>
+<li>(+) 表示一个正确的状态信息</li>
+<li>(-) 表示一个错误信息</li>
+<li>(*) 表示消息体总共有多少行，不包括当前行</li>
+<li>($) 表示下一行消息数据的长度，不包括换行符长度\r\n</li>
+<li>(空) 表示一个消息数据</li>
+<li>(:) 表示返回一个数值</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="查看-AOF-文件"><a href="#查看-AOF-文件" class="headerlink" title="查看 AOF 文件"></a>查看 AOF 文件</h3><br>
+
+<br>
+
+<br>
+
+<h1 id="RDB-与-AOF-的取舍和选择"><a href="#RDB-与-AOF-的取舍和选择" class="headerlink" title="RDB 与 AOF 的取舍和选择"></a>RDB 与 AOF 的取舍和选择</h1><h2 id="RDB-与-AOF-的对比"><a href="#RDB-与-AOF-的对比" class="headerlink" title="RDB 与 AOF 的对比"></a>RDB 与 AOF 的对比</h2><table>
+<thead>
+<tr>
+<th align="center">-</th>
+<th align="center">优势</th>
+<th align="center">不足</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">RDB</td>
+<td align="center">RDB 文件较小<br>数据恢复较快</td>
+<td align="center">数据安全性较差<br>写时复制会降低性能<br>RDB 文件可读性较差</td>
+</tr>
+<tr>
+<td align="center">AOF</td>
+<td align="center">数据安全性高<br>AOF 文件可读性强</td>
+<td align="center">AOF 文件较大<br>写操作会影响性能<br>数据恢复较慢</td>
+</tr>
+</tbody></table>
+<br>
+
+<h2 id="Redis-持久化的取舍和选择"><a href="#Redis-持久化的取舍和选择" class="headerlink" title="Redis 持久化的取舍和选择"></a>Redis 持久化的取舍和选择</h2><ul>
+<li>官方推荐使用 RDB 与 AOF 混合式持久化。</li>
+<li>若对数据安全性要求不高，则推荐使用纯 RDB 持久化方式。</li>
+<li>不推荐使用纯 AOF 持久化方式。</li>
+<li>若 Redis 仅用于缓存，则无需使用任何持久化技术。</li>
+</ul>
+<br>
 
 <br>
 
@@ -573,6 +625,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="../%E3%80%8A%E9%AB%98%E7%BA%A7Redis%E8%BF%9B%E9%98%B6%E8%AF%BE-%E8%A7%A3%E5%86%B3Redis%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98-%E6%8E%8C%E6%8F%A1Redis6-x%E7%89%B9%E6%80%A7%E3%80%8BStudy-Notes/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">《高级Redis进阶课 解决Redis实际问题+掌握Redis6.x特性》Study Notes</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
@@ -686,7 +753,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-%E6%8C%81%E4%B9%85%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">Redis 持久化基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RDB-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">RDB 持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E6%89%A7%E8%A1%8C"><span class="nav-number">3.2.</span> <span class="nav-text">持久化的执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8-save-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.2.1.</span> <span class="nav-text">手动 save  命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8-bgsave-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.2.2.</span> <span class="nav-text">手动 bgsave  命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%9D%A1%E4%BB%B6%E8%A7%A6%E5%8F%91"><span class="nav-number">3.2.3.</span> <span class="nav-text">自动条件触发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8C%81%E4%B9%85%E5%8C%96%E6%97%B6%E9%97%B4"><span class="nav-number">3.2.4.</span> <span class="nav-text">查看持久化时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">RDB 优化配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#save"><span class="nav-number">3.3.1.</span> <span class="nav-text">save</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stop-write-on-bgsave-error"><span class="nav-number">3.3.2.</span> <span class="nav-text">stop-write-on-bgsave-error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdbcompression"><span class="nav-number">3.3.3.</span> <span class="nav-text">rdbcompression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdbchecksum"><span class="nav-number">3.3.4.</span> <span class="nav-text">rdbchecksum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sanitize-dump-payload"><span class="nav-number">3.3.5.</span> <span class="nav-text">sanitize-dump-payload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dbfilename"><span class="nav-number">3.3.6.</span> <span class="nav-text">dbfilename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdb-del-sync-files"><span class="nav-number">3.3.7.</span> <span class="nav-text">rdb-del-sync-files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dir"><span class="nav-number">3.3.8.</span> <span class="nav-text">dir</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">3.4.</span> <span class="nav-text">RDB 文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SOF"><span class="nav-number">3.4.1.</span> <span class="nav-text">SOF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdb-version"><span class="nav-number">3.4.2.</span> <span class="nav-text">rdb_version</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EOF"><span class="nav-number">3.4.3.</span> <span class="nav-text">EOF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#check-sum"><span class="nav-number">3.4.4.</span> <span class="nav-text">check_sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#databases"><span class="nav-number">3.4.5.</span> <span class="nav-text">databases</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-%E6%8C%81%E4%B9%85%E5%8C%96%E8%BF%87%E7%A8%8B"><span class="nav-number">3.5.</span> <span class="nav-text">*RDB 持久化过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6%E6%8A%80%E6%9C%AF%EF%BC%88Copy-On-Write%EF%BC%89"><span class="nav-number">3.6.</span> <span class="nav-text">*写时复制技术（Copy-On-Write）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOF-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">AOF 持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-2"><span class="nav-number">4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">AOF 基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF-%E7%9A%84%E5%BC%80%E5%90%AF"><span class="nav-number">4.2.1.</span> <span class="nav-text">AOF 的开启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.2.</span> <span class="nav-text">文件名配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E5%BC%8F%E6%8C%81%E4%B9%85%E5%8C%96%E5%BC%80%E5%90%AF"><span class="nav-number">4.2.3.</span> <span class="nav-text">混合式持久化开启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF-%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.4.</span> <span class="nav-text">AOF 文件目录配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.3.</span> <span class="nav-text">AOF 文件格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">5.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis-%E6%8C%81%E4%B9%85%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">Redis 持久化基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RDB-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">RDB 持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E6%89%A7%E8%A1%8C"><span class="nav-number">3.2.</span> <span class="nav-text">持久化的执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8-save-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.2.1.</span> <span class="nav-text">手动 save  命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8-bgsave-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.2.2.</span> <span class="nav-text">手动 bgsave  命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%9D%A1%E4%BB%B6%E8%A7%A6%E5%8F%91"><span class="nav-number">3.2.3.</span> <span class="nav-text">自动条件触发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8C%81%E4%B9%85%E5%8C%96%E6%97%B6%E9%97%B4"><span class="nav-number">3.2.4.</span> <span class="nav-text">查看持久化时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">RDB 优化配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#save"><span class="nav-number">3.3.1.</span> <span class="nav-text">save</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stop-write-on-bgsave-error"><span class="nav-number">3.3.2.</span> <span class="nav-text">stop-write-on-bgsave-error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdbcompression"><span class="nav-number">3.3.3.</span> <span class="nav-text">rdbcompression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdbchecksum"><span class="nav-number">3.3.4.</span> <span class="nav-text">rdbchecksum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sanitize-dump-payload"><span class="nav-number">3.3.5.</span> <span class="nav-text">sanitize-dump-payload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dbfilename"><span class="nav-number">3.3.6.</span> <span class="nav-text">dbfilename</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdb-del-sync-files"><span class="nav-number">3.3.7.</span> <span class="nav-text">rdb-del-sync-files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dir"><span class="nav-number">3.3.8.</span> <span class="nav-text">dir</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">3.4.</span> <span class="nav-text">RDB 文件结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SOF"><span class="nav-number">3.4.1.</span> <span class="nav-text">SOF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rdb-version"><span class="nav-number">3.4.2.</span> <span class="nav-text">rdb_version</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EOF"><span class="nav-number">3.4.3.</span> <span class="nav-text">EOF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#check-sum"><span class="nav-number">3.4.4.</span> <span class="nav-text">check_sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#databases"><span class="nav-number">3.4.5.</span> <span class="nav-text">databases</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-%E6%8C%81%E4%B9%85%E5%8C%96%E8%BF%87%E7%A8%8B"><span class="nav-number">3.5.</span> <span class="nav-text">*RDB 持久化过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E6%97%B6%E5%A4%8D%E5%88%B6%E6%8A%80%E6%9C%AF%EF%BC%88Copy-On-Write%EF%BC%89"><span class="nav-number">3.6.</span> <span class="nav-text">*写时复制技术（Copy-On-Write）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOF-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">AOF 持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-2"><span class="nav-number">4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.</span> <span class="nav-text">AOF 基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF-%E7%9A%84%E5%BC%80%E5%90%AF"><span class="nav-number">4.2.1.</span> <span class="nav-text">AOF 的开启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8D%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.2.</span> <span class="nav-text">文件名配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E5%BC%8F%E6%8C%81%E4%B9%85%E5%8C%96%E5%BC%80%E5%90%AF"><span class="nav-number">4.2.3.</span> <span class="nav-text">混合式持久化开启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOF-%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="nav-number">4.2.4.</span> <span class="nav-text">AOF 文件目录配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOF-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.3.</span> <span class="nav-text">AOF 文件格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-%E5%8D%8F%E8%AE%AE"><span class="nav-number">4.3.1.</span> <span class="nav-text">Redis 协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B-AOF-%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.2.</span> <span class="nav-text">查看 AOF 文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RDB-%E4%B8%8E-AOF-%E7%9A%84%E5%8F%96%E8%88%8D%E5%92%8C%E9%80%89%E6%8B%A9"><span class="nav-number">5.</span> <span class="nav-text">RDB 与 AOF 的取舍和选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-%E4%B8%8E-AOF-%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">5.1.</span> <span class="nav-text">RDB 与 AOF 的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%8C%81%E4%B9%85%E5%8C%96%E7%9A%84%E5%8F%96%E8%88%8D%E5%92%8C%E9%80%89%E6%8B%A9"><span class="nav-number">5.2.</span> <span class="nav-text">Redis 持久化的取舍和选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">6.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
