@@ -223,17 +223,51 @@
     </span>
     
     
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Categories/Database/">Database</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="../Categories/Database/Redis/">Redis</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Tags/Redis/">Redis</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="../Tags/Cache/">Cache</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="../Tags/Database/">Database</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>18 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.9k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>7 Mins</span>
         </span>
     
     
@@ -251,7 +285,225 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <br>
+                <h1 id="第1章-课程介绍"><a href="#第1章-课程介绍" class="headerlink" title="第1章 课程介绍"></a>第1章 课程介绍</h1><h2 id="为何Redis经久不衰？"><a href="#为何Redis经久不衰？" class="headerlink" title="为何Redis经久不衰？"></a>为何Redis经久不衰？</h2><ul>
+<li>功能强大、丰富<ul>
+<li>丰富的数据结构、主从、集群、持久化、模块化、哨兵</li>
+<li>能够支撑很多的互联网应用场景，比如缓存、分布式锁队列、集合、GEO.BitMap操作等</li>
+</ul>
+</li>
+<li>持续改进</li>
+<li>高性能<ul>
+<li>底层C语言编写，内存数据库，通讯采用epoll非阻塞I/O多路复用机制</li>
+</ul>
+</li>
+<li>线程安全<ul>
+<li>单线程-原子操作（高并发下数据安全）</li>
+</ul>
+</li>
+</ul>
+<h2 id="课程内容"><a href="#课程内容" class="headerlink" title="课程内容"></a>课程内容</h2><h3 id="课程项目架构"><a href="#课程项目架构" class="headerlink" title="课程项目架构"></a>课程项目架构</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/e7208bb05b39a307ee763120d570664.685ja194n3w0.webp" width="70%">
+
+<br>
+
+<h3 id="以问带学"><a href="#以问带学" class="headerlink" title="以问带学"></a>以问带学</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.54s59g6nhpg0.webp" width="70%">
+
+<br>
+
+<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><ul>
+<li>网络底层</li>
+<li>事务处理</li>
+<li>持久化原理</li>
+<li>主从复制原理</li>
+<li>哨兵机制</li>
+<li>分片存储原理</li>
+</ul>
+<br>
+
+<h3 id="底层算法"><a href="#底层算法" class="headerlink" title="底层算法"></a>底层算法</h3><ul>
+<li>Sorted Set底层</li>
+<li>Bitmap、Geo算法</li>
+<li>数据过期淘汰算法</li>
+<li>Leader选举流程</li>
+<li>槽位定位算法</li>
+<li>备份迁移及其算法</li>
+</ul>
+<br>
+
+<h3 id="性能提升方案"><a href="#性能提升方案" class="headerlink" title="性能提升方案"></a>性能提升方案</h3><ul>
+<li>Key与Value设计规范</li>
+<li>避免BigKey</li>
+<li>避免耗时操作</li>
+<li>Pipeline管道操作</li>
+<li>连接池性能优化</li>
+<li>子进程的开销与优化</li>
+</ul>
+<br>
+
+<h3 id="故障解决方案"><a href="#故障解决方案" class="headerlink" title="故障解决方案"></a>故障解决方案</h3><ul>
+<li>数据延迟</li>
+<li>数据脏读</li>
+<li>数据抖动</li>
+<li>数据一致性</li>
+<li>热点数据存储</li>
+<li>RDB文件损坏</li>
+</ul>
+<br>
+
+<h2 id="怎么学"><a href="#怎么学" class="headerlink" title="怎么学"></a>怎么学</h2><ul>
+<li>对Redis有兴趣，但不懂如何和项目深度结合</li>
+<li>了解Redis日常操作，但不懂得Redis底层原理</li>
+<li>遇到Redis故障完全没有思路，不知如何解决</li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第2章-Redis快速入门"><a href="#第2章-Redis快速入门" class="headerlink" title="第2章 Redis快速入门"></a>第2章 Redis快速入门</h1><h2 id="章节介绍"><a href="#章节介绍" class="headerlink" title="章节介绍"></a>章节介绍</h2><h3 id="学习目标"><a href="#学习目标" class="headerlink" title="[学习目标]"></a>[学习目标]</h3><p>1、了解Redis为什么能流行这么多年，高性能的原因<br>2、掌握Redis环境安装以及配置<br>3、了解微服务项目的构建以及SpringBoot开发</p>
+<br>
+
+<h3 id="理论知识"><a href="#理论知识" class="headerlink" title="[理论知识]"></a>[理论知识]</h3><p>1、缓存相关中间件 (Redis、 Memcache和Ehcache) 的比较<br>2、对Redis的基本理解<br>3、微服务相关概念</p>
+<br>
+
+<h3 id="实际操作"><a href="#实际操作" class="headerlink" title="[实际操作]"></a>[实际操作]</h3><p>1、Redis安装、配置以及启动<br>2、Redis的基本命令<br>3、数据库表结构设计<br>4、SpringBoot&amp;SpringCloud项目搭建</p>
+<br>
+
+<h2 id="Redis介绍"><a href="#Redis介绍" class="headerlink" title="Redis介绍"></a>Redis介绍</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>内存数据库，速度快，也支持数据的持久化</li>
+<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供Lists、 Hashes、 Sets 、Sorted Sets 等多种数据结构的存储</li>
+<li>Redis支持数据的备份 (master-slave) 与集群 (分片存储)，以及拥有哨兵监控机制.</li>
+<li>支持事务</li>
+</ul>
+<br>
+
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
+<li>性能极高 - Redis能读的速度是110000次/s，写的速度是81000次/s</li>
+<li>丰富的数据类型 - Redis支持 Strings、 Lists、 Hashes、Sets 、Sorted Sets 等数据类型操作</li>
+<li>原子操作 - Redis的所有操作都是原子性的，同时Redis还支持对几个操作合并后的原子性执行 (事务）</li>
+<li>丰富的特性 - Redis还支持 publish/subscribe,通知,key 过期等特性。</li>
+</ul>
+<br>
+
+<h3 id="Redis、Memcached、-Ehcache的区别"><a href="#Redis、Memcached、-Ehcache的区别" class="headerlink" title="Redis、Memcached、 Ehcache的区别"></a>Redis、Memcached、 Ehcache的区别</h3><ul>
+<li>这三个中间件都可以应用于缓存，但目前市面上使用Redis的场景会更多，更广泛，其原因是: Redis性能高、原子操作、支持多种数据类型，主从复制与哨兵监控，持久化操作等。</li>
+</ul>
+<br>
+
+<h2 id="Redis的高并发"><a href="#Redis的高并发" class="headerlink" title="Redis的高并发"></a>Redis的高并发</h2><ul>
+<li>官方的bench-mark数据: 测试完成了50个并发执行100000个请求。设置和获取的值是一个256字节字符串。结果: 读的速度是110000次/s,写的速度是81000次/s。redis尽量少写多读，符合缓存的适用要求。单机redis支撑万级，如果10万+可以采用主从复制的模式。</li>
+</ul>
+<br>
+
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ol>
+<li>Redis是纯内存数据库，所以读取速度快。</li>
+<li>Redis使用的是非阻塞10，10多路复用，减少了线程切换时上下文的切换和竞争</li>
+<li>Redis采用了单线程的模型，保证了每个操作的原子性，也减少了线程的上下文切换和竞争</li>
+<li>Redis存储结构多样化，不同的数据结构对数据存储进行了优化加快读取的速度</li>
+<li>Redis采用自己实现的事件分离器，效率比较高，内部采用非阻塞的执行方式，吞吐能力比较大</li>
+</ol>
+<br>
+
+<h3 id="Redis的单线程"><a href="#Redis的单线程" class="headerlink" title="Redis的单线程"></a>Redis的单线程</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><ul>
+<li>不需要各种锁的性能消耗</li>
+<li>单线程多进程集群方案</li>
+<li>CPU消耗</li>
+</ul>
+<h4 id="优劣"><a href="#优劣" class="headerlink" title="优劣"></a>优劣</h4><ul>
+<li>单进程单线程优势<ul>
+<li>代码更清晰，处理逻辑更简单</li>
+<li>不用去考虑各种锁的问题，不存在加锁释放锁操作，没有因为可能出现死锁而导致的性能消耗</li>
+<li>不存在多进程或者多线程导致的切换而消耗CPU</li>
+</ul>
+</li>
+<li>单进程单线程弊端<ul>
+<li>无法发挥多核CPU性能，不过可以通过在单机开多个Redis实例来完善</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h3 id="I-O多路复用技术"><a href="#I-O多路复用技术" class="headerlink" title="I/O多路复用技术"></a>I/O多路复用技术</h3><ul>
+<li>redis 采用网络I/O多路复用技术来保证在多连接的时候，系统的高吞吐量。</li>
+</ul>
+<br>
+
+<h2 id="版本说明"><a href="#版本说明" class="headerlink" title="版本说明"></a>版本说明</h2><ul>
+<li>Redis2.6<ul>
+<li>键的过期时间支持毫秒</li>
+<li>从节点支持只读功能</li>
+</ul>
+</li>
+<li>Redis2.8<ul>
+<li>可以用bind命令绑定多个IP地址</li>
+<li>发布订阅添加了pub/sub</li>
+<li>Redis Sentinel第二版，相比于Redis2.6的Redis Sentinel，此版本已经变成生产可用</li>
+</ul>
+</li>
+<li>Redis3.0 (里程碑)<ul>
+<li> Redis最大的改动就是添加Redis的分布式实现Redis cluster。</li>
+</ul>
+</li>
+<li>Redis3.2<ul>
+<li>添加GEO相关功能。</li>
+<li>新的List编码类型: quicklist。</li>
+</ul>
+</li>
+<li>Redis4.0 (重大改版)<ul>
+<li>提供了模块系统，方便第三方开发者拓展Redis的功能</li>
+<li>提供了新的缓存剔除算法: LFU (Last Frequently Used)，并对已有算法进行了优化</li>
+<li>提供了非阻塞del和flushall/flushdb功能，有效解决删除了bigkey可能造成的Redis阻塞.</li>
+<li>提供了RDB-AOF混合持久化格式，充分利用了AOF和RDB各自优势。</li>
+</ul>
+</li>
+<li>Redis5.0<ul>
+<li>新的stream数据类型</li>
+<li>客户经常连接和断开连接时性能更好</li>
+</ul>
+</li>
+<li>Redis6.0<ul>
+<li>多线程I/O。多线程部分只是用来处理网络数据的读写和协议解析，执行命令仍然是单线程</li>
+</ul>
+</li>
+</ul>
+<br>
+
+<h2 id="Redis软件安装"><a href="#Redis软件安装" class="headerlink" title="Redis软件安装"></a>Redis软件安装</h2><h3 id="下载解压"><a href="#下载解压" class="headerlink" title="下载解压"></a>下载解压</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget -P /usr/local/src/ https://download.redis.io/releases/redis-6.0.9.tar.gz</span><br><span class="line"></span><br><span class="line">cd /usr/local/src/</span><br><span class="line">tar -zxvf redis-6.0.9.tar.gz</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="确保环境依赖（升级-GCC）"><a href="#确保环境依赖（升级-GCC）" class="headerlink" title="确保环境依赖（升级 GCC）"></a>确保环境依赖（升级 GCC）</h3><ul>
+<li>在编译 Redis 6 之前需要升级 gc 的版本，默认情况 yum 安装的 gcc 版本是 4.8.5，由于版本过低，在编译时会报如下错误。所以我们需要执行以下操作升级 GCC。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 Sc1 源</span></span><br><span class="line">yum install -y centos-release-scl scl-utils-build</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 9 版本的 gcc、gcc-c++、gdb 工具链 (toolchian)</span></span><br><span class="line">yum install -y devtoolset-9-toolchain</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">临时覆盖系统原有的 gcc 引用</span></span><br><span class="line">scl enable devtoolset-9 bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 gcc 当前版本</span></span><br><span class="line">gcc -v</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src/redis-6.0.9/</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/local/redis-6.0.9</span><br><span class="line">cd /usr/local/src/redis-6.0.9/</span><br><span class="line">make PREFIX=/usr/local/redis-6.0.9 install</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="创建软连接"><a href="#创建软连接" class="headerlink" title="创建软连接"></a>创建软连接</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br><span class="line">ln -s redis-6.0.9/ redis</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="Redis的启动"><a href="#Redis的启动" class="headerlink" title="Redis的启动"></a>Redis的启动</h2><h3 id="前台启动"><a href="#前台启动" class="headerlink" title="前台启动"></a>前台启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/redis</span><br><span class="line">bin/redis-server</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="后台启动"><a href="#后台启动" class="headerlink" title="后台启动"></a>后台启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/local/src/redis-6.0.9/redis.conf /usr/local/redis/bin/</span><br><span class="line"></span><br><span class="line">cd /usr/local/redis/bin/</span><br><span class="line"></span><br><span class="line">vim redis.conf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改以守护进程方式启动</span></span><br><span class="line">daemonize yes</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用配置文件，后台启动</span></span><br><span class="line">cd /usr/local/redis/bin/</span><br><span class="line">./redis-server redis.conf</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="配置开机启动-centos7及以上"><a href="#配置开机启动-centos7及以上" class="headerlink" title="配置开机启动 (centos7及以上)"></a>配置开机启动 (centos7及以上)</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在系统服务目录里创建redis.service文件</span></span><br><span class="line">vim /etc/systemd/system/redis.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">写入以下内容:</span></span><br><span class="line">[Unit]</span><br><span class="line">Description=redis-server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/redis/bin/redis-server /usr/local/redis/bin/redis.conf</span><br><span class="line">PrivateTmp=true</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重载系统服务</span></span><br><span class="line">systemctl daemon-reload</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭redis-server:</span> </span><br><span class="line">systemctl stop redis.service</span><br><span class="line"></span><br><span class="line">systemctl start redis.service</span><br><span class="line"></span><br><span class="line">systemctl status redis.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启成功，将服务加入开机自启</span></span><br><span class="line">systemctl enable redis.service</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="Redis的配置"><a href="#Redis的配置" class="headerlink" title="Redis的配置"></a>Redis的配置</h2><br>
 
 <br>
 
@@ -297,9 +549,40 @@
             
 
             
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/Redis/">#Redis</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/Cache/">#Cache</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/Database/">#Database</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="../Mybatis-Study-Notes%EF%BC%881%EF%BC%89%EF%BC%9AMybatis-Inroduction/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Mybatis Study Notes（1）：Mybatis Inroduction</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
@@ -413,7 +696,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">1.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">第1章 课程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95Redis%E7%BB%8F%E4%B9%85%E4%B8%8D%E8%A1%B0%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">为何Redis经久不衰？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9"><span class="nav-number">1.2.</span> <span class="nav-text">课程内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84"><span class="nav-number">1.2.1.</span> <span class="nav-text">课程项目架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E9%97%AE%E5%B8%A6%E5%AD%A6"><span class="nav-number">1.2.2.</span> <span class="nav-text">以问带学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">底层原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">底层算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.5.</span> <span class="nav-text">性能提升方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.6.</span> <span class="nav-text">故障解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%AD%A6"><span class="nav-number">1.3.</span> <span class="nav-text">怎么学</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-Redis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="nav-number">2.</span> <span class="nav-text">第2章 Redis快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%A0%E8%8A%82%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">章节介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="nav-number">2.1.1.</span> <span class="nav-text">[学习目标]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">[理论知识]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.3.</span> <span class="nav-text">[实际操作]</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.2.</span> <span class="nav-text">Redis介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">2.2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">2.2.2.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis%E3%80%81Memcached%E3%80%81-Ehcache%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.2.3.</span> <span class="nav-text">Redis、Memcached、 Ehcache的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E7%9A%84%E9%AB%98%E5%B9%B6%E5%8F%91"><span class="nav-number">2.3.</span> <span class="nav-text">Redis的高并发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis%E7%9A%84%E5%8D%95%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.3.2.</span> <span class="nav-text">Redis的单线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8A%A3"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">优劣</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#I-O%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="nav-number">2.3.3.</span> <span class="nav-text">I&#x2F;O多路复用技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="nav-number">2.4.</span> <span class="nav-text">版本说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">2.5.</span> <span class="nav-text">Redis软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E8%A7%A3%E5%8E%8B"><span class="nav-number">2.5.1.</span> <span class="nav-text">下载解压</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E4%BF%9D%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96%EF%BC%88%E5%8D%87%E7%BA%A7-GCC%EF%BC%89"><span class="nav-number">2.5.2.</span> <span class="nav-text">确保环境依赖（升级 GCC）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E7%BC%96%E8%AF%91"><span class="nav-number">2.5.3.</span> <span class="nav-text">预编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.5.4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.5.5.</span> <span class="nav-text">创建软连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="nav-number">2.6.</span> <span class="nav-text">Redis的启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E5%8F%B0%E5%90%AF%E5%8A%A8"><span class="nav-number">2.6.1.</span> <span class="nav-text">前台启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E5%8F%B0%E5%90%AF%E5%8A%A8"><span class="nav-number">2.6.2.</span> <span class="nav-text">后台启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8-centos7%E5%8F%8A%E4%BB%A5%E4%B8%8A"><span class="nav-number">2.6.3.</span> <span class="nav-text">配置开机启动 (centos7及以上)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">2.7.</span> <span class="nav-text">Redis的配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
