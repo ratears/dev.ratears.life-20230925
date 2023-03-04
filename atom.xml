@@ -23,25 +23,26 @@
     <published>2023-03-04T08:42:03.000Z</published>
     <updated>2023-03-04T08:42:03.000Z</updated>
     
-    <content type="html"><![CDATA[<br><br><br><h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote><p>1</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure><img src="" width="70%"><br>]]></content>
+    <content type="html"><![CDATA[<h1 id="开篇词-1讲"><a href="#开篇词-1讲" class="headerlink" title="开篇词 (1讲)"></a>开篇词 (1讲)</h1><h2 id="开篇词-这样学Redis，才能技高一筹"><a href="#开篇词-这样学Redis，才能技高一筹" class="headerlink" title="开篇词 | 这样学Redis，才能技高一筹"></a>开篇词 | 这样学Redis，才能技高一筹</h2><h3 id="Redis-的坑"><a href="#Redis-的坑" class="headerlink" title="Redis 的坑"></a>Redis 的坑</h3><ul><li>使用 Redis 遇到的坑总的来说大致是以下四方面：<ul><li>CPU使用上的“坑”，例如数据结构的复杂度、跨CPU核的访问；</li><li>内存使用上的“坑”，例如主从同步和AOF的内存竞争；</li><li>存储持久化上的“坑”，例如在SSD上做快照的性能抖动；</li><li>网络通信上的“坑”，例如多实例时的异常网络丢包。</li></ul></li></ul><br><h3 id="为什么懂得了一个个技术点，却依然用不好Redis？"><a href="#为什么懂得了一个个技术点，却依然用不好Redis？" class="headerlink" title="为什么懂得了一个个技术点，却依然用不好Redis？"></a>为什么懂得了一个个技术点，却依然用不好Redis？</h3><ul><li>急于解决这些细微的问题，Redis 使用能力就很难得到质的提升。</li><li><strong>只关注零散的技术点，没有建立起一套完整的知识框架，缺乏系统观，但是，系统观其实是至关重要的。</strong>（在解决问题时，拥有了系统观，就意味着能有依据、有章法地定位和解决问题。）</li><li>案例分析，把Redis的长尾延迟维持在一定阈值以下：</li></ul><blockquote><p>首先，我对Redis的线程模型做了分析，我发现，对于单线程的Redis而言，任何阻塞性操作都会导致长尾延迟的产生。接着，我又开始寻找可能导致阻塞的关键因素，一开始想到的是网络阻塞，但随着对Redis网络框架的理解，我知道Redis网络IO使用了IO复用机制，并不会阻塞在单个客户端上。</p><p>再后来，我又把目光转向了键值对数据结构、持久化机制下的fork调用、主从库同步时的AOF重写，以及缓冲区溢出等多个方面。绕了一大圈子之后，这条影响长尾延迟的“证据链”才得以形成。这样一来，我也系统地掌握了影响Redis性能的关键因素路径，之后再碰到类似的问题时，我就可以轻松解决了。</p></blockquote><br><h3 id="高效地形成系统观？"><a href="#高效地形成系统观？" class="headerlink" title="高效地形成系统观？"></a>高效地形成系统观？</h3><ul><li><p>抓住主线，在自己的脑海中绘制一幅Redis全景知识图</p></li><li><p>Redis知识全景图都包括：“两大维度，三大主线</p></li></ul><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.5ahfyy03lgw0.webp" width="90%"><br><h4 id="两大维度"><a href="#两大维度" class="headerlink" title="两大维度"></a>两大维度</h4><ul><li><p>系统维度：</p><ul><li>了解Redis的各项关键技术的设计原理，这些能够为你判断和推理问题打下坚实的基础，而且，你还能从中掌握一些优雅的系统设计规范，例如run-to-complete模型、epoll网络模型，这些可以应用到你后续的系统开发实践中。</li></ul></li><li><p>应用维度</p><ul><li><strong>应用场景驱动</strong><ul><li>缓存和集群是Redis的两大广泛的应用场景。提到缓存场景，你肯定会想到缓存机制、缓存替换、缓存异常等一连串的问题。</li></ul></li><li><strong>典型案例驱动</strong><ul><li>只有特定的业务场景下（比如亿级访问压力场景）才会出现，并不是普遍现象。可以用“典型案例驱动”的方式学习了。我们可以重点解读一些对Redis的“三高”特性影响较大的使用案例，例如，多家大厂在万亿级访问量和万亿级数据量的情况下对Redis的深度优化，解读这些优化实践，非常有助于你透彻地理解Redis。而且，你还可以梳理一些方法论，做成Checklist，就像是一个个锦囊，之后当你遇到问题的时候，就可以随时拿出自己的“锦囊妙计”解决问题了。</li></ul></li></ul></li></ul><h4 id="三大主线"><a href="#三大主线" class="headerlink" title="三大主线"></a>三大主线</h4><ul><li><strong>高性能主线</strong>，包括线程模型、数据结构、持久化、网络框架；</li><li><strong>高可靠主线</strong>，包括主从复制、哨兵机制；</li><li><strong>高可扩展主线</strong>，包括数据分片、负载均衡。</li></ul><h4 id="Redis-问题画像图"><a href="#Redis-问题画像图" class="headerlink" title="Redis 问题画像图"></a>Redis 问题画像图</h4><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.79lpd8yedvw0.webp" width="100%"><br><blockquote><p>举个例子，如果你遇到了Redis的响应变慢问题，对照着这张图，你就可以发现，这个问题和Redis的性能主线相关，而性能主线又和数据结构、异步机制、RDB、AOF重写相关。找到了影响的因素，解决起来也就很容易了。</p></blockquote><blockquote><p>在学习和使用的过程中，你完全可以根据你自己的方式，完善这张画像图，把你自己实践或掌握到的新知识点，按照“问题 –&gt; 主线 –&gt; 技术点”的方式梳理出来，放到这张图上。这样一来，你的积累越来越多，画像也会越来越丰富。以后在遇到问题的时候，就很容易解决了。</p></blockquote><br><h3 id="课程是如何设计的？"><a href="#课程是如何设计的？" class="headerlink" title="课程是如何设计的？"></a>课程是如何设计的？</h3><ul><li><strong>基础篇：打破技术点之间的壁垒，带你建立网状知识结构</strong><ul><li>具体讲解数据结构、线程模型、持久化等</li></ul></li></ul><ul><li><strong>实践篇：场景和案例驱动，取人之长，梳理出一套属于你自己的“武林秘籍”</strong><ul><li>“案例”层面：介绍数据结构的合理使用、避免请求阻塞和抖动、避免内存竞争和提升内存使用效率</li><li>“场景”层面：<ul><li>缓存场景：重点讲解缓存基本原理及淘汰策略，还有雪崩、穿透、污染等异常情况</li><li>集群场景：围绕集群方案优化、数据一致性、高并发访问等问题，聊聊可行的解决方案。</li></ul></li></ul></li></ul><ul><li><strong>未来篇：具有前瞻性，解锁新特性</strong><ul><li>Redis6 新特性</li><li>以及当前业界对Redis的最新探索，这会让你拥有前瞻性视角，了解Redis的发展路线图，为未来的发展提前做好准备。</li></ul></li></ul><br><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>Redis是一个非常优秀的系统，它在CPU使用、内存组织、存储持久化和网络通信这四大方面的设计非常经典，而这些，基本涵盖了一个优秀的后端系统工程师需要掌握的核心知识和关键技术。希望你通过这个课程的学习，成长为一名优秀的系统工程师。</li></ul><br><br><br><h1 id="基础篇-10讲"><a href="#基础篇-10讲" class="headerlink" title="基础篇 (10讲)"></a>基础篇 (10讲)</h1><h2 id="01-基本架构：一个键值数据库包含什么？"><a href="#01-基本架构：一个键值数据库包含什么？" class="headerlink" title="01 | 基本架构：一个键值数据库包含什么？"></a>01 | 基本架构：一个键值数据库包含什么？</h2><br><br><br><h2 id="02-数据结构：快速的Redis有哪些慢操作？"><a href="#02-数据结构：快速的Redis有哪些慢操作？" class="headerlink" title="02 | 数据结构：快速的Redis有哪些慢操作？"></a>02 | 数据结构：快速的Redis有哪些慢操作？</h2><br><br><br><h2 id="03-高性能IO模型：为什么单线程Redis能那么快？"><a href="#03-高性能IO模型：为什么单线程Redis能那么快？" class="headerlink" title="03 | 高性能IO模型：为什么单线程Redis能那么快？"></a>03 | 高性能IO模型：为什么单线程Redis能那么快？</h2><br><br><br><h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote><p>1</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure><img src="" width="100%"><br>]]></content>
     
     
       
       
-    <summary type="html">&lt;br&gt;
-
-&lt;br&gt;
-
-&lt;br&gt;
-
-&lt;h1 id=&quot;学习备注&quot;&gt;&lt;a href=&quot;#学习备注&quot; class=&quot;headerlink&quot; title=&quot;学习备注&quot;&gt;&lt;/a&gt;学习备注&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;1&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure cla</summary>
+    <summary type="html">&lt;h1 id=&quot;开篇词-1讲&quot;&gt;&lt;a href=&quot;#开篇词-1讲&quot; class=&quot;headerlink&quot; title=&quot;开篇词 (1讲)&quot;&gt;&lt;/a&gt;开篇词 (1讲)&lt;/h1&gt;&lt;h2 id=&quot;开篇词-这样学Redis，才能技高一筹&quot;&gt;&lt;a href=&quot;#开篇词-这样学Redis，才</summary>
       
     
     
     
+    <category term="Database" scheme="https://ratears.github.io/dev.ratears.life/Categories/Database/"/>
+    
+    <category term="Redis" scheme="https://ratears.github.io/dev.ratears.life/Categories/Database/Redis/"/>
+    
+    
+    <category term="Redis" scheme="https://ratears.github.io/dev.ratears.life/Tags/Redis/"/>
+    
+    <category term="Cache" scheme="https://ratears.github.io/dev.ratears.life/Tags/Cache/"/>
+    
+    <category term="Database" scheme="https://ratears.github.io/dev.ratears.life/Tags/Database/"/>
     
   </entry>
   
