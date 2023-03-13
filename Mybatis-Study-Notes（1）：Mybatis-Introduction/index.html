@@ -302,7 +302,7 @@
 
 <br>
 
-<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><ul>
+<h1 id="三层架构介绍"><a href="#三层架构介绍" class="headerlink" title="三层架构介绍"></a>三层架构介绍</h1><ul>
 <li>表现层（UI）：直接跟前端打交互（⼀是接收前端ajax请求，⼆是返回json数据给前端）</li>
 <li>业务逻辑层（BLL）：⼀是处理表现层转发过来的前端请求（也就是具体业务），⼆是将从持久层获取的数据返回到表现层。</li>
 <li>数据访问层（DAL）：直接操作数据库完成CRUD，并将获得的数据返回到上⼀层（也就是业务逻辑层）。</li>
@@ -313,7 +313,7 @@
 
 <br>
 
-<h1 id="JDBC的不⾜"><a href="#JDBC的不⾜" class="headerlink" title="JDBC的不⾜"></a>JDBC的不⾜</h1><ul>
+<h1 id="JDBC-的不⾜"><a href="#JDBC-的不⾜" class="headerlink" title="JDBC 的不⾜"></a>JDBC 的不⾜</h1><ul>
 <li>示例代码1：</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ......</span></span><br><span class="line"><span class="comment">// sql语句写死在java程序中</span></span><br><span class="line"><span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;insert into t_user(id,idCard,username,password,birth,gender,</span></span><br><span class="line"><span class="string">email,city,street,zipcode,phone,grade) values(?,?,?,?,?,?,?,?,?,?,?,?)&quot;</span>;</span><br><span class="line"><span class="type">PreparedStatement</span> <span class="variable">ps</span> <span class="operator">=</span> conn.prepareStatement(sql);</span><br><span class="line"><span class="comment">// 繁琐的赋值：思考⼀下，这种有规律的代码能不能通过反射机制来做⾃动化。</span></span><br><span class="line">ps.setString(<span class="number">1</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">2</span>, <span class="string">&quot;123456789&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">3</span>, <span class="string">&quot;zhangsan&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">4</span>, <span class="string">&quot;123456&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">5</span>, <span class="string">&quot;1980-10-11&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">6</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">7</span>, <span class="string">&quot;zhangsan@126.com&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">8</span>, <span class="string">&quot;北京&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">9</span>, <span class="string">&quot;⼤兴区凉⽔河⼆街&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">10</span>, <span class="string">&quot;1000000&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">11</span>, <span class="string">&quot;16398574152&quot;</span>);</span><br><span class="line">ps.setString(<span class="number">12</span>, <span class="string">&quot;A&quot;</span>);</span><br><span class="line"><span class="comment">// 执⾏SQL</span></span><br><span class="line"><span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> ps.executeUpdate();</span><br><span class="line"><span class="comment">// ......</span></span><br></pre></td></tr></table></figure>
@@ -341,7 +341,7 @@
 
 <br>
 
-<h1 id="了解MyBatis"><a href="#了解MyBatis" class="headerlink" title="了解MyBatis"></a>了解MyBatis</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<h1 id="了解-MyBatis"><a href="#了解-MyBatis" class="headerlink" title="了解 MyBatis"></a>了解 MyBatis</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
 <li><p>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
 </li>
 <li><p>MyBatis本质上就是对JDBC的封装，通过MyBatis完成CRUD。</p>
@@ -349,7 +349,7 @@
 </ul>
 <br>
 
-<h2 id="MyBatis历史"><a href="#MyBatis历史" class="headerlink" title="MyBatis历史"></a>MyBatis历史</h2><ul>
+<h2 id="MyBatis-历史"><a href="#MyBatis-历史" class="headerlink" title="MyBatis 历史"></a>MyBatis 历史</h2><ul>
 <li>MyBatis最初是Apache的一个开源项目iBatis, 2010年6月这个项目由Apache Software Foundation迁<br>移到了Google Code。随着开发团队转投Google Code旗下， iBatis3.x正式更名为MyBatis。代码于<br>2013年11月迁移到Github。</li>
 <li>iBatis一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。 iBatis提供的持久层框架<br>包括SQL Maps和Data Access Objects（DAO）。</li>
 </ul>
@@ -388,7 +388,7 @@
 </ul>
 <br>
 
-<h2 id="和其它持久化层技术对比"><a href="#和其它持久化层技术对比" class="headerlink" title="和其它持久化层技术对比"></a>和其它持久化层技术对比</h2><h3 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h3><ul>
+<h2 id="Mybatis-和其它持久化层技术对比"><a href="#Mybatis-和其它持久化层技术对比" class="headerlink" title="Mybatis 和其它持久化层技术对比"></a>Mybatis 和其它持久化层技术对比</h2><h3 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h3><ul>
 <li>SQL 夹杂在Java代码中耦合度高，导致硬编码内伤</li>
 <li>维护不易且实际开发需求中 SQL 有变化，频繁修改的情况多见</li>
 <li>代码冗长，开发效率低</li>
@@ -603,7 +603,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#framework"><span class="nav-number">1.</span> <span class="nav-text">framework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">三层架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC%E7%9A%84%E4%B8%8D%E2%BE%9C"><span class="nav-number">3.</span> <span class="nav-text">JDBC的不⾜</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3MyBatis"><span class="nav-number">4.</span> <span class="nav-text">了解MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">4.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis%E5%8E%86%E5%8F%B2"><span class="nav-number">4.2.</span> <span class="nav-text">MyBatis历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORM%EF%BC%9A%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84"><span class="nav-number">4.3.</span> <span class="nav-text">ORM：对象关系映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis%E6%A1%86%E6%9E%B6%E7%89%B9%E7%82%B9"><span class="nav-number">4.4.</span> <span class="nav-text">MyBatis框架特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C%E5%85%B6%E5%AE%83%E6%8C%81%E4%B9%85%E5%8C%96%E5%B1%82%E6%8A%80%E6%9C%AF%E5%AF%B9%E6%AF%94"><span class="nav-number">4.5.</span> <span class="nav-text">和其它持久化层技术对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC"><span class="nav-number">4.5.1.</span> <span class="nav-text">JDBC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hibernate-%E5%92%8C-JPA"><span class="nav-number">4.5.2.</span> <span class="nav-text">Hibernate 和 JPA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis"><span class="nav-number">4.5.3.</span> <span class="nav-text">MyBatis</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">5.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#framework"><span class="nav-number">1.</span> <span class="nav-text">framework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">三层架构介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-%E7%9A%84%E4%B8%8D%E2%BE%9C"><span class="nav-number">3.</span> <span class="nav-text">JDBC 的不⾜</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3-MyBatis"><span class="nav-number">4.</span> <span class="nav-text">了解 MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">4.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis-%E5%8E%86%E5%8F%B2"><span class="nav-number">4.2.</span> <span class="nav-text">MyBatis 历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORM%EF%BC%9A%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84"><span class="nav-number">4.3.</span> <span class="nav-text">ORM：对象关系映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis%E6%A1%86%E6%9E%B6%E7%89%B9%E7%82%B9"><span class="nav-number">4.4.</span> <span class="nav-text">MyBatis框架特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-%E5%92%8C%E5%85%B6%E5%AE%83%E6%8C%81%E4%B9%85%E5%8C%96%E5%B1%82%E6%8A%80%E6%9C%AF%E5%AF%B9%E6%AF%94"><span class="nav-number">4.5.</span> <span class="nav-text">Mybatis 和其它持久化层技术对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC"><span class="nav-number">4.5.1.</span> <span class="nav-text">JDBC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hibernate-%E5%92%8C-JPA"><span class="nav-number">4.5.2.</span> <span class="nav-text">Hibernate 和 JPA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyBatis"><span class="nav-number">4.5.3.</span> <span class="nav-text">MyBatis</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">5.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
