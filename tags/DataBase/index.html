@@ -9,7 +9,7 @@
     
     <title>
         
-            Tag: DataBase |
+            Tag: Database |
         
         ratears&#39;s blog
     </title>
@@ -188,7 +188,7 @@
                 
                     <div class="fade-in-down-animation">
     <div class="tag-container">
-        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;DataBase
+        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;Database
         </div>
         <div class="tag-post-list">
             
@@ -197,36 +197,29 @@
         <section class="archive-item">
             <div class="archive-item-header">
                 <span class="archive-year">2023</span>
-                <span class="archive-year-post-count">[4]</span>
+                <span class="archive-year-post-count">[3]</span>
             </div>
             <ul class="article-list">
                 
                     <li class="article-item">
                         <a class="article-title"
-                           href="../../Redis-study-notes/"
-                        >Redis study notes</a>
-                        <span class="article-date">02-19</span>
+                           href="../../%E3%80%8ARedis-%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%AE%9E%E6%88%98%E3%80%8BStudy-Notes/"
+                        >《Redis 核心技术与实战》Study Notes</a>
+                        <span class="article-date">03-04</span>
                     </li>
                 
                     <li class="article-item">
                         <a class="article-title"
-                           href="../../%E3%80%8AMySQL-%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8Bstudy-notes/"
-                        >《MySQL 必知必会》study notes</a>
-                        <span class="article-date">02-13</span>
+                           href="../../%E3%80%8A%E9%AB%98%E7%BA%A7Redis%E8%BF%9B%E9%98%B6%E8%AF%BE-%E8%A7%A3%E5%86%B3Redis%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98-%E6%8E%8C%E6%8F%A1Redis6-x%E7%89%B9%E6%80%A7%E3%80%8BStudy-Notes/"
+                        >《高级Redis进阶课 解决Redis实际问题+掌握Redis6.x特性》Study Notes</a>
+                        <span class="article-date">03-03</span>
                     </li>
                 
                     <li class="article-item">
                         <a class="article-title"
-                           href="../../%E3%80%8A%E9%AB%98%E5%B9%B6%E5%8F%91-%E9%AB%98%E6%80%A7%E8%83%BD-%E9%AB%98%E5%8F%AF%E7%94%A8-MySQL-%E5%AE%9E%E6%88%98%E3%80%8Bstudy-notes/"
-                        >《高并发 高性能 高可用 MySQL 实战》study notes</a>
-                        <span class="article-date">02-13</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="../../%E3%80%8A%E9%98%BF%E9%87%8C%E6%96%B0%E9%9B%B6%E5%94%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E6%88%98%E3%80%8Bstudy-notes/"
-                        >《阿里新零售数据库设计与实战》study notes</a>
-                        <span class="article-date">02-06</span>
+                           href="../../Redis-Study-Notes%EF%BC%884%EF%BC%89%EF%BC%9ARedis-Persistence/"
+                        >Redis Study Notes（4）：Redis Persistence</a>
+                        <span class="article-date">03-02</span>
                     </li>
                 
             </ul>
@@ -422,6 +415,21 @@
 
         document.addEventListener('pjax:send', () => {
             KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
+;
         });
 
         document.addEventListener('pjax:complete', () => {
