@@ -9,7 +9,7 @@
     
     <title>
         
-            《Java分布式架构设计与开发实战》study notes |
+            《面试现场》Study Notes |
         
         ratears&#39;s blog
     </title>
@@ -191,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">《Java分布式架构设计与开发实战》study notes</span>
+                <span class="title-hover-animation">《面试现场》Study Notes</span>
             </div>
 
             
@@ -213,13 +213,13 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-02-22 12:06:25</span>
-        <span class="mobile">2023-02-22 12:06</span>
+        <span class="pc">2023-03-24 22:17:30</span>
+        <span class="mobile">2023-03-24 22:17</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-22 12:06:25</span>
+        <span class="pc">2023-03-24 22:17:30</span>
     </span>
     
     
@@ -228,7 +228,7 @@
             <ul>
                 
                     <li>
-                        <a href="../Categories/distributed/">distributed</a>&nbsp;
+                        <a href="../Categories/interview/">interview</a>&nbsp;
                     </li>
                 
             </ul>
@@ -240,7 +240,7 @@
             <ul>
                 
                     <li>
-                        <a href="../Tags/distributed/">distributed</a>&nbsp;
+                        <a href="../Tags/interview/">interview</a>&nbsp;
                     </li>
                 
             </ul>
@@ -250,12 +250,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>10 Mins</span>
         </span>
     
     
@@ -273,216 +273,195 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="课程导学与学习指南"><a href="#课程导学与学习指南" class="headerlink" title="课程导学与学习指南"></a>课程导学与学习指南</h1><ul>
-<li>课程内容设计（结合实际应用场景）</li>
-</ul>
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.73j7o3a193k0.webp" width="70%">
-
-<br>
-
+                <h1 id="开篇词-1讲"><a href="#开篇词-1讲" class="headerlink" title="开篇词 (1讲)"></a>开篇词 (1讲)</h1><h2 id="开篇词-面试，这样做会功到自然成"><a href="#开篇词-面试，这样做会功到自然成" class="headerlink" title="开篇词 | 面试，这样做会功到自然成"></a>开篇词 | 面试，这样做会功到自然成</h2><ul>
+<li><p><strong>优点发挥得足够强，就可以弥补缺点，除非舞台不合适</strong></p>
 <ul>
-<li>内容兼具深度、广度</li>
-</ul>
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.oxikmcilqsw.webp" width="70%">
-
-<br>
-
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.41p3fu3lo7i0.webp" width="70%">
-
-<br>
-
-<br>
-
-<br>
-
-<h1 id="硅步千里，分布式理论加强内功修炼"><a href="#硅步千里，分布式理论加强内功修炼" class="headerlink" title="硅步千里，分布式理论加强内功修炼"></a>硅步千里，分布式理论加强内功修炼</h1><h2 id="本章节目标"><a href="#本章节目标" class="headerlink" title="本章节目标"></a>本章节目标</h2><ul>
-<li>了解大型互联网系统演进</li>
-<li>掌握架构设计思想</li>
-<li>掌握CAP理论</li>
-<li>掌握BASE理论</li>
-</ul>
-<br>
-
-<ul>
-<li>中国互联网发展历程<ul>
-<li>1994 - 2000年:从四大门户到搜索</li>
-<li>2001-2009年:从搜索到社交化网络</li>
-<li>2010- 至今:移动互联网和自媒体</li>
+<li>面试官需要关注的，应该是应聘者的优点。缺点每个人都有，但是要把工作做好的话，首先凭的是优点。如果优点能发挥到位，缺点能够被其他的因素补足，那这个人就是合适的。</li>
 </ul>
 </li>
+<li><p><strong>面试的核心，对于应聘者，是想方设法让面试官认可自己对职位有用的那些优点。</strong></p>
+</li>
+<li><p><strong>用真诚的态度，有效地表达自己的能力和价值，建立相互的信任和认可。</strong></p>
+</li>
+</ul>
+<blockquote>
+<p><strong>缺少发掘和表达自己能力的能力。</strong></p>
+</blockquote>
+<blockquote>
+<p>竖一面放大镜，带你看清自己的能力结构（而不仅仅只是关注技术层面），明白培养这些能力的关键因素，并且启发你在自身经历中寻找反映这些能力的素材和故事。</p>
+</blockquote>
+<blockquote>
+<p>搭一座桥，一座在面试官和求职者中间，让沟通更直接、更到位的桥。让你能够分析面试问题的意图，用有价值、有亮点的经历或观点去回答，让面试官轻而易举地看出你的能力和价值。</p>
+</blockquote>
+<blockquote>
+<p>在“知彼篇”里，让应聘者明白面试官眼里的人才素质模型，这相当于面试的“考点大纲”；介绍公司整个招聘过程，带你了解面试中考查能力的一般方法，让你更容易理解面试官的意图。</p>
+<p>在“知己篇”里，带你搞清楚什么是工作中决定个人发展的关键因素，进而明确自己该不该换工作；另一方面，明确自己的职业愿景和规划。准备一份详历，挖掘自己的能力、价值和亮点，并浓缩成一份受青睐的简历给面试官看。</p>
+<p>在“问答篇”里，和你分析面试中常见的几类问题，包括如何解释清楚一个技术点，如何体现你在项目中的重要性等等，帮助你回答得更加精准到位。</p>
+<p>在“贯通篇”里，重点分析几种能力：学习能力、精益能力、协作能力、管理和领导能力等等，这些能力都体现为解决问题的能力，目的是让你了解提高这些能力的关键因素，到详历中寻找合适的事例，全面精准地把你真实的能力水平展现给面试官。</p>
+<p>在“综合篇”里，盘点面试官和应聘者的认知偏差，强调双向选择中，帮你明确该如何衡量新团队和新环境，如何处理和老东家的关系，以及从面试中学习，为长远的发展提供动力。</p>
+</blockquote>
+<ul>
+<li>一个优秀的人，其职业发展的终极目标，是把自己变得更优秀</li>
+<li>借着面试这个场景，和你聊聊一个优秀的人应该如何规划自己的职业。我希望这个专栏能让你更了解面试、更了解工作、更了解自己，并在自己的职业成熟度上有所启发，走出一条不同寻常的路。</li>
 </ul>
 <br>
 
-<h2 id="单体应用架构到分布式架构的演进"><a href="#单体应用架构到分布式架构的演进" class="headerlink" title="单体应用架构到分布式架构的演进"></a>单体应用架构到分布式架构的演进</h2><ul>
-<li>单体应用架构<ul>
-<li>Linux+Apache+MySQL+PHP</li>
-<li>网站刚起步的时候，流量少。用一台服务器就可以满足</li>
+<br>
+
+<br>
+
+<h1 id="基础：知彼篇-3讲"><a href="#基础：知彼篇-3讲" class="headerlink" title="基础：知彼篇 (3讲)"></a>基础：知彼篇 (3讲)</h1><h2 id="01-公司到底想要什么样的人？"><a href="#01-公司到底想要什么样的人？" class="headerlink" title="01 | 公司到底想要什么样的人？"></a>01 | 公司到底想要什么样的人？</h2><ul>
+<li>公司到底想要什么样的人，面试到底在面什么?</li>
+<li>要想提高自己通过面试的几率，你必须明确面试的内容范围和要求</li>
 </ul>
-</li>
-<li>应用服务与数据服务分离<ul>
-<li>访问增加，带来更大压力</li>
-<li>增加配置解决临时问题</li>
-<li>从横向进行扩展，一分为多</li>
-</ul>
-</li>
-<li>不同服务器配置要求不同</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">服务器类型</th>
-<th align="center">不同配置要求</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">应用服务器</td>
-<td align="center">CPU配置高</td>
-</tr>
-<tr>
-<td align="center">数据库服务器</td>
-<td align="center">磁盘IO快和稳，内存足够大</td>
-</tr>
-<tr>
-<td align="center">文件服务器</td>
-<td align="center">磁盘足够大</td>
-</tr>
-</tbody></table>
+<h3 id="公司眼中的好员工"><a href="#公司眼中的好员工" class="headerlink" title="公司眼中的好员工"></a>公司眼中的好员工</h3><ul>
+<li><p>工作结果</p>
 <ul>
-<li><p>开始引入缓存</p>
+<li>个人工作结果质量好，价值高</li>
+<li>赋能别人做出成果</li>
+</ul>
+</li>
+<li><p>看过程</p>
 <ul>
-<li>大量交易访问数据库压力增大，响应延迟</li>
-<li>给数据库减负，把请求在前面就处理完</li>
-<li>在数据库前面加入缓存</li>
+<li>对工作内容、环境因素带来的工作复杂度的衡量，也体现了对个人的技能、态度的衡量</li>
 </ul>
 </li>
-<li><p>应用服务器集群部署</p>
+<li><p>面试官还要进一步看应聘者的行为是否可以被预测</p>
+</li>
+<li><p>信任感使你能预测对方将来的行为</p>
+</li>
+</ul>
+<h3 id="应聘者的素质模型"><a href="#应聘者的素质模型" class="headerlink" title="应聘者的素质模型"></a>应聘者的素质模型</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/1679720662448.5vh94c0lz3c0.webp" width="70%">
+
+<br>
+
+<h4 id="1-经验（Experience）"><a href="#1-经验（Experience）" class="headerlink" title="1. 经验（Experience）"></a>1. 经验（Experience）</h4><ul>
+<li>经验是指工作经历的对象和产出，体现为专业相关的知识和思维结构（Idea），用来指导思考和行为。</li>
+</ul>
+<h4 id="2-技能（Skill）"><a href="#2-技能（Skill）" class="headerlink" title="2. 技能（Skill）"></a>2. 技能（Skill）</h4><ul>
+<li>技能是做事的能力，体现一个人的专业性。</li>
+<li>产生 idea 的技能：针对问题，基于经验，收集、理解、分析和制定新的方案（idea），涉及理解、思考、沟通等过程。</li>
+<li>执行 idea 的技能：运用工具，把方案（idea）应用到实践，从而解决问题。除了用到理解、思考、沟通，还需要协作团队、管理资源，甚至领导和影响他人。</li>
+</ul>
+<h4 id="3-潜力（Potential）"><a href="#3-潜力（Potential）" class="headerlink" title="3. 潜力（Potential）"></a>3. 潜力（Potential）</h4><ul>
+<li>增长经验和技能的能力</li>
+<li>学习：从不会到会，掌握一项技能的过程</li>
+<li>创新：针对特定场景创造新事物的技能</li>
+<li>精益：把事情越做越好的技能</li>
+</ul>
+<blockquote>
+<p>如果你承认潜力，那么就说明你有成长型思维，有成长思维的人认为：技能是可以通过努力获得的，关键是要保持好奇心，平时爱思考、总结、尝试，愿意接受挑战，不怕错误和失败。因此，要在潜力上为自己的面试效果加分，你就需要注意如何在言谈及简历描述中体现这些特质。</p>
+</blockquote>
+<h4 id="4-动机（Motivation）"><a href="#4-动机（Motivation）" class="headerlink" title="4. 动机（Motivation）"></a>4. 动机（Motivation）</h4><ul>
+<li><strong>做事情的内心目标、意愿和态度</strong></li>
+<li>自燃型，也就是自我驱动的员工，他们做事动机强烈，目标明确，明白任务的意义，甚至自己寻找有意义的事，满怀激情地投入，往往超出自己的工作范围，去推动进展，取得成果，然后又奔向下一个目标。</li>
+<li>点燃型，这类员工需要一定的激励，需要他人帮助才能找到目标和意义，一旦“激活”就能像自燃型员工一样奋力工作。</li>
+<li>阻燃型，这类员工当一天和尚撞一天钟，给多少钱，干多少活，按工作的最低标准和最后完成时间递交任务，跟同事合作差，不乐意分享，自我保护。</li>
+</ul>
+<blockquote>
+<p>人格品质，比如诚实守信、认真负责、坚毅勇敢等。这些从底层决定我们的做事动机。</p>
+<p>职业价值观，就是在工作中区分是非、明确轻重的观念。比如，有人喜欢轻松安稳的工作，有人喜欢冒险和竞争；有人喜欢照章办事，有人则喜欢灵活自主；有人追求个人利益，有人则喜欢分享和帮助他人。</p>
+<p>职业性格，是长久的思维和行为习惯，受环境影响固化成的心态“定势”</p>
+</blockquote>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><p>公司到底想要什么样的人呢？我们从应聘者素质模型可以看出：</p>
 <ul>
-<li>所有的请求直接打到负载均衡组件</li>
-<li>单台服务器 &gt;多台服务器</li>
-<li>软件: Apache / Nginx / HaProxy / LVS</li>
-<li>硬件:F5</li>
+<li>动机方面，公司更想要人品好，职业价值观和团队文化一致，职业性格和职位匹配的候选人；</li>
+<li>潜力方面，公司更想要学习、创新和精益能力好的候选人；</li>
+<li>技能和经验方面，公司想要和职位需求匹配的，如果你资历过剩，就要看公司发展需要了，如果你资历不够，那就要看你的潜力和动机了。</li>
 </ul>
 </li>
-<li><p>数据库的读写分离</p>
+<li><p>借助素质模型，对职位描述的理解，理解以下两点：</p>
 <ul>
-<li>并非所有请求都操作缓存，且存在缓存失效场景，对数据库访问造成压力</li>
-<li>利用数据库主从复制机制，将读和写操作分开，进一步提升性能</li>
+<li>了解面试官考查的各项内容和期待，做到“知彼”，不打无准备的仗；</li>
+<li>从个人经历中挖掘素材，突出契合职位需要的内容，以满足面试官的预期。</li>
 </ul>
 </li>
-<li><p>数据库访问模块</p>
-<ul>
-<li>对接多个数据源、处理读写分离、甚至分库分表等</li>
-<li>独立于应用程序存在的</li>
-<li>Apache ShardingSphere</li>
-</ul>
-</li>
-<li><p>内容分发网络 - CDN</p>
-</li>
-<li><p>CDN服务进行资源加速</p>
-<ul>
-<li>把静态资源提前缓存到各地的边缘服务器</li>
-<li>可以有效地降低DDoS攻击</li>
-</ul>
-</li>
-<li><p>全面分布式化</p>
-<ul>
-<li>随着规模不断发展产生数据越来越多，单文件件服务器、单数据库服务器也渐渐地达到瓶颈。利用集群化横向扩展解决问题</li>
-<li>HDFS、TFS、FastDFS</li>
-<li>NoSQL &amp; 搜索引擎<ul>
-<li>Lucene是一个搜索引擎的开发工具包:全文检索</li>
-<li>Solr和Elasticsearch它们是基于Lucene开发的</li>
-<li>常见的NoSQL有Mongodb和ELasticsearch</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>单体应用面临诸多问题和挑战</strong></p>
-<ul>
-<li>单体应用的代码膨胀，研发成本变高，难实现敏捷交付</li>
-<li>代码维护成本变高，开发人员交接困难</li>
-<li>测试成本变高，回归的工作量变大，给测试带来巨大工作量</li>
-<li>可扩展性差，技术升级时需考虑整体，无法单独调整</li>
-</ul>
-</li>
-<li><p>“大而全的单体”拆分为多个“独立的应用”</p>
-</li>
-<li><p>应用拆分和解耦</p>
-<ul>
-<li>对应用模块进行拆分之后，通过消息中间件进行交互</li>
-<li>此外还有异步处理应用解耦、流量削峰等作用</li>
-</ul>
-</li>
-<li><p>常见的消息中间件</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">消息中间件特性</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">ActiveMQ</td>
-<td>历史悠久，使用Java语言编写的，功能全面，基本上MQ的功能它都有，因此也比较复杂。</td>
-</tr>
-<tr>
-<td align="center">RabbitMQ</td>
-<td>目前主流之一，跟Spring框架师出同门，因此Spring对RabbitMQ的支持最好</td>
-</tr>
-<tr>
-<td align="center">Kafka</td>
-<td>高性能方面比较有优势。但一开始是基于大吞吐量数据场景设计，在消息可靠性方面比较弱</td>
-</tr>
-<tr>
-<td align="center">RocketMQ</td>
-<td>它相对前面几个，有后发优势，结合了各方优点综合能力比较好。</td>
-</tr>
-</tbody></table>
-<ul>
-<li>模块拆分引发的问题<ul>
-<li>代码冗余，多处相同的代码维护起来困难</li>
-<li>复杂度扩散</li>
-<li>共用一套数据库资源</li>
-</ul>
+<li><p><strong>搞清楚面试官的考查要素之后，在提高和表现这些能力上受到一些启发，有的放矢地把自己呈现给面试官。</strong></p>
 </li>
 </ul>
 <br>
 
-<h2 id="引入服务化架构"><a href="#引入服务化架构" class="headerlink" title="引入服务化架构"></a>引入服务化架构</h2><h3 id="SOA与微服务对比"><a href="#SOA与微服务对比" class="headerlink" title="SOA与微服务对比"></a>SOA与微服务对比</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.2zz2vosvmw60.webp" width="70%">
+<br>
 
 <br>
 
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th>SOA</th>
-<th>微服务</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">共同点</td>
-<td>都是在分布式环境下，以服务为中心的松耦合应用架构模式服务之间是通过定义明确的接口和协议来进行相互通信</td>
-<td>都是在分布式环境下，以服务为中心的松耦合应用架构模式服务之间是通过定义明确的接口和协议来进行相互通信</td>
-</tr>
-<tr>
-<td align="center">目标</td>
-<td>解决的是异构系统的服务化</td>
-<td>解决互联网系统快速交付</td>
-</tr>
-<tr>
-<td align="center">规模</td>
-<td>相对粗粒度</td>
-<td>细粒度</td>
-</tr>
-<tr>
-<td align="center">适用性</td>
-<td>跨企业、大企业跨部门的复杂应用系统建设</td>
-<td>适合小型团队的持续化发布</td>
-</tr>
-</tbody></table>
-<h1 id="为快不破，分布式缓存提升系统性能"><a href="#为快不破，分布式缓存提升系统性能" class="headerlink" title="为快不破，分布式缓存提升系统性能"></a>为快不破，分布式缓存提升系统性能</h1><br>
+<h2 id="02-想要成功面试，先要弄懂面试过程"><a href="#02-想要成功面试，先要弄懂面试过程" class="headerlink" title="02 | 想要成功面试，先要弄懂面试过程"></a>02 | 想要成功面试，先要弄懂面试过程</h2><ul>
+<li><p>需要清楚招聘过程，知道各个环节背后：有什么人在主导，目的是什么，要注意什么，该做什么，不该做什么，以及有什么风险</p>
+</li>
+<li><p>从一个招聘职位出现，到招聘结束，需要清楚整个过程发生了什么？需要注意什么？以面试官的视角，增加认知，充分准备，减少失误，为面试效果加分</p>
+</li>
+</ul>
+<h3 id="看懂招聘全流程，不打无准备之仗"><a href="#看懂招聘全流程，不打无准备之仗" class="headerlink" title="看懂招聘全流程，不打无准备之仗"></a>看懂招聘全流程，不打无准备之仗</h3><h4 id="1-确定职位空缺，提前预知工作的难度"><a href="#1-确定职位空缺，提前预知工作的难度" class="headerlink" title="1. 确定职位空缺，提前预知工作的难度"></a>1. 确定职位空缺，提前预知工作的难度</h4><ul>
+<li>填补空缺：因为有前任的工作样板，工作细节清楚、职责明确，确定性高，老板对这个职位的期待也很明确，双方都可以清楚地评价人和工作的匹配度。而且，应聘者完全可以复用前任的经验轻松上手，但是因为有前任的对比，需要超越前任的表现才能获得好评。</li>
+<li>新增职位：工作难度和职责细节往往还不清晰，在团队中还没有和其他职位形成稳定的职责接口，甚至老板对这个职位的期待可能还说不清，新人做起工作来，需要很多的探索和磨合，较难上手。但是因为没有对比，你比较容易校正老板的期待，也容易获得好评。</li>
+</ul>
+<h4 id="2-了解简历收集渠道和筛选过程，有的放矢"><a href="#2-了解简历收集渠道和筛选过程，有的放矢" class="headerlink" title="2. 了解简历收集渠道和筛选过程，有的放矢"></a>2. 了解简历收集渠道和筛选过程，有的放矢</h4><ul>
+<li>内推</li>
+<li>公司网站</li>
+<li>社交平台</li>
+<li>招聘网站</li>
+<li>线下招聘会</li>
+<li>猎头公司</li>
+</ul>
+<ul>
+<li>投递简历的注意事项<ul>
+<li>简历邮件标题至少要写清应聘职位、姓名</li>
+<li>简历附件尽量用 PDF 格式，保证跨平台阅读的一致性</li>
+<li>用一些稍正式的个人邮箱地址投递简历</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>不要给自己设限，你认为的，并不一定面试官也这么认为。</li>
+</ul>
+<h4 id="3-面试，是谁决定了你的去留"><a href="#3-面试，是谁决定了你的去留" class="headerlink" title="3. 面试，是谁决定了你的去留"></a>3. 面试，是谁决定了你的去留</h4><ul>
+<li>谁来决定一个应聘者面试通过与否？</li>
+<li>面试官可能来源于三类角色：HR、部门大牛、部门经理<ul>
+<li>hr：重点考查人才的基本面：动机（价值观、职业性格）和潜力</li>
+<li>部门大牛：最清楚工作细节，关注应聘者在这些细节上的经验和技能，也就是解决问题的能力</li>
+<li>部门经理：两方面兼顾，既要保证此人能胜任岗位（或者通过学习能够很快胜任），还要验证他的动机和潜力，确保他能认可公司文化，融入团队，保持稳定长远的发展。</li>
+</ul>
+</li>
+<li>部门经理对自己的职位人选负责。在评价应聘者的面试表现时，他会听取 HR 和部门大牛的反馈，结合自己的体会，做出以下几种决定：<ul>
+<li>录用</li>
+<li>不录用：不适合本职位（不排除推荐给其他匹配的职位）。</li>
+<li>候选，留待与后面的人作比较：不是非常理想的人选，需要再看看后面有没有更合适的（如果时间允许的话）</li>
+<li>再面试一次：没看清，拿不准。这往往是因为面试中应聘者没能充分表达自己的能力所致</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>最终，高级经理可能做最后一轮面试，以便确定你确实是符合团队需要的人员。在这一轮对话中，你会得到更多关于公司和团队的信息，这时我建议你多问多了解，以便能够更好地判断这个职位是否满足你的预期，是否符合你的职业发展规划，甚至为你判断是否要加入这个公司提供信息支持。</p>
+</blockquote>
+<ul>
+<li><strong>作为应聘者，在面试阶段你的任务就是，充分展示与职位相关的、能力素质模型的要素，同时了解公司团队，建立互信。</strong></li>
+</ul>
+<h4 id="4-签-Offer，定薪水"><a href="#4-签-Offer，定薪水" class="headerlink" title="4. 签 Offer，定薪水"></a>4. 签 Offer，定薪水</h4><ul>
+<li>这个阶段不能闭口不提薪水</li>
+<li>HR 负责提供公司级别的薪水标准范围，如果部门经理的薪水诉求超过了薪水范围，会被交给上一管理层审批</li>
+</ul>
+<h4 id="5-入职试用期，你还不能放松警惕"><a href="#5-入职试用期，你还不能放松警惕" class="headerlink" title="5. 入职试用期，你还不能放松警惕"></a>5. 入职试用期，你还不能放松警惕</h4><ul>
+<li>需要尽快地承担起工作职责，用能力说话，持续建立和加强同团队的信任，推动个人和团队的发展。</li>
+</ul>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>HR 负责快速筛选简历，组织面试，确保为职位快速找到合适的人；</li>
+<li>部门经理才是决定你面试结果的人，也是决定这份 Offer 薪资水平的人</li>
+<li><strong>作为应聘者，你需要了解这些“利益干系人”的关注点，从而有针对性地、最大化地展示你的能力。</strong></li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h2 id="03-面试官的面试逻辑是什么？"><a href="#03-面试官的面试逻辑是什么？" class="headerlink" title="03 | 面试官的面试逻辑是什么？"></a>03 | 面试官的面试逻辑是什么？</h2><br>
+
+<br>
+
+<br>
+
+<h1 id="基础：知己篇-8讲"><a href="#基础：知己篇-8讲" class="headerlink" title="基础：知己篇 (8讲)"></a>基础：知己篇 (8讲)</h1><br>
 
 <br>
 
@@ -504,16 +483,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">Post title</span>: <span class="content">《Java分布式架构设计与开发实战》study notes</span>
+            <span class="type">Post title</span>: <span class="content">《面试现场》Study Notes</span>
         </li>
         <li class="post-author">
             <span class="type">Post author</span>: <span class="content">ratears</span>
         </li>
         <li class="post-time">
-            <span class="type">Create time</span>: <span class="content">2023-02-22 12:06:25</span>
+            <span class="type">Create time</span>: <span class="content">2023-03-24 22:17:30</span>
         </li>
         <li class="post-link">
-            <span class="type">Post link</span>: <span class="content">《Java分布式架构设计与开发实战》study-notes/</span>
+            <span class="type">Post link</span>: <span class="content">《面试现场》Study-Notes/</span>
         </li>
         <li class="post-license">
             <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
@@ -531,7 +510,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="../Tags/distributed/">#distributed</a>&nbsp;
+                            <a href="../Tags/interview/">#interview</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -543,13 +522,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="../%E3%80%8AJava%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E6%8E%8C%E6%8F%A1%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%86%E5%B8%83%E5%BC%8F%E9%A1%B9%E7%9B%AE%E6%96%B9%E6%A1%88%E3%80%8Bstudy-notes/"
+                               href="../%E3%80%8A%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E5%AE%98%E8%AF%86%E4%BA%BA%E6%89%8B%E5%86%8C%E3%80%8BStudy-Notes/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">《Java分布式系统解决方案 掌握企业级分布式项目方案》study notes</span>
+                                <span class="post-nav-title-item">《技术面试官识人手册》Study Notes</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                             </a>
@@ -559,10 +538,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="../Redis-study-notes/"
+                               href="../%E3%80%8AKafka%E5%A4%9A%E7%BB%B4%E5%BA%A6%E7%B3%BB%E7%BB%9F%E7%B2%BE%E8%AE%B2%EF%BC%8C%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98%E5%BC%80%E5%8F%91%E3%80%8BStudy-Notes/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Redis study notes</span>
+                                <span class="post-nav-title-item">《Kafka多维度系统精讲，从入门到实战开发》Study Notes</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -667,7 +646,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E5%AF%BC%E5%AD%A6%E4%B8%8E%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97"><span class="nav-number">1.</span> <span class="nav-text">课程导学与学习指南</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%85%E6%AD%A5%E5%8D%83%E9%87%8C%EF%BC%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E5%8A%A0%E5%BC%BA%E5%86%85%E5%8A%9F%E4%BF%AE%E7%82%BC"><span class="nav-number">2.</span> <span class="nav-text">硅步千里，分布式理论加强内功修炼</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E7%AB%A0%E8%8A%82%E7%9B%AE%E6%A0%87"><span class="nav-number">2.1.</span> <span class="nav-text">本章节目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="nav-number">2.2.</span> <span class="nav-text">单体应用架构到分布式架构的演进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E6%9C%8D%E5%8A%A1%E5%8C%96%E6%9E%B6%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">引入服务化架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SOA%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AF%B9%E6%AF%94"><span class="nav-number">2.3.1.</span> <span class="nav-text">SOA与微服务对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E5%BF%AB%E4%B8%8D%E7%A0%B4%EF%BC%8C%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98%E6%8F%90%E5%8D%87%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">为快不破，分布式缓存提升系统性能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E7%AF%87%E8%AF%8D-1%E8%AE%B2"><span class="nav-number">1.</span> <span class="nav-text">开篇词 (1讲)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E7%AF%87%E8%AF%8D-%E9%9D%A2%E8%AF%95%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%81%9A%E4%BC%9A%E5%8A%9F%E5%88%B0%E8%87%AA%E7%84%B6%E6%88%90"><span class="nav-number">1.1.</span> <span class="nav-text">开篇词 | 面试，这样做会功到自然成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%EF%BC%9A%E7%9F%A5%E5%BD%BC%E7%AF%87-3%E8%AE%B2"><span class="nav-number">2.</span> <span class="nav-text">基础：知彼篇 (3讲)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#01-%E5%85%AC%E5%8F%B8%E5%88%B0%E5%BA%95%E6%83%B3%E8%A6%81%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%BA%BA%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">01 | 公司到底想要什么样的人？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E5%8F%B8%E7%9C%BC%E4%B8%AD%E7%9A%84%E5%A5%BD%E5%91%98%E5%B7%A5"><span class="nav-number">2.1.1.</span> <span class="nav-text">公司眼中的好员工</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E8%81%98%E8%80%85%E7%9A%84%E7%B4%A0%E8%B4%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.2.</span> <span class="nav-text">应聘者的素质模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%BB%8F%E9%AA%8C%EF%BC%88Experience%EF%BC%89"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">1. 经验（Experience）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8A%80%E8%83%BD%EF%BC%88Skill%EF%BC%89"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">2. 技能（Skill）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%BD%9C%E5%8A%9B%EF%BC%88Potential%EF%BC%89"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">3. 潜力（Potential）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%8A%A8%E6%9C%BA%EF%BC%88Motivation%EF%BC%89"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">4. 动机（Motivation）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.1.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-%E6%83%B3%E8%A6%81%E6%88%90%E5%8A%9F%E9%9D%A2%E8%AF%95%EF%BC%8C%E5%85%88%E8%A6%81%E5%BC%84%E6%87%82%E9%9D%A2%E8%AF%95%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">02 | 想要成功面试，先要弄懂面试过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%8B%E6%87%82%E6%8B%9B%E8%81%98%E5%85%A8%E6%B5%81%E7%A8%8B%EF%BC%8C%E4%B8%8D%E6%89%93%E6%97%A0%E5%87%86%E5%A4%87%E4%B9%8B%E4%BB%97"><span class="nav-number">2.2.1.</span> <span class="nav-text">看懂招聘全流程，不打无准备之仗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%A1%AE%E5%AE%9A%E8%81%8C%E4%BD%8D%E7%A9%BA%E7%BC%BA%EF%BC%8C%E6%8F%90%E5%89%8D%E9%A2%84%E7%9F%A5%E5%B7%A5%E4%BD%9C%E7%9A%84%E9%9A%BE%E5%BA%A6"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">1. 确定职位空缺，提前预知工作的难度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BA%86%E8%A7%A3%E7%AE%80%E5%8E%86%E6%94%B6%E9%9B%86%E6%B8%A0%E9%81%93%E5%92%8C%E7%AD%9B%E9%80%89%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%9C%89%E7%9A%84%E6%94%BE%E7%9F%A2"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">2. 了解简历收集渠道和筛选过程，有的放矢</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%9D%A2%E8%AF%95%EF%BC%8C%E6%98%AF%E8%B0%81%E5%86%B3%E5%AE%9A%E4%BA%86%E4%BD%A0%E7%9A%84%E5%8E%BB%E7%95%99"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">3. 面试，是谁决定了你的去留</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E7%AD%BE-Offer%EF%BC%8C%E5%AE%9A%E8%96%AA%E6%B0%B4"><span class="nav-number">2.2.1.4.</span> <span class="nav-text">4. 签 Offer，定薪水</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%85%A5%E8%81%8C%E8%AF%95%E7%94%A8%E6%9C%9F%EF%BC%8C%E4%BD%A0%E8%BF%98%E4%B8%8D%E8%83%BD%E6%94%BE%E6%9D%BE%E8%AD%A6%E6%83%95"><span class="nav-number">2.2.1.5.</span> <span class="nav-text">5. 入职试用期，你还不能放松警惕</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-%E9%9D%A2%E8%AF%95%E5%AE%98%E7%9A%84%E9%9D%A2%E8%AF%95%E9%80%BB%E8%BE%91%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">03 | 面试官的面试逻辑是什么？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%EF%BC%9A%E7%9F%A5%E5%B7%B1%E7%AF%87-8%E8%AE%B2"><span class="nav-number">3.</span> <span class="nav-text">基础：知己篇 (8讲)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
