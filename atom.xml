@@ -6,7 +6,7 @@
   <link href="https://ratears.github.io/dev.ratears.life/atom.xml" rel="self"/>
   
   <link href="https://ratears.github.io/dev.ratears.life/"/>
-  <updated>2023-03-26T07:52:38.000Z</updated>
+  <updated>2023-03-27T12:06:45.000Z</updated>
   <id>https://ratears.github.io/dev.ratears.life/</id>
   
   <author>
@@ -17,13 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《ZooKeeper分布式专题与Dubbo微服务入门》Study Notes</title>
+    <link href="https://ratears.github.io/dev.ratears.life/%E3%80%8AZooKeeper%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%93%E9%A2%98%E4%B8%8EDubbo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%85%A5%E9%97%A8%E3%80%8BStudy-Notes/"/>
+    <id>https://ratears.github.io/dev.ratears.life/%E3%80%8AZooKeeper%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%93%E9%A2%98%E4%B8%8EDubbo%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%85%A5%E9%97%A8%E3%80%8BStudy-Notes/</id>
+    <published>2023-03-27T12:06:45.000Z</published>
+    <updated>2023-03-27T12:06:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<br><br><br><h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote><p>1</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure><img src="" width="70%"><br>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;br&gt;
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+&lt;h1 id=&quot;学习备注&quot;&gt;&lt;a href=&quot;#学习备注&quot; class=&quot;headerlink&quot; title=&quot;学习备注&quot;&gt;&lt;/a&gt;学习备注&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure cla</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>《技术面试官识人手册》Study Notes</title>
     <link href="https://ratears.github.io/dev.ratears.life/%E3%80%8A%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E5%AE%98%E8%AF%86%E4%BA%BA%E6%89%8B%E5%86%8C%E3%80%8BStudy-Notes/"/>
     <id>https://ratears.github.io/dev.ratears.life/%E3%80%8A%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E5%AE%98%E8%AF%86%E4%BA%BA%E6%89%8B%E5%86%8C%E3%80%8BStudy-Notes/</id>
     <published>2023-03-26T07:52:38.000Z</published>
     <updated>2023-03-26T07:52:38.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="开篇词-1讲"><a href="#开篇词-1讲" class="headerlink" title="开篇词 (1讲)"></a>开篇词 (1讲)</h1><h2 id="开篇词-世事洞明皆学问，人情练达即文章：小面试，大道理"><a href="#开篇词-世事洞明皆学问，人情练达即文章：小面试，大道理" class="headerlink" title="开篇词 | 世事洞明皆学问，人情练达即文章：小面试，大道理"></a>开篇词 | 世事洞明皆学问，人情练达即文章：小面试，大道理</h2><ul><li>面试就是打造团队的第一道门槛，它可能短暂、直接地影响你一个项目的进度，也可能长期、潜在地左右你整个团队的战斗力。</li></ul><h3 id="晋升第一课，招募人才"><a href="#晋升第一课，招募人才" class="headerlink" title="晋升第一课，招募人才"></a>晋升第一课，招募人才</h3><ul><li>首先，去负责技术面试，帮助公司和团队招募人才，就是一个职业上升通道的必攻克项</li><li>面试还是一个预期和限制都很明确的快速学习机会，并且，是一个双向的学习机会<ul><li>预期：我们针对软件工程师这个特定岗位对于候选人的期待</li><li>限制：明确了双方需要在每轮短短几十分钟的时间内进行交流与合作，完成话题的讨论，或是问题的解决</li></ul></li></ul><br><br><br><h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote><p>1</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure><img src="" width="70%"><br>]]></content>
+    <content type="html"><![CDATA[<h1 id="开篇词-1讲"><a href="#开篇词-1讲" class="headerlink" title="开篇词 (1讲)"></a>开篇词 (1讲)</h1><h2 id="开篇词-世事洞明皆学问，人情练达即文章：小面试，大道理"><a href="#开篇词-世事洞明皆学问，人情练达即文章：小面试，大道理" class="headerlink" title="开篇词 | 世事洞明皆学问，人情练达即文章：小面试，大道理"></a>开篇词 | 世事洞明皆学问，人情练达即文章：小面试，大道理</h2><ul><li>面试就是打造团队的第一道门槛，它可能短暂、直接地影响你一个项目的进度，也可能长期、潜在地左右你整个团队的战斗力。</li></ul><h3 id="晋升第一课，招募人才"><a href="#晋升第一课，招募人才" class="headerlink" title="晋升第一课，招募人才"></a>晋升第一课，招募人才</h3><ul><li>首先，去负责技术面试，帮助公司和团队招募人才，就是一个职业上升通道的必攻克项</li><li>面试还是一个预期和限制都很明确的快速学习机会，并且，是一个双向的学习机会<ul><li>预期：我们针对软件工程师这个特定岗位对于候选人的期待</li><li>限制：明确了双方需要在每轮短短几十分钟的时间内进行交流与合作，完成话题的讨论，或是问题的解决</li></ul></li><li>深度体验换位思考，让自己和市场保持同步</li></ul><h3 id="打造优秀团队，严把人才关"><a href="#打造优秀团队，严把人才关" class="headerlink" title="打造优秀团队，严把人才关"></a>打造优秀团队，严把人才关</h3><ul><li>总归要有一个环节把质量严格地把控好，否则就要让某个下游环节买单，下游环节不买单，那就要留给用户买单了</li></ul><h3 id="候选人成长空间"><a href="#候选人成长空间" class="headerlink" title="候选人成长空间"></a>候选人成长空间</h3><ul><li>长期看，你可以了解到哪些知识和能力是值得长期投入的；短期看，你可以了解对方的初衷和心态是怎样的。</li><li>我们还可以从中评估和强化自己的认识；面试没通过，你也不至于说挂得不明不白。</li></ul><h3 id="你的收获"><a href="#你的收获" class="headerlink" title="你的收获"></a>你的收获</h3><ul><li>面试前：我将介绍为什么要对软件工程师进行技术面试，应当覆盖哪些面试角度，以及我们该怎样去设计面试题</li><li>面试中：专栏的重中之重，我将结合实例探讨怎样主导技术面试。包括怎样把控流程，怎样进行算法和数据结构的考察，系统设计的考察，面向对象和测试能力的考察，基础知识的考察，以及行为面试的操作方法等等。</li><li>面试后：我将针对候选人的评估讨论会如何开展来介绍。包括怎样收集事实、提炼数据，怎样引导争辩、达成共识，以及最终怎样给出客观中肯的评估。</li></ul><br><br><br><h1 id="面试准备-计划篇-5讲"><a href="#面试准备-计划篇-5讲" class="headerlink" title="面试准备/计划篇 (5讲)"></a>面试准备/计划篇 (5讲)</h1><h2 id="01-评估体系：公司和团队到底需要怎样的技术人才？"><a href="#01-评估体系：公司和团队到底需要怎样的技术人才？" class="headerlink" title="01 | 评估体系：公司和团队到底需要怎样的技术人才？"></a>01 | 评估体系：公司和团队到底需要怎样的技术人才？</h2><br><br><br><h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote><p>1</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure><img src="" width="70%"><br>]]></content>
     
     
       
