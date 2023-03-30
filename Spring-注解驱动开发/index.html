@@ -223,17 +223,39 @@
     </span>
     
     
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Categories/Spring/">Spring</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Tags/Spring/">Spring</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>18 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>727 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -251,7 +273,108 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <br>
+                <h1 id="组件注册"><a href="#组件注册" class="headerlink" title="组件注册"></a>组件注册</h1><h2 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h2><ul>
+<li>告诉Spring这是一个配置类</li>
+<li>配置类 &lt;==&gt; 配置文件</li>
+</ul>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h2><ul>
+<li>给容器中注册一个Bean;类型为返回值的类型，id默认是用方法名作为id</li>
+<li>也可以指定id</li>
+</ul>
+<h2 id="ComponentScans"><a href="#ComponentScans" class="headerlink" title="@ComponentScans"></a>@ComponentScans</h2><ul>
+<li><p>开启注解扫描；指定要扫描的包或规则</p>
+</li>
+<li><p>@ComponentScans 的扫描（过滤）规则</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ComponentScans(</span></span><br><span class="line"><span class="meta">		value = &#123;</span></span><br><span class="line"><span class="meta">				@ComponentScan(value=&quot;com.atguigu&quot;,includeFilters = &#123;</span></span><br><span class="line"><span class="meta">/*						@Filter(type=FilterType.ANNOTATION,classes=&#123;Controller.class&#125;),</span></span><br><span class="line"><span class="meta">						@Filter(type=FilterType.ASSIGNABLE_TYPE,classes=&#123;BookService.class&#125;),*/</span></span><br><span class="line"><span class="meta">						@Filter(type=FilterType.CUSTOM,classes=&#123;MyTypeFilter.class&#125;)</span></span><br><span class="line"><span class="meta">				&#125;,useDefaultFilters = false)	</span></span><br><span class="line"><span class="meta">		&#125;</span></span><br><span class="line"><span class="meta">		)</span></span><br><span class="line"><span class="comment">//@ComponentScan  value:指定要扫描的包</span></span><br><span class="line"><span class="comment">//excludeFilters = Filter[] ：指定扫描的时候按照什么规则排除那些组件</span></span><br><span class="line"><span class="comment">//includeFilters = Filter[] ：指定扫描的时候只需要包含哪些组件</span></span><br><span class="line"><span class="comment">//FilterType.ANNOTATION：按照注解</span></span><br><span class="line"><span class="comment">//FilterType.ASSIGNABLE_TYPE：按照给定的类型；</span></span><br><span class="line"><span class="comment">//FilterType.ASPECTJ：使用ASPECTJ表达式</span></span><br><span class="line"><span class="comment">//FilterType.REGEX：使用正则指定</span></span><br><span class="line"><span class="comment">//FilterType.CUSTOM：使用自定义规则</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h2><ul>
+<li>@Scope 调整（设置）组件作用域<ul>
+<li>singleton：单实例的（默认值）：ioc容器启动会调用方法创建对象放到ioc容器中。以后每次获取就是直接从容器（map.get()）中拿</li>
+<li>prototype：多实例的；ioc容器启动并不会去调用方法创建对象放在容器中，每次获取的时候才会调用方法创建对象；</li>
+<li>request：同一次请求创建一个实例</li>
+<li>session：同一个session创建一个实例</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="meta">@Bean(&quot;person&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Person <span class="title function_">person</span><span class="params">()</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">&quot;给容器中添加Person....&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;张三&quot;</span>, <span class="number">25</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Lazy"><a href="#Lazy" class="headerlink" title="@Lazy"></a>@Lazy</h2><ul>
+<li>懒加载</li>
+<li>单实例bean：默认在容器启动的时候创建对象；</li>
+<li>懒加载：容器启动不创建对象。第一次使用(获取)Bean创建对象，并初始化；</li>
+</ul>
+<h2 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h2><ul>
+<li>类中组件统一设置。满足当前条件，这个类中配置的所有bean注册才能生效；</li>
+</ul>
+<h2 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h2><ul>
+<li>导入组件，id默认是组件的全类名</li>
+</ul>
+<h2 id="给容器中注册组件"><a href="#给容器中注册组件" class="headerlink" title="给容器中注册组件"></a>给容器中注册组件</h2><ul>
+<li>1）、包扫描+组件标注注解（@Controller/@Service/@Repository/@Component）[自己写的类]</li>
+<li>2）、@Bean[导入的第三方包里面的组件]</li>
+<li>3）、@Import[快速给容器中导入一个组件]<ul>
+<li>1）、@Import(要导入到容器中的组件)；容器中就会自动注册这个组件，id默认是全类名</li>
+<li>2）、ImportSelector:返回需要导入的组件的全类名数组；</li>
+<li>3）、ImportBeanDefinitionRegistrar:手动注册bean到容器中</li>
+</ul>
+</li>
+<li>4）、使用Spring提供的 FactoryBean（工厂Bean）;<ul>
+<li>1）、默认获取到的是工厂bean调用getObject创建的对象</li>
+<li>2）、要获取工厂Bean本身，我们需要给id前面加一个&amp;</li>
+</ul>
+</li>
+</ul>
+<h1 id="组件（Bean）生命周期"><a href="#组件（Bean）生命周期" class="headerlink" title="组件（Bean）生命周期"></a>组件（Bean）生命周期</h1><h2 id="Bean-指定初始化和销毁方法"><a href="#Bean-指定初始化和销毁方法" class="headerlink" title="Bean 指定初始化和销毁方法"></a>Bean 指定初始化和销毁方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean(initMethod=&quot;init&quot;,destroyMethod=&quot;detory&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Car <span class="title function_">car</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Car</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">Car</span><span class="params">()</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;car constructor...&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;car ... init...&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">detory</span><span class="params">()</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;car ... detory...&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
 
 <br>
 
@@ -297,9 +420,32 @@
             
 
             
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/Spring/">#Spring</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="../Good-Learning-Method/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">Good Learning Method</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
@@ -413,7 +559,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">1.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C"><span class="nav-number">1.</span> <span class="nav-text">组件注册</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">1.1.</span> <span class="nav-text">@Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">1.2.</span> <span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ComponentScans"><span class="nav-number">1.3.</span> <span class="nav-text">@ComponentScans</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scope"><span class="nav-number">1.4.</span> <span class="nav-text">@Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lazy"><span class="nav-number">1.5.</span> <span class="nav-text">@Lazy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conditional"><span class="nav-number">1.6.</span> <span class="nav-text">@Conditional</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Import"><span class="nav-number">1.7.</span> <span class="nav-text">@Import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99%E5%AE%B9%E5%99%A8%E4%B8%AD%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6"><span class="nav-number">1.8.</span> <span class="nav-text">给容器中注册组件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%EF%BC%88Bean%EF%BC%89%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.</span> <span class="nav-text">组件（Bean）生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean-%E6%8C%87%E5%AE%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%94%80%E6%AF%81%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">Bean 指定初始化和销毁方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
