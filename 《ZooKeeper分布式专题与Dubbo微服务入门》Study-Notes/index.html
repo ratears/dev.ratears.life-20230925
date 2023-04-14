@@ -258,12 +258,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.5k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.3k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>6 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>13 Mins</span>
         </span>
     
     
@@ -296,11 +296,11 @@
 <br>
 
 <h2 id="ZooKeeper的特性"><a href="#ZooKeeper的特性" class="headerlink" title="ZooKeeper的特性"></a>ZooKeeper的特性</h2><ul>
-<li>一致性:数据一致性，数据按照顺序分批入库</li>
-<li>原子性:事务要么成功要么失败，不会局部化</li>
-<li>单一视图:客户端连接集群中的任一zk节点，数据都是一致的</li>
-<li>可靠性:每次对zk的操作状态都会保存在服务端</li>
-<li>实时性:客户端可以读取到zk服务端的最新数据</li>
+<li>一致性：数据一致性，数据按照顺序分批入库</li>
+<li>原子性：事务要么成功要么失败，不会局部化</li>
+<li>单一视图：客户端连接集群中的任一zk节点，数据都是一致的</li>
+<li>可靠性：每次对zk的操作状态都会保存在服务端</li>
+<li>实时性：客户端可以读取到zk服务端的最新数据</li>
 </ul>
 <br>
 
@@ -309,34 +309,36 @@
 <br>
 
 <h1 id="第2章-ZooKeeper安装"><a href="#第2章-ZooKeeper安装" class="headerlink" title="第2章 ZooKeeper安装"></a>第2章 ZooKeeper安装</h1><h2 id="Zookeeper主要目录结构"><a href="#Zookeeper主要目录结构" class="headerlink" title="Zookeeper主要目录结构"></a>Zookeeper主要目录结构</h2><ul>
-<li>bin: 主要的一些运行命令</li>
-<li>conf: 存放配置文件，其中我们需要修改zk.cfo</li>
-<li>contrib:附加的一些功能</li>
-<li>dist-maven:mvn编译后的目录</li>
-<li>docs: 文档</li>
-<li>lib:需要依赖的jar包</li>
-<li>recipes: 案例demo代码</li>
-<li>src: 源码</li>
+<li>bin：主要的一些运行命令</li>
+<li>conf：存放配置文件，其中我们需要修改zk.cfo</li>
+<li>contrib：附加的一些功能</li>
+<li>dist-maven：mvn编译后的目录</li>
+<li>docs：文档</li>
+<li>lib：需要依赖的jar包</li>
+<li>recipes：案例demo代码</li>
+<li>src：源码</li>
 </ul>
+<br>
+
 <h2 id="ZooKeeper单机版安装、配置、启动"><a href="#ZooKeeper单机版安装、配置、启动" class="headerlink" title="ZooKeeper单机版安装、配置、启动"></a>ZooKeeper单机版安装、配置、启动</h2><ul>
-<li>环境要求：安装jdk，并配置环境变量</li>
-<li>下载</li>
+<li>环境要求：安装jdk，并配置环境变量（zookeeper是需要java编译的。所以需要安装jdk）</li>
+<li>下载与准备</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src/</span><br><span class="line"></span><br><span class="line">wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.11/zookeeper-3.4.11.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf zookeeper-3.4.11.tar.gz</span><br><span class="line"></span><br><span class="line">mv zookeeper-3.4.11 /usr/local/</span><br><span class="line"></span><br><span class="line">ln -s zookeeper-3.4.11/ zookeeper</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src/</span><br><span class="line"></span><br><span class="line">wget https://archive.apache.org/dist/zookeeper/zookeeper-3.4.11/zookeeper-3.4.11.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf zookeeper-3.4.11.tar.gz</span><br><span class="line"></span><br><span class="line">mv /usr/local/src/zookeeper-3.4.11 /usr/local/</span><br><span class="line"></span><br><span class="line">cd /usr/local/</span><br><span class="line"></span><br><span class="line">ln -s zookeeper-3.4.11/ zookeeper</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>配置</li>
+<li>配置文件调整</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/zookeeper/conf/</span><br><span class="line"></span><br><span class="line">cp zoo_sample.cfg zoo.cfg</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/zookeeper/conf/</span><br><span class="line"></span><br><span class="line">cp zoo_sample.cfg zoo.cfg</span><br><span class="line"></span><br><span class="line">vim zoo.cfg</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>配置文件参数说明与修改<ul>
-<li>tickTime:用于计算的时间单元。比如如session超时:N* tickTime</li>
-<li>initLimit:用于集群，允许从节点连接并同步到 master节点的初始化连接时间，以tickTime的倍数来表示</li>
-<li>syncLimit:用于集群，master主节点与从节点之间发送消息请求和应答 时间长度。(心跳机制)</li>
-<li>dataDir:必须配置，数据文件目录</li>
-<li>dataLogDir:日志目录，如果不配置会和dataDir公用</li>
-<li>clientPort:连接服务器的端口，默认 2181</li>
+<li>tickTime：用于计算的时间单元。比如如session超时:N* tickTime</li>
+<li>initLimit：用于集群，允许从节点连接并同步到 master节点的初始化连接时间，以tickTime的倍数来表示</li>
+<li>syncLimit：用于集群，master主节点与从节点之间发送消息请求和应答时间长度。(心跳机制)</li>
+<li>dataDir：必须配置，数据文件目录</li>
+<li>dataLogDir：日志目录，如果不配置会和dataDir公用</li>
+<li>clientPort：连接服务器的端口，默认 2181</li>
 </ul>
 </li>
 </ul>
@@ -350,7 +352,7 @@
 <ul>
 <li>配置ZooKeeper的环境变量后，启动ZooKeeper</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/zookeeper/bin</span><br><span class="line"></span><br><span class="line">./zkServer.sh start</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/zookeeper/bin</span><br><span class="line"></span><br><span class="line">./zkServer.sh start</span><br><span class="line"></span><br><span class="line">./zkServer.sh status</span><br><span class="line"></span><br><span class="line">./zkServer.sh stop</span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -359,11 +361,11 @@
 <br>
 
 <h1 id="第3章-ZooKeeper基本数据模型"><a href="#第3章-ZooKeeper基本数据模型" class="headerlink" title="第3章 ZooKeeper基本数据模型"></a>第3章 ZooKeeper基本数据模型</h1><h2 id="基本数据模型介绍"><a href="#基本数据模型介绍" class="headerlink" title="基本数据模型介绍"></a>基本数据模型介绍</h2><ul>
-<li>ZooKeeper 是一个树形结构</li>
-<li>zk的数据模型也可以理解为linux/unix的文件目录:/usr/local/…</li>
+<li>ZooKeeper的数据模型是一个树形结构</li>
+<li>ZooKeeper 的数据模型也可以理解为linux/unix的文件目录:/usr/local/…</li>
 <li>每一个节点都称之为 znode，它可以有子节点，也可以有数据</li>
 <li>每个节点分为临时节点和永久节点，临时节点在客户端断开后消失</li>
-<li>每个k节点都各自的版本号，可以通过命令行来显示节点信息</li>
+<li>每个zk节点都各自的版本号，可以通过命令行来显示节点信息</li>
 <li>每当节点数据发生变化，那么该节点的版本号会累加(乐观锁）</li>
 <li>删除/修改过时节点，版本号不匹配则会报错</li>
 <li>每个zk节点存储的数据不宜过大，几K即可</li>
@@ -371,7 +373,7 @@
 </ul>
 <br>
 
-<h2 id="数据模型基本操作"><a href="#数据模型基本操作" class="headerlink" title="数据模型基本操作"></a>数据模型基本操作</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">客户端连接</span></span><br><span class="line">cd /usr/local/zookeeper/bin/</span><br><span class="line"></span><br><span class="line">./zkCli.sh</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看znode结构</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 1] ls /</span><br><span class="line">[zookeeper]</span><br><span class="line">[zk: localhost:2181(CONNECTED) 2] ls /zookeeper</span><br><span class="line">[quota]</span><br><span class="line">[zk: localhost:2181(CONNECTED) 3] ls /zookeeper/quota</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+<h2 id="Zookeeper命令行客户端基本操作"><a href="#Zookeeper命令行客户端基本操作" class="headerlink" title="Zookeeper命令行客户端基本操作"></a>Zookeeper命令行客户端基本操作</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">客户端连接</span></span><br><span class="line">cd /usr/local/zookeeper/bin/</span><br><span class="line"></span><br><span class="line">./zkCli.sh</span><br><span class="line"></span><br><span class="line">[zk: localhost:2181(CONNECTED) 3] help</span><br><span class="line">ZooKeeper -server host:port cmd args</span><br><span class="line">        stat path [watch]</span><br><span class="line">        set path data [version]</span><br><span class="line">        ls path [watch]</span><br><span class="line">        delquota [-n|-b] path</span><br><span class="line">        ls2 path [watch]</span><br><span class="line">        setAcl path acl</span><br><span class="line">        setquota -n|-b val path</span><br><span class="line">        history</span><br><span class="line">        redo cmdno</span><br><span class="line">        printwatches on|off</span><br><span class="line">        delete path [version]</span><br><span class="line">        sync path</span><br><span class="line">        listquota path</span><br><span class="line">        rmr path</span><br><span class="line">        get path [watch]</span><br><span class="line">        create [-s] [-e] path data acl</span><br><span class="line">        addauth scheme auth</span><br><span class="line">        quit</span><br><span class="line">        getAcl path</span><br><span class="line">        close</span><br><span class="line">        connect host:port</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <br>
 
@@ -388,11 +390,14 @@
 
 <br>
 
-<h1 id="第4章-ZK基本特性与基于Linux的ZK客户端命令行学习"><a href="#第4章-ZK基本特性与基于Linux的ZK客户端命令行学习" class="headerlink" title="第4章 ZK基本特性与基于Linux的ZK客户端命令行学习"></a>第4章 ZK基本特性与基于Linux的ZK客户端命令行学习</h1><h2 id="zk常用命令操作"><a href="#zk常用命令操作" class="headerlink" title="zk常用命令操作"></a>zk常用命令操作</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/zookeeper/bin</span><br><span class="line"></span><br><span class="line">./zkCli.sh</span><br><span class="line"></span><br><span class="line">ls /</span><br><span class="line"></span><br><span class="line">stat /</span><br><span class="line"></span><br><span class="line">ls2 /</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="第4章-ZK基本特性与基于Linux的ZK客户端命令行学习"><a href="#第4章-ZK基本特性与基于Linux的ZK客户端命令行学习" class="headerlink" title="第4章 ZK基本特性与基于Linux的ZK客户端命令行学习"></a>第4章 ZK基本特性与基于Linux的ZK客户端命令行学习</h1><h2 id="zk常用命令行操作"><a href="#zk常用命令行操作" class="headerlink" title="zk常用命令行操作"></a>zk常用命令行操作</h2><ul>
+<li>进入zk终端</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/zookeeper/bin</span><br><span class="line"></span><br><span class="line">./zkCli.sh</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 0] help</span><br><span class="line">ZooKeeper -server host:port cmd args</span><br><span class="line">        stat path [watch]</span><br><span class="line">        # 修改/设置，可以用来做分布式锁</span><br><span class="line">        set path data [version]</span><br><span class="line">        ls path [watch]</span><br><span class="line">        delquota [-n|-b] path</span><br><span class="line">        ls2 path [watch]</span><br><span class="line">        setAcl path acl</span><br><span class="line">        setquota -n|-b val path</span><br><span class="line">        history</span><br><span class="line">        redo cmdno</span><br><span class="line">        printwatches on|off</span><br><span class="line">        # 删除</span><br><span class="line">        delete path [version]</span><br><span class="line">        sync path</span><br><span class="line">        listquota path</span><br><span class="line">        rmr path</span><br><span class="line">        # watch 可以设置watcher</span><br><span class="line">        get path [watch]</span><br><span class="line">        # -s 顺序节点	-e 临时节点	path 路径	data 数据	acl 权限</span><br><span class="line">        create [-s] [-e] path data acl</span><br><span class="line">        addauth scheme auth</span><br><span class="line">        quit</span><br><span class="line">        getAcl path</span><br><span class="line">        close</span><br><span class="line">        connect host:port</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看某个路径（目录/节点）下的列表</span></span><br><span class="line">ls /</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看某个路径（目录/节点）下的状态</span></span><br><span class="line">stat /</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">相当于 <span class="built_in">ls</span> + <span class="built_in">stat</span></span></span><br><span class="line">ls2 /</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">取出节点数据</span></span><br><span class="line">get /</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cZxid = 0x0	# zk为节点分配的id</span><br><span class="line">ctime = Thu Jan 01 08:00:00 CST 1970	# 节点创建时间</span><br><span class="line">mZxid = 0x0	# 节点修改后分配的id</span><br><span class="line">mtime = Thu Jan 01 08:00:00 CST 1970	# 节点修改时间</span><br><span class="line">pZxid = 0x6	# 子节点id</span><br><span class="line">cversion = 0	# 子节点version</span><br><span class="line">dataVersion = 0	# 当前节点数据版本号，如果数据被修改了则会加1</span><br><span class="line">aclVersion = 0	# 权限版本</span><br><span class="line">ephemeralOwner = 0x0</span><br><span class="line">dataLength = 0	# 数据长度</span><br><span class="line">numChildren = 2	# 子节点个数</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-
+<br>
 
 <h2 id="session的基本原理"><a href="#session的基本原理" class="headerlink" title="session的基本原理"></a>session的基本原理</h2><ul>
 <li>客户端与服务端之间的连接存在会话</li>
@@ -401,10 +406,12 @@
 <li>Session过期，则临时节点znode会被抛弃</li>
 <li>心跳机制:客户端向服务端的ping包请求</li>
 </ul>
+<br>
+
 <h2 id="watcher机制"><a href="#watcher机制" class="headerlink" title="watcher机制"></a>watcher机制</h2><ul>
 <li>针对每个节点的操作，都会有一个监督者&gt; wathcer</li>
 <li>当监控的某个对象(znode)发生了变化，则触发watcher事件</li>
-<li>zk中的watcher是一次性的，触发后立即销毁</li>
+<li>zk中的watcher是一次性的，触发后立即销毁（可以通过第三方开源客户端来设置成永久的）</li>
 <li>父节点，子节点增删改都能够触发其watcher</li>
 <li>针对不同类型的操作，触发的watcher事件也不同:<ul>
 <li>(子)节点创建事件</li>
@@ -413,32 +420,179 @@
 </ul>
 </li>
 </ul>
-<h2 id="watcher命令"><a href="#watcher命令" class="headerlink" title="watcher命令"></a>watcher命令</h2><ul>
+<br>
+
+<h3 id="watcher命令"><a href="#watcher命令" class="headerlink" title="watcher命令"></a>watcher命令</h3><ul>
 <li>通过get path [watch]设置watcher</li>
 <li>父节点增删改操作触发 watcher</li>
 <li>子节点增删改操作触发 watcher</li>
 </ul>
-<ul>
-<li>创建父节点触发:NodeCreated</li>
+<br>
+
+<h3 id="watcher事件类型"><a href="#watcher事件类型" class="headerlink" title="watcher事件类型"></a>watcher事件类型</h3><h4 id="父节点"><a href="#父节点" class="headerlink" title="父节点"></a>父节点</h4><ul>
+<li>创建父节点触发：NodeCreated</li>
 <li>修改父节点数据触发:NodeDataChanged</li>
 <li>删除父节点触发:NodeDeleted</li>
 </ul>
-<ul>
+<br>
+
+<h4 id="子节点"><a href="#子节点" class="headerlink" title="子节点"></a>子节点</h4><ul>
 <li>Is 为父节点设置watcher，创建子节点触发：NodeChildrenChanged</li>
 <li>ls 为父节点设置watcher，删除子节点触发：NodeChildrenChanged</li>
-<li>ls 为父节点设置watcher，修改子节点不触发事件</li>
-</ul>
-<h2 id="watcher使用场景"><a href="#watcher使用场景" class="headerlink" title="watcher使用场景"></a>watcher使用场景</h2><ul>
-<li><p>统一资源配置</p>
-</li>
-<li><p>把对于软件工程师候选人考察的策略大体订立清楚</p>
-</li>
-</ul>
-<h1 id="第5章-选举模式和ZooKeeper的集群安装"><a href="#第5章-选举模式和ZooKeeper的集群安装" class="headerlink" title="第5章 选举模式和ZooKeeper的集群安装"></a>第5章 选举模式和ZooKeeper的集群安装</h1><h2 id="选举模式"><a href="#选举模式" class="headerlink" title="选举模式"></a>选举模式</h2><ul>
-<li>zk集群，主从节点，心跳机制(选举模式)</li>
-<li>通过/zkCli.sh -server [ip]:[port] 检测集群是否配置成功</li>
+<li>ls 为父节点设置watcher，修改子节点不触发事件（需要把子节点当成父节点来操作，即：给子节点设置watch ，才可以触发watcher事件）</li>
 </ul>
 <br>
+
+<h3 id="watcher使用场景"><a href="#watcher使用场景" class="headerlink" title="watcher使用场景"></a>watcher使用场景</h3><ul>
+<li>作为触发器，统一资源配置（当主机更新节点为新的配置信息，我们获取监听，可以更新客户端的配置信息）</li>
+</ul>
+<br>
+
+<h2 id="ACL-access-control-lists-权限控制"><a href="#ACL-access-control-lists-权限控制" class="headerlink" title="ACL(access control lists)权限控制"></a>ACL(access control lists)权限控制</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>节点可以设置相关读写等权限，目的为了保障数据安全性</li>
+<li>权限permissions可以指定不同的权限范围以及角色</li>
+</ul>
+<br>
+
+<h3 id="ACL命令行"><a href="#ACL命令行" class="headerlink" title="ACL命令行"></a>ACL命令行</h3><ul>
+<li>getAcl:获取某个节点的acl权限信息</li>
+<li>setAcl:设置某个节点的acl权限信息</li>
+<li>addauth: 输入认证授权信息，注册时输入明文密码(登录)但是在zk的系统里，密码是以加密的形式存在的</li>
+</ul>
+<br>
+
+<h3 id="ACL的构成"><a href="#ACL的构成" class="headerlink" title="ACL的构成"></a>ACL的构成</h3><ul>
+<li>zk的acl通过<code>[scheme:id:permissions]</code>来构成权限列表<ul>
+<li>scheme:代表采用的某种权限机制<ul>
+<li>world:world下只有一个id，即只有一个用户，也就是anyone，那么组合的写法就是 world:anyone:[permissions]</li>
+<li>auth:代表认证登录，需要注册用户有权限就可以，形式为auth:user:password:[permissions]</li>
+<li>digest:需要对密码加密才能访问，组合形式为digest: username:BASE64(SHA(password)) :[permissions]</li>
+<li>super:代表超级管理员，拥有所有的权限</li>
+</ul>
+</li>
+<li>id:代表允许访问的用户<ul>
+<li>ip:当设置为ip指定的ip地址，此时限制ip进行访问，比如ip:192.168.1.1:[permissions]</li>
+</ul>
+</li>
+<li>permissions:权限组合字符串（权限字符串缩写crdwa）<ul>
+<li>CREATE:创建子节点</li>
+<li>READ:获取节点/子节点</li>
+<li>WRITE:设置节点数据</li>
+<li>DELETE:删除子节点</li>
+<li>ADMIN:设置权限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>auth 与 digest的区别就是，前者明文，后者密文</p>
+<p>setAcl /path auth:lee:lee:cdrwa 与 setAcl /path digest:lee:BASE64(SHA1(password))cdrwa 是等价的，在通过</p>
+<p>addauth digest lee:lee 后都能操作指定节点的权限</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">world:anyone:cdrwa</span><br><span class="line"></span><br><span class="line">world:anyone:cdrwa</span><br><span class="line"></span><br><span class="line">auth:user:pwd:cdrwa</span><br><span class="line">digest: user:BASE64(SHA1(pwd)) :cdrwa</span><br><span class="line">addauth digest user:pwd</span><br><span class="line"></span><br><span class="line">ip:192.168.1.1: cdrwa</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">super</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、修改 zkServer.sh 增加super管理员</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、重启 zkServer.sh</span></span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="ACL的常用使用场景"><a href="#ACL的常用使用场景" class="headerlink" title="ACL的常用使用场景"></a>ACL的常用使用场景</h3><ul>
+<li>开发/测试环境分离，开发者无权操作测试库的节点，只能看</li>
+<li>生产环境上控制指定ip的服务可以访问相关节点，防止混乱</li>
+</ul>
+<br>
+
+<h2 id="zk四字命今-Four-Letter-Words"><a href="#zk四字命今-Four-Letter-Words" class="headerlink" title="zk四字命今 Four Letter Words"></a>zk四字命今 Four Letter Words</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>zk可以通过它自身提供的简写命令来和服务器进行交互</li>
+<li>需要使用到nc命令，安装:yum install nc</li>
+<li>echo [commond] nc [ip] [port]</li>
+</ul>
+<br>
+
+<h3 id="Zookeeper-四字命令"><a href="#Zookeeper-四字命令" class="headerlink" title="Zookeeper 四字命令"></a>Zookeeper 四字命令</h3><ul>
+<li>[stat] 查看zk的状态信息，以及是否mode</li>
+<li>[ruok] 查看当前zkserver是否启动，返回imok</li>
+<li>[dump] 列出未经处理的会话和临时节点</li>
+<li>[conf] 查看服务器配置</li>
+<li>[cons] 展示连接到服务器的客户端信息</li>
+<li>[envi] 环境变量</li>
+<li>[mntr]监控zk健康信息</li>
+<li>[wchs] 展示watch的信息</li>
+<li>[wchc] 与 [wchp] session与watch 及 path与watch信息</li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第5章-选举模式和ZooKeeper的集群安装"><a href="#第5章-选举模式和ZooKeeper的集群安装" class="headerlink" title="第5章 选举模式和ZooKeeper的集群安装"></a>第5章 选举模式和ZooKeeper的集群安装</h1><h2 id="选举模式"><a href="#选举模式" class="headerlink" title="选举模式"></a>选举模式</h2><ul>
+<li>zk集群，主从节点，心跳机制(选举模式)</li>
+<li>配置数据文件 myid 1/2/3 对应 server.1/2/3</li>
+<li>通过 zkCli.sh -server [ip]:[port] 检测集群是否配置成功</li>
+</ul>
+<br>
+
+<h2 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">首先，保持单机的相关配置，再增加如下内容</span></span><br><span class="line"></span><br><span class="line">vim zoo.cfg</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果搭建三台zk的集群，配置格式如下。 第一个端口表示数据复制（同步）使用的端口，第二端口是zk间选举master使用的端口</span></span><br><span class="line">server.1=192.168.61.211:2888:3888</span><br><span class="line">server.2=192.168.61.212:2888:3888</span><br><span class="line">server.3=192.168.61.213:2888:3888</span><br><span class="line"></span><br><span class="line">cd dataDir</span><br><span class="line">touch myid</span><br><span class="line">vim myid</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="选举测试"><a href="#选举测试" class="headerlink" title="选举测试"></a>选举测试</h2><ul>
+<li>如果master宕机后，会重新选举出master，如果原宕机恢复后zk重启，此恢复后的zk只能作为flower</li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第6章-使用ZooKeeper原生Java-API进行客户端开发"><a href="#第6章-使用ZooKeeper原生Java-API进行客户端开发" class="headerlink" title="第6章 使用ZooKeeper原生Java API进行客户端开发"></a>第6章 使用ZooKeeper原生Java API进行客户端开发</h1><h2 id="Java客户端与zk服务端建立连接"><a href="#Java客户端与zk服务端建立连接" class="headerlink" title="Java客户端与zk服务端建立连接"></a>Java客户端与zk服务端建立连接</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Title</span>: ZKConnectDemo.java</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Package</span> com.imooc.zk.demo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: zookeeper 连接demo演示</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZKConnect</span> <span class="keyword">implements</span> <span class="title class_">Watcher</span> &#123;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">final</span> <span class="keyword">static</span> <span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> LoggerFactory.getLogger(ZKConnect.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">//	public static final String zkServerPath = &quot;192.168.1.110:2181&quot;;</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">zkServerPath</span> <span class="operator">=</span> <span class="string">&quot;192.168.61.211:2181,192.168.61.212:2181,192.168.61.213:2181&quot;</span>;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Integer</span> <span class="variable">timeout</span> <span class="operator">=</span> <span class="number">5000</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 客户端和zk服务端链接是一个异步的过程</span></span><br><span class="line"><span class="comment">		 * 当连接成功后后，客户端会收的一个watch通知</span></span><br><span class="line"><span class="comment">		 * </span></span><br><span class="line"><span class="comment">		 * 参数：</span></span><br><span class="line"><span class="comment">		 * connectString：连接服务器的ip字符串，</span></span><br><span class="line"><span class="comment">		 * 		比如: &quot;192.168.1.1:2181,192.168.1.2:2181,192.168.1.3:2181&quot;</span></span><br><span class="line"><span class="comment">		 * 		可以是一个ip，也可以是多个ip，一个ip代表单机，多个ip代表集群</span></span><br><span class="line"><span class="comment">		 * 		也可以在ip后加路径</span></span><br><span class="line"><span class="comment">		 * sessionTimeout：超时时间，心跳收不到了，那就超时</span></span><br><span class="line"><span class="comment">		 * watcher：通知事件，如果有对应的事件触发，则会收到一个通知；如果不需要，那就设置为null</span></span><br><span class="line"><span class="comment">		 * canBeReadOnly：可读，当这个物理机节点断开后，还是可以读到数据的，只是不能写，</span></span><br><span class="line"><span class="comment">		 * 					       此时数据被读取到的可能是旧数据，此处建议设置为false，不推荐使用</span></span><br><span class="line"><span class="comment">		 * sessionId：会话的id</span></span><br><span class="line"><span class="comment">		 * sessionPasswd：会话密码	当会话丢失后，可以依据 sessionId 和 sessionPasswd 重新获取会话</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="type">ZooKeeper</span> <span class="variable">zk</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ZooKeeper</span>(zkServerPath, timeout, <span class="keyword">new</span> <span class="title class_">ZKConnect</span>());</span><br><span class="line">		</span><br><span class="line">		log.warn(<span class="string">&quot;客户端开始连接zookeeper服务器...&quot;</span>);</span><br><span class="line">		log.warn(<span class="string">&quot;连接状态：&#123;&#125;&quot;</span>, zk.getState());</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">new</span> <span class="title class_">Thread</span>().sleep(<span class="number">2000</span>);</span><br><span class="line">		</span><br><span class="line">		log.warn(<span class="string">&quot;连接状态：&#123;&#125;&quot;</span>, zk.getState());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(WatchedEvent event)</span> &#123;</span><br><span class="line">		log.warn(<span class="string">&quot;接受到watch通知：&#123;&#125;&quot;</span>, event);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第7章-Apache-Curator客户端的使用"><a href="#第7章-Apache-Curator客户端的使用" class="headerlink" title="第7章 Apache Curator客户端的使用"></a>第7章 Apache Curator客户端的使用</h1><h2 id="常用的zk-java客户端"><a href="#常用的zk-java客户端" class="headerlink" title="常用的zk java客户端"></a>常用的zk java客户端</h2><ul>
+<li>zk原生api</li>
+<li>zkclient</li>
+<li>Apache curator</li>
+</ul>
+<h2 id="zk原生api的不足之处"><a href="#zk原生api的不足之处" class="headerlink" title="zk原生api的不足之处"></a>zk原生api的不足之处</h2><ul>
+<li>超时重连，不支持自动，需要手动操作</li>
+<li>Watch注册一次后会失效</li>
+<li>不支持递归创建节点</li>
+</ul>
+<h2 id="Apache-curator"><a href="#Apache-curator" class="headerlink" title="Apache curator"></a>Apache curator</h2><ul>
+<li>Apache的开源项目</li>
+<li>解决watcher的注册一次就失效</li>
+<li>Api更加简单易用</li>
+<li>提供更多解决方案并且实现简单:比如 分布式锁</li>
+<li>提供常用的ZooKeeper工具类</li>
+<li>编程风格更爽</li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第8章-Dubbo入门到重构服务"><a href="#第8章-Dubbo入门到重构服务" class="headerlink" title="第8章 Dubbo入门到重构服务"></a>第8章 Dubbo入门到重构服务</h1><br>
+
+<br>
+
+<br>
+
+<h1 id="第9章-分布式锁"><a href="#第9章-分布式锁" class="headerlink" title="第9章 分布式锁"></a>第9章 分布式锁</h1><br>
+
+<br>
+
+<br> 
+
+<h1 id="第10章-课程总结"><a href="#第10章-课程总结" class="headerlink" title="第10章 课程总结"></a>第10章 课程总结</h1><br>
 
 <br>
 
@@ -631,7 +785,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E4%B8%8EZooKeeper%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">第1章 分布式系统概念与ZooKeeper简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ZooKeeper%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">ZooKeeper简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">什么是分布式系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZooKeeper%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">ZooKeeper的特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-ZooKeeper%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">第2章 ZooKeeper安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">Zookeeper主要目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZooKeeper%E5%8D%95%E6%9C%BA%E7%89%88%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E5%90%AF%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">ZooKeeper单机版安装、配置、启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-ZooKeeper%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">第3章 ZooKeeper基本数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.1.</span> <span class="nav-text">基本数据模型介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.</span> <span class="nav-text">数据模型基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zk%E7%9A%84%E4%BD%9C%E7%94%A8%E4%BD%93%E7%8E%B0"><span class="nav-number">3.3.</span> <span class="nav-text">zk的作用体现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-ZK%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7%E4%B8%8E%E5%9F%BA%E4%BA%8ELinux%E7%9A%84ZK%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">第4章 ZK基本特性与基于Linux的ZK客户端命令行学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#zk%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">zk常用命令操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">session的基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watcher%E6%9C%BA%E5%88%B6"><span class="nav-number">4.3.</span> <span class="nav-text">watcher机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watcher%E5%91%BD%E4%BB%A4"><span class="nav-number">4.4.</span> <span class="nav-text">watcher命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watcher%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">4.5.</span> <span class="nav-text">watcher使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC5%E7%AB%A0-%E9%80%89%E4%B8%BE%E6%A8%A1%E5%BC%8F%E5%92%8CZooKeeper%E7%9A%84%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">第5章 选举模式和ZooKeeper的集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E4%B8%BE%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">选举模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">6.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E4%B8%8EZooKeeper%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">第1章 分布式系统概念与ZooKeeper简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ZooKeeper%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">ZooKeeper简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.</span> <span class="nav-text">什么是分布式系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZooKeeper%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">ZooKeeper的特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-ZooKeeper%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">第2章 ZooKeeper安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper%E4%B8%BB%E8%A6%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">Zookeeper主要目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZooKeeper%E5%8D%95%E6%9C%BA%E7%89%88%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E5%90%AF%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">ZooKeeper单机版安装、配置、启动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-ZooKeeper%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">第3章 ZooKeeper基本数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.1.</span> <span class="nav-text">基本数据模型介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zookeeper%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.</span> <span class="nav-text">Zookeeper命令行客户端基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zk%E7%9A%84%E4%BD%9C%E7%94%A8%E4%BD%93%E7%8E%B0"><span class="nav-number">3.3.</span> <span class="nav-text">zk的作用体现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-ZK%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7%E4%B8%8E%E5%9F%BA%E4%BA%8ELinux%E7%9A%84ZK%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">第4章 ZK基本特性与基于Linux的ZK客户端命令行学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#zk%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">zk常用命令行操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">session的基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#watcher%E6%9C%BA%E5%88%B6"><span class="nav-number">4.3.</span> <span class="nav-text">watcher机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#watcher%E5%91%BD%E4%BB%A4"><span class="nav-number">4.3.1.</span> <span class="nav-text">watcher命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watcher%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.3.2.</span> <span class="nav-text">watcher事件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%B6%E8%8A%82%E7%82%B9"><span class="nav-number">4.3.2.1.</span> <span class="nav-text">父节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%90%E8%8A%82%E7%82%B9"><span class="nav-number">4.3.2.2.</span> <span class="nav-text">子节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watcher%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">4.3.3.</span> <span class="nav-text">watcher使用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ACL-access-control-lists-%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6"><span class="nav-number">4.4.</span> <span class="nav-text">ACL(access control lists)权限控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">4.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACL%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-number">4.4.2.</span> <span class="nav-text">ACL命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACL%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-number">4.4.3.</span> <span class="nav-text">ACL的构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACL%E7%9A%84%E5%B8%B8%E7%94%A8%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">4.4.4.</span> <span class="nav-text">ACL的常用使用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zk%E5%9B%9B%E5%AD%97%E5%91%BD%E4%BB%8A-Four-Letter-Words"><span class="nav-number">4.5.</span> <span class="nav-text">zk四字命今 Four Letter Words</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">4.5.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper-%E5%9B%9B%E5%AD%97%E5%91%BD%E4%BB%A4"><span class="nav-number">4.5.2.</span> <span class="nav-text">Zookeeper 四字命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC5%E7%AB%A0-%E9%80%89%E4%B8%BE%E6%A8%A1%E5%BC%8F%E5%92%8CZooKeeper%E7%9A%84%E9%9B%86%E7%BE%A4%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">第5章 选举模式和ZooKeeper的集群安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E4%B8%BE%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">选举模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA"><span class="nav-number">5.2.</span> <span class="nav-text">集群搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E4%B8%BE%E6%B5%8B%E8%AF%95"><span class="nav-number">5.3.</span> <span class="nav-text">选举测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC6%E7%AB%A0-%E4%BD%BF%E7%94%A8ZooKeeper%E5%8E%9F%E7%94%9FJava-API%E8%BF%9B%E8%A1%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%BC%80%E5%8F%91"><span class="nav-number">6.</span> <span class="nav-text">第6章 使用ZooKeeper原生Java API进行客户端开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8Ezk%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="nav-number">6.1.</span> <span class="nav-text">Java客户端与zk服务端建立连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC7%E7%AB%A0-Apache-Curator%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">第7章 Apache Curator客户端的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84zk-java%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">7.1.</span> <span class="nav-text">常用的zk java客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zk%E5%8E%9F%E7%94%9Fapi%E7%9A%84%E4%B8%8D%E8%B6%B3%E4%B9%8B%E5%A4%84"><span class="nav-number">7.2.</span> <span class="nav-text">zk原生api的不足之处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apache-curator"><span class="nav-number">7.3.</span> <span class="nav-text">Apache curator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC8%E7%AB%A0-Dubbo%E5%85%A5%E9%97%A8%E5%88%B0%E9%87%8D%E6%9E%84%E6%9C%8D%E5%8A%A1"><span class="nav-number">8.</span> <span class="nav-text">第8章 Dubbo入门到重构服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC9%E7%AB%A0-%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="nav-number">9.</span> <span class="nav-text">第9章 分布式锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC10%E7%AB%A0-%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">第10章 课程总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">11.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
