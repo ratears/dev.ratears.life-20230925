@@ -258,12 +258,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>152 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
         </span>
     
     
@@ -299,13 +299,118 @@
 <h1 id="第2章-鸟瞰Java并发【上帝视角建立并发知识框架】"><a href="#第2章-鸟瞰Java并发【上帝视角建立并发知识框架】" class="headerlink" title="第2章 鸟瞰Java并发【上帝视角建立并发知识框架】"></a>第2章 鸟瞰Java并发【上帝视角建立并发知识框架】</h1><h2 id="并发工具分类"><a href="#并发工具分类" class="headerlink" title="并发工具分类"></a>并发工具分类</h2><ol>
 <li>为了并发安全 : 互斥同步、非互斥同步、无同步方案<ol>
 <li>为了线程安全（从底层原理来分）</li>
-<li></li>
+<li>为了线程安全（从使用者的角度来分类）</li>
+<li>为了方便线程管理、提高效率</li>
+<li>为了线程之间配合，来满足业务逻辑</li>
 </ol>
 </li>
 <li>管理线程、提高效率</li>
 <li>线程协作</li>
 </ol>
 <br>
+
+<br>
+
+<br>
+
+<h1 id="第3章-线程池【治理线程的最大法宝】"><a href="#第3章-线程池【治理线程的最大法宝】" class="headerlink" title="第3章 线程池【治理线程的最大法宝】"></a>第3章 线程池【治理线程的最大法宝】</h1><h2 id="线程池介绍"><a href="#线程池介绍" class="headerlink" title="线程池介绍"></a>线程池介绍</h2><h3 id="线程池的重要性"><a href="#线程池的重要性" class="headerlink" title="线程池的重要性"></a>线程池的重要性</h3><ol>
+<li>很多问题是没有用好线程池导致的</li>
+<li>线程池是面试高频考点</li>
+</ol>
+<h3 id="为什么要使用线程"><a href="#为什么要使用线程" class="headerlink" title="为什么要使用线程"></a>为什么要使用线程</h3><ul>
+<li><p>如果不使用线程池，每个任务都新开一个线程处理</p>
+<ul>
+<li><strong>Java中的线程会对应到操作系统的线程</strong></li>
+<li><strong>线程的生命周期内存开销是很高的</strong></li>
+<li>会导致两个问题：<ul>
+<li>反复创建线程开销大</li>
+<li>过多的线程会占用太多内存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>但是，这样开销太大，而我们希望有固定数量的线程，来执行这N个线程，这样就避免了反复创建并销毁线程所带来的开销问题</p>
+</li>
+<li><p>解决上面两个问题的思路：</p>
+<ul>
+<li>用少量的线程一避免内存占用过多</li>
+<li>让这部分线程都保持工作，且可以反复执行任务避免生命周期的损耗</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用线程池的好处"><a href="#使用线程池的好处" class="headerlink" title="使用线程池的好处"></a>使用线程池的好处</h3><ul>
+<li>加快响应速度</li>
+<li>合理利用CPU和内存</li>
+<li>统一管理、统计</li>
+</ul>
+<h3 id="线程池适合应用的场合"><a href="#线程池适合应用的场合" class="headerlink" title="线程池适合应用的场合"></a>线程池适合应用的场合</h3><ul>
+<li>服务器接受到大量请求时，使用线程池技术是非常合适的，它可以大大减少线程的创建和销毁次数，提高服务器的工作效率</li>
+<li>实际上，在开发中，如果需要创建5个以上的线程，那么就可以使用线程池来管理</li>
+</ul>
+<h2 id="线程池的创建与停止"><a href="#线程池的创建与停止" class="headerlink" title="线程池的创建与停止"></a>线程池的创建与停止</h2><h3 id="线程池构造函数的参数"><a href="#线程池构造函数的参数" class="headerlink" title="线程池构造函数的参数"></a>线程池构造函数的参数</h3><table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">类型</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">corePoolSize</td>
+<td align="center">int</td>
+<td align="center">核心线程数</td>
+</tr>
+<tr>
+<td align="center">maxPoolSize</td>
+<td align="center">int</td>
+<td align="center">最大线程数</td>
+</tr>
+<tr>
+<td align="center">keepAliveTime</td>
+<td align="center">long</td>
+<td align="center">保持存活时间</td>
+</tr>
+<tr>
+<td align="center">workQueue</td>
+<td align="center">BlockingQueue</td>
+<td align="center">任务存储队列</td>
+</tr>
+<tr>
+<td align="center">threadFactory</td>
+<td align="center">ThreadFactory</td>
+<td align="center">当线程池需要新的线程的时候，会使用threadFactory来生成新的线程</td>
+</tr>
+<tr>
+<td align="center">Handler</td>
+<td align="center">RejectedExecutionHandler</td>
+<td align="center">由于线程池无法接受所提交的任务的拒绝策略</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>corePoolSize</strong>：指的是核心线程数:线程池在完成初始化后，默认情况下，线程池中并没有任何线程，线程池会等待有任务到来时再创建新线程去执行任务</li>
+<li><strong>maxPoolSize</strong>：线程池有可能会在核心线程数的基础上，额外增加一些线程，但是这些新增加的线程数有一个上限</li>
+</ul>
+<h3 id="添加线程规则"><a href="#添加线程规则" class="headerlink" title="添加线程规则"></a>添加线程规则</h3><ul>
+<li>如果线程数小于corePoolSize，即使其他工作线程处于空闲状态，也会创建一个新线程来运行新任务</li>
+<li>如果线程数等于(或大于)corePoolSize但少于maximumPoolSize，则将任务放入队列</li>
+<li>如果队列已满，并且线程数小于maxPoolSize，则创建个新线程来运行任务</li>
+<li>如果队列已满，并且线程数大于或等于maxPoolSize则拒绝该任务。</li>
+</ul>
+<ul>
+<li>是否需要增加线程的判断顺序是:<ul>
+<li>corePoolSize</li>
+<li>workQueue</li>
+<li>maxPoolSize </li>
+</ul>
+</li>
+</ul>
+<h3 id="增减线程的特点"><a href="#增减线程的特点" class="headerlink" title="增减线程的特点"></a>增减线程的特点</h3><ol>
+<li>通过设置corePoolSize和maximumPoolSize 相同，就可以创建固定大小的线程池</li>
+<li>线程池希望保持较少的线程数，并且只有在负载变得很大时才增加它</li>
+<li>通过设置maximumPoolSize为很高的值，例如IntegerMAX_VALUE，可以允许线程池容纳任意数量的并发任务</li>
+<li>是只有在队列填满时才创建多于corePoolSize的线程，所以如果你使用的是无界队列(例如LinkedBlockingQueue)，那么线程数就不会超过corePoolSize</li>
+</ol>
+<h3 id="线程池应该手动创建还是自动创建"><a href="#线程池应该手动创建还是自动创建" class="headerlink" title="线程池应该手动创建还是自动创建"></a>线程池应该手动创建还是自动创建</h3><h3 id="线程池里的线程数量设定为多少比较合适"><a href="#线程池里的线程数量设定为多少比较合适" class="headerlink" title="线程池里的线程数量设定为多少比较合适?"></a>线程池里的线程数量设定为多少比较合适?</h3><h3 id="停止线程池的正确方法"><a href="#停止线程池的正确方法" class="headerlink" title="停止线程池的正确方法"></a>停止线程池的正确方法</h3><h2 id=""><a href="#" class="headerlink" title=""></a></h2><br>
 
 <br>
 
@@ -366,6 +471,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="../%E3%80%8A%E6%9E%84%E5%BB%BAJVM%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB-%E8%A7%A3%E5%86%B3Java%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BF%85%E4%BC%9A%E7%9A%84%E5%B7%A5%E4%BD%9C-%E9%9D%A2%E8%AF%95%E9%9A%BE%E7%82%B9%E3%80%8BStudy-Notes/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">《构建JVM知识体系 解决Java工程师必会的工作/面试难点》Study Notes</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
@@ -479,7 +599,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%BC%80%E5%AE%97%E6%98%8E%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">第1章 开宗明义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要学习并发编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E9%B8%9F%E7%9E%B0Java%E5%B9%B6%E5%8F%91%E3%80%90%E4%B8%8A%E5%B8%9D%E8%A7%86%E8%A7%92%E5%BB%BA%E7%AB%8B%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6%E3%80%91"><span class="nav-number">2.</span> <span class="nav-text">第2章 鸟瞰Java并发【上帝视角建立并发知识框架】</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E5%88%86%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">并发工具分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%BC%80%E5%AE%97%E6%98%8E%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">第1章 开宗明义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">为什么要学习并发编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E9%B8%9F%E7%9E%B0Java%E5%B9%B6%E5%8F%91%E3%80%90%E4%B8%8A%E5%B8%9D%E8%A7%86%E8%A7%92%E5%BB%BA%E7%AB%8B%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E6%A1%86%E6%9E%B6%E3%80%91"><span class="nav-number">2.</span> <span class="nav-text">第2章 鸟瞰Java并发【上帝视角建立并发知识框架】</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E5%B7%A5%E5%85%B7%E5%88%86%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">并发工具分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E3%80%90%E6%B2%BB%E7%90%86%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B3%95%E5%AE%9D%E3%80%91"><span class="nav-number">3.</span> <span class="nav-text">第3章 线程池【治理线程的最大法宝】</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.1.</span> <span class="nav-text">线程池介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7"><span class="nav-number">3.1.1.</span> <span class="nav-text">线程池的重要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B"><span class="nav-number">3.1.2.</span> <span class="nav-text">为什么要使用线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">3.1.3.</span> <span class="nav-text">使用线程池的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%80%82%E5%90%88%E5%BA%94%E7%94%A8%E7%9A%84%E5%9C%BA%E5%90%88"><span class="nav-number">3.1.4.</span> <span class="nav-text">线程池适合应用的场合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%81%9C%E6%AD%A2"><span class="nav-number">3.2.</span> <span class="nav-text">线程池的创建与停止</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">3.2.1.</span> <span class="nav-text">线程池构造函数的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BA%BF%E7%A8%8B%E8%A7%84%E5%88%99"><span class="nav-number">3.2.2.</span> <span class="nav-text">添加线程规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%87%8F%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">3.2.3.</span> <span class="nav-text">增减线程的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%BA%94%E8%AF%A5%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E8%BF%98%E6%98%AF%E8%87%AA%E5%8A%A8%E5%88%9B%E5%BB%BA"><span class="nav-number">3.2.4.</span> <span class="nav-text">线程池应该手动创建还是自动创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%87%8C%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%95%B0%E9%87%8F%E8%AE%BE%E5%AE%9A%E4%B8%BA%E5%A4%9A%E5%B0%91%E6%AF%94%E8%BE%83%E5%90%88%E9%80%82"><span class="nav-number">3.2.5.</span> <span class="nav-text">线程池里的线程数量设定为多少比较合适?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.6.</span> <span class="nav-text">停止线程池的正确方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
