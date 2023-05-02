@@ -258,7 +258,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>149 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>474 Words</span>
         </span>
     
     
@@ -312,7 +312,44 @@
 
 <br>
 
-<h1 id="第2章-认识JVM规范"><a href="#第2章-认识JVM规范" class="headerlink" title="第2章 认识JVM规范"></a>第2章 认识JVM规范</h1><br>
+<h1 id="第2章-认识JVM规范"><a href="#第2章-认识JVM规范" class="headerlink" title="第2章 认识JVM规范"></a>第2章 认识JVM规范</h1><h2 id="JVM概述"><a href="#JVM概述" class="headerlink" title="JVM概述"></a>JVM概述</h2><ul>
+<li>JVM:Java Virtual Machine，也就是Java虚拟机</li>
+<li>所谓虚拟机是指:通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的计算机系统</li>
+<li>JVM是通过软件来模拟Java 字节码的指令集，是Java程序的运行环境</li>
+</ul>
+<h2 id="JVM主要功能"><a href="#JVM主要功能" class="headerlink" title="JVM主要功能"></a>JVM主要功能</h2><ol>
+<li>通过ClassLoader 寻找和装载class文件</li>
+<li>解释字节码成为指令并执行，提供class文件的运行环境</li>
+<li>进行运行期间的内存分配和垃圾回收</li>
+<li>提供与硬件交互的平台</li>
+</ol>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.57uivl6zm6g0.webp" width="70%">
+
+<br>
+
+
+
+<h2 id="虚拟机是Java平台无关的保障"><a href="#虚拟机是Java平台无关的保障" class="headerlink" title="虚拟机是Java平台无关的保障"></a>虚拟机是Java平台无关的保障</h2><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.jf0g8nuvlts.webp" width="70%">
+
+<br>
+
+<h2 id="JVM规范"><a href="#JVM规范" class="headerlink" title="JVM规范"></a>JVM规范</h2><h3 id="JVM规范作用"><a href="#JVM规范作用" class="headerlink" title="JVM规范作用"></a>JVM规范作用</h3><ul>
+<li>Java 虚拟机规范为不同的硬件平台提供了一种编译Java技术代码的规范</li>
+<li>该规范使Java 软件独立于平台，因为编译是针对作为虚拟机的“一般机器”而做</li>
+<li>这个“一般机器”可用软件模拟并运行于各种现存的计算机系统，也可用硬件来实现</li>
+</ul>
+<h3 id="JVM规范定义的主要内容"><a href="#JVM规范定义的主要内容" class="headerlink" title="JVM规范定义的主要内容"></a>JVM规范定义的主要内容</h3><ul>
+<li>字节码指令集(相当于中央处理器CPU )</li>
+<li>Class文件的格式</li>
+<li>数据类型和值</li>
+<li>运行时数据区</li>
+<li>栈帧</li>
+<li>特殊方法</li>
+<li>类库</li>
+<li>异常</li>
+<li>虚拟机的启动、加载、链接和初始化</li>
+</ul>
+<br>
 
 <br>
 
@@ -501,7 +538,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E8%AF%BE%E7%A8%8B%E5%AF%BC%E5%AD%A6%E4%B8%8E%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">第1章 课程导学与准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">JVM是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6JVM"><span class="nav-number">1.2.</span> <span class="nav-text">为什么要学JVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%94%B6%E8%8E%B7"><span class="nav-number">1.3.</span> <span class="nav-text">学习收获</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E8%AE%A4%E8%AF%86JVM%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text">第2章 认识JVM规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E8%AF%BE%E7%A8%8B%E5%AF%BC%E5%AD%A6%E4%B8%8E%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">第1章 课程导学与准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">JVM是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6JVM"><span class="nav-number">1.2.</span> <span class="nav-text">为什么要学JVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%94%B6%E8%8E%B7"><span class="nav-number">1.3.</span> <span class="nav-text">学习收获</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E8%AE%A4%E8%AF%86JVM%E8%A7%84%E8%8C%83"><span class="nav-number">2.</span> <span class="nav-text">第2章 认识JVM规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E6%A6%82%E8%BF%B0"><span class="nav-number">2.1.</span> <span class="nav-text">JVM概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="nav-number">2.2.</span> <span class="nav-text">JVM主要功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%98%AFJava%E5%B9%B3%E5%8F%B0%E6%97%A0%E5%85%B3%E7%9A%84%E4%BF%9D%E9%9A%9C"><span class="nav-number">2.3.</span> <span class="nav-text">虚拟机是Java平台无关的保障</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E8%A7%84%E8%8C%83"><span class="nav-number">2.4.</span> <span class="nav-text">JVM规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM%E8%A7%84%E8%8C%83%E4%BD%9C%E7%94%A8"><span class="nav-number">2.4.1.</span> <span class="nav-text">JVM规范作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM%E8%A7%84%E8%8C%83%E5%AE%9A%E4%B9%89%E7%9A%84%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text">JVM规范定义的主要内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
