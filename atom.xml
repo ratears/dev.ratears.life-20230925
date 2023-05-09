@@ -23,25 +23,28 @@
     <published>2023-05-02T16:05:45.000Z</published>
     <updated>2023-05-02T16:05:45.000Z</updated>
     
-    <content type="html"><![CDATA[<br><br><br><h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote><p>1</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure><img src="" width="70%"><br>]]></content>
+    <content type="html"><![CDATA[<br><h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><ul><li><strong>需要体察问题背后，面试官想考察的内容</strong></li><li>某些内容即使没有完全实践过，但是可以根据已有的实践经验扩展，结合实践来记忆、回答相关问题，是最好的</li></ul><h1 id="MySQL版本类问题"><a href="#MySQL版本类问题" class="headerlink" title="MySQL版本类问题"></a>MySQL版本类问题</h1><br><br><br><h1 id="学习备注-1"><a href="#学习备注-1" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote><p>1</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure><img src="" width="70%"><br>]]></content>
     
     
       
       
     <summary type="html">&lt;br&gt;
 
-&lt;br&gt;
-
-&lt;br&gt;
-
-&lt;h1 id=&quot;学习备注&quot;&gt;&lt;a href=&quot;#学习备注&quot; class=&quot;headerlink&quot; title=&quot;学习备注&quot;&gt;&lt;/a&gt;学习备注&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;1&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure cla</summary>
+&lt;h1 id=&quot;学习备注&quot;&gt;&lt;a href=&quot;#学习备注&quot; class=&quot;headerlink&quot; title=&quot;学习备注&quot;&gt;&lt;/a&gt;学习备注&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;需要体察问题背后，面试官想考察的内容&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;某些内容即</summary>
       
     
     
     
+    <category term="DataBase" scheme="https://ratears.github.io/dev.ratears.life/Categories/DataBase/"/>
+    
+    <category term="MySQL" scheme="https://ratears.github.io/dev.ratears.life/Categories/DataBase/MySQL/"/>
+    
+    
+    <category term="DataBase" scheme="https://ratears.github.io/dev.ratears.life/Tags/DataBase/"/>
+    
+    <category term="MySQL" scheme="https://ratears.github.io/dev.ratears.life/Tags/MySQL/"/>
     
   </entry>
   
@@ -99,9 +102,9 @@
     <category term="JVM" scheme="https://ratears.github.io/dev.ratears.life/Categories/Java/JVM/"/>
     
     
-    <category term="JVM" scheme="https://ratears.github.io/dev.ratears.life/Tags/JVM/"/>
-    
     <category term="Java" scheme="https://ratears.github.io/dev.ratears.life/Tags/Java/"/>
+    
+    <category term="JVM" scheme="https://ratears.github.io/dev.ratears.life/Tags/JVM/"/>
     
   </entry>
   
@@ -129,9 +132,9 @@
     <category term="Concurrency" scheme="https://ratears.github.io/dev.ratears.life/Categories/Java/Concurrency/"/>
     
     
-    <category term="Java" scheme="https://ratears.github.io/dev.ratears.life/Tags/Java/"/>
-    
     <category term="Concurrency" scheme="https://ratears.github.io/dev.ratears.life/Tags/Concurrency/"/>
+    
+    <category term="Java" scheme="https://ratears.github.io/dev.ratears.life/Tags/Java/"/>
     
   </entry>
   
@@ -159,9 +162,9 @@
     <category term="Concurrency" scheme="https://ratears.github.io/dev.ratears.life/Categories/Java/Concurrency/"/>
     
     
-    <category term="Java" scheme="https://ratears.github.io/dev.ratears.life/Tags/Java/"/>
-    
     <category term="Concurrency" scheme="https://ratears.github.io/dev.ratears.life/Tags/Concurrency/"/>
+    
+    <category term="Java" scheme="https://ratears.github.io/dev.ratears.life/Tags/Java/"/>
     
   </entry>
   
@@ -312,11 +315,11 @@
     <category term="ZooKeeper" scheme="https://ratears.github.io/dev.ratears.life/Categories/ZooKeeper/"/>
     
     
-    <category term="microservice" scheme="https://ratears.github.io/dev.ratears.life/Tags/microservice/"/>
-    
     <category term="ZooKeeper" scheme="https://ratears.github.io/dev.ratears.life/Tags/ZooKeeper/"/>
     
     <category term="Dubbo" scheme="https://ratears.github.io/dev.ratears.life/Tags/Dubbo/"/>
+    
+    <category term="microservice" scheme="https://ratears.github.io/dev.ratears.life/Tags/microservice/"/>
     
   </entry>
   
