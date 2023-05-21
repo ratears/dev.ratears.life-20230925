@@ -223,17 +223,39 @@
     </span>
     
     
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Categories/distributed/">distributed</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Tags/distributed/">distributed</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>18 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.9k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>6 Mins</span>
         </span>
     
     
@@ -252,6 +274,153 @@
                 
 
                 <br>
+
+<h1 id="课前必读-3讲"><a href="#课前必读-3讲" class="headerlink" title="课前必读 (3讲)"></a>课前必读 (3讲)</h1><h2 id="开篇词-四纵四横，带你透彻理解分布式技术"><a href="#开篇词-四纵四横，带你透彻理解分布式技术" class="headerlink" title="开篇词 | 四纵四横，带你透彻理解分布式技术"></a>开篇词 | 四纵四横，带你透彻理解分布式技术</h2><ul>
+<li><p>学习分布式可能遇到的问题：</p>
+<ul>
+<li>各种分布式概念、名词学了一大堆，但经常张冠李戴，傻傻分不清楚</li>
+<li>做了多年技术，也参与了很多分布式技术实践，却无法回答工作中各种分布式技术、组件、框架选型背后的根源；</li>
+<li>在一个分布式技术配套的典型场景往往能驾轻就熟，但一旦稍微变更考察业务场景、业务目标后，就变得毫无头绪。</li>
+</ul>
+</li>
+<li><p>究其原因，主要是<strong>知识碎片化、不成体系、见树不见林</strong></p>
+</li>
+<li><p><strong>学好分布式通识课，掌握了分布式的核心技术、体系，你就会发现很多新技术、新框架、新组件只不过是‘新瓶装旧酒’，将分布式核心技术进行了再包装、再组合，至多也就是做了一点延伸而已</strong></p>
+</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.1bdevfdexqtc.webp" width="100%">
+
+<br>
+
+<ul>
+<li><strong>在一定资源上，进行一定通信，通过一定计算，完成一定数据的加工和处理，从而对外提供特定的服务</strong></li>
+</ul>
+<h2 id="01-分布式缘何而起：从单兵，到游击队，到集团军"><a href="#01-分布式缘何而起：从单兵，到游击队，到集团军" class="headerlink" title="01 | 分布式缘何而起：从单兵，到游击队，到集团军"></a>01 | 分布式缘何而起：从单兵，到游击队，到集团军</h2><h3 id="分布式起源"><a href="#分布式起源" class="headerlink" title="分布式起源"></a>分布式起源</h3><h4 id="单兵模式：单机模式"><a href="#单兵模式：单机模式" class="headerlink" title="单兵模式：单机模式"></a>单兵模式：单机模式</h4><ul>
+<li><strong>单机模式</strong>：所有应用程序和数据均部署在一台电脑或服务器上，由一台计算机完成所有的处理<ul>
+<li>优点：功能、代码和数据集中，便于维护、管理和执行</li>
+<li>缺点：决定了CPU和内存等硬件的性能将成为单机模式的瓶颈</li>
+<li><strong>性能受限、存在单点失效问题</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="游击队模式：数据并行或数据分布式"><a href="#游击队模式：数据并行或数据分布式" class="headerlink" title="游击队模式：数据并行或数据分布式"></a>游击队模式：数据并行或数据分布式</h4><ul>
+<li>数据并行（也叫作数据分布式）模式：<strong>并行计算</strong>采用消息共享模式使用多台计算机并行运行或执行多项任务，核心原理是每台计算机上执行相同的程序，将数据进行拆分放到不同的计算机上进行计算。</li>
+<li>并行计算强调的是对数据进行拆分，任务程序在每台机器上运行<ul>
+<li>必须首先把单机模式中的应用和数据分离，才可能实现对数据的拆分</li>
+<li>这里的应用就是执行任务的程序，任务就是提交的请求</li>
+</ul>
+</li>
+<li>优点：可以利用多台计算机并行处理多个请求，使得我们可以在相同的时间内完成更多的请求处理，解决了单机模式的计算效率瓶颈问题</li>
+<li>问题：<ul>
+<li>如何负载均衡</li>
+<li>IO瓶颈，如果采用读写分离，如何同步数据？如何保证数据一致性</li>
+<li>需要引入缓存</li>
+</ul>
+</li>
+<li>数据并行模式的主要问题是：<strong>对提升单个任务的执行性能及降低时延无效</strong></li>
+</ul>
+<h4 id="集团军模式：任务并行或任务分布式"><a href="#集团军模式：任务并行或任务分布式" class="headerlink" title="集团军模式：任务并行或任务分布式"></a>集团军模式：任务并行或任务分布式</h4><ul>
+<li><strong>任务并行</strong>：将单个复杂的任务拆分为多个子任务，从而使得多个子任务可以在不同的计算机上并行执行。</li>
+<li><strong>集团军模式在提供了更好的性能、扩展性、可维护性的同时，也带来了设计上的复杂性问题</strong></li>
+</ul>
+<h4 id="分布式是什么？"><a href="#分布式是什么？" class="headerlink" title="分布式是什么？"></a>分布式是什么？</h4><ul>
+<li><strong>分布式其实就是将相同或相关的程序运行在多台计算机上，从而实现特定目标的一种计算方式</strong></li>
+<li><strong>产生分布式的最主要驱动力量，是我们对于性能、可用性及可扩展性的不懈追求</strong></li>
+</ul>
+<h2 id="02-分布式系统的指标：啥是分布式的三围"><a href="#02-分布式系统的指标：啥是分布式的三围" class="headerlink" title="02 | 分布式系统的指标：啥是分布式的三围"></a>02 | 分布式系统的指标：啥是分布式的三围</h2><h3 id="分布式系统的指标"><a href="#分布式系统的指标" class="headerlink" title="分布式系统的指标"></a>分布式系统的指标</h3><ul>
+<li>分布式的目的是<strong>用更多的机器，处理更多的数据和更复杂的任务</strong></li>
+<li><strong>性能、资源、可用性和可扩展性</strong>是分布式系统的重要指标</li>
+</ul>
+<h3 id="性能（Performance）"><a href="#性能（Performance）" class="headerlink" title="性能（Performance）"></a>性能（Performance）</h3><ul>
+<li>性能指标，主要用于衡量一个系统处理各种任务的能力</li>
+</ul>
+<h4 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a><strong>吞吐量</strong></h4><ul>
+<li>指的是，系统在一定时间内可以处理的任务数。常见的吞吐量指标有QPS（Queries Per Second）、TPS（Transactions Per Second）和BPS（Bits Per Second）<ul>
+<li>QPS，即查询数每秒，用于衡量一个系统每秒处理的查询数。这个指标通常用于读操作，越高说明对读操作的支持越好。所以，我们在设计一个分布式系统的时候，如果应用主要是读操作，那么需要重点考虑如何提高QPS，来支持高频的读操作。</li>
+<li>TPS，即事务数每秒，用于衡量一个系统每秒处理的事务数。这个指标通常对应于写操作，越高说明对写操作的支持越好。我们在设计一个分布式系统的时候，如果应用主要是写操作，那么需要重点考虑如何提高TPS，来支持高频写操作。</li>
+<li>BPS，即比特数每秒，用于衡量一个系统每秒处理的数据量。对于一些网络系统、数据管理系统，我们不能简单地按照请求数或事务数来衡量其性能。因为请求与请求、事务与事务之间也存在着很大的差异，比方说，有的事务大需要写入更多的数据。那么在这种情况下，BPS更能客观地反应系统的吞吐量。</li>
+</ul>
+</li>
+</ul>
+<h4 id="响应时间"><a href="#响应时间" class="headerlink" title="响应时间"></a><strong>响应时间</strong></h4><ul>
+<li>系统响应一个请求或输入需要花费的时间</li>
+</ul>
+<h4 id="完成时间"><a href="#完成时间" class="headerlink" title="完成时间"></a><strong>完成时间</strong></h4><ul>
+<li>系统真正完成一个请求或处理需要花费的时间</li>
+</ul>
+<h3 id="资源占用（Resource-Usage）"><a href="#资源占用（Resource-Usage）" class="headerlink" title="资源占用（Resource Usage）"></a>资源占用（Resource Usage）</h3><ul>
+<li>一个系统提供正常能力需要占用的硬件资源，比如CPU、内存、硬盘等</li>
+</ul>
+<h3 id="可用性（Availability）"><a href="#可用性（Availability）" class="headerlink" title="可用性（Availability）"></a>可用性（Availability）</h3><ul>
+<li>系统的可用性可以用<strong>系统停止服务的时间与总的时间之比衡量</strong></li>
+<li>系统的可用性还可以用<strong>某功能的失败次数与总的请求次数之比来衡量</strong></li>
+<li><strong>可靠性</strong>通常用来表示一个系统完全不出故障的概率，更多地用在硬件领域。而<strong>可用性</strong>则更多的是指在允许部分组件失效的情况下，一个系统对外仍能正常提供服务的概率。</li>
+</ul>
+<h3 id="可扩展性（Scalability）"><a href="#可扩展性（Scalability）" class="headerlink" title="可扩展性（Scalability）"></a>可扩展性（Scalability）</h3><ul>
+<li>分布式系统通过扩展集群机器规模提高系统性能(吞吐、响应时间、 完成时间)、存储容量、计算能力的特性，是分布式系统的特有性质</li>
+<li><strong>当任务的需求随着具体业务不断提高时，除了升级系统的性能做垂直/纵向扩展外，另一个做法就是通过增加机器的方式去水平/横向扩展系统规模</strong></li>
+</ul>
+<h3 id="不同场景下分布式系统的指标"><a href="#不同场景下分布式系统的指标" class="headerlink" title="不同场景下分布式系统的指标"></a>不同场景下分布式系统的指标</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.2v3iobaanio0.webp" width="90%">
+
+<br>
+
+
+
+<h1 id="第一站：分布式协调与同步-6讲"><a href="#第一站：分布式协调与同步-6讲" class="headerlink" title="第一站：分布式协调与同步 (6讲)"></a>第一站：分布式协调与同步 (6讲)</h1><h2 id="03-分布式互斥：有你没我，有我没你"><a href="#03-分布式互斥：有你没我，有我没你" class="headerlink" title="03 | 分布式互斥：有你没我，有我没你"></a>03 | 分布式互斥：有你没我，有我没你</h2><ul>
+<li>在分布式系统里，排他性的资源访问方式，叫作分布式互斥（Distributed Mutual Exclusion），而这种被互斥访问的共享资源就叫作临界资源（Critical Resource）</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.7l321dqdj1k0.webp" width="100%">
+
+<br>
+
+
+
+<h2 id="04-分布式选举：国不可一日无君"><a href="#04-分布式选举：国不可一日无君" class="headerlink" title="04 | 分布式选举：国不可一日无君"></a>04 | 分布式选举：国不可一日无君</h2><h3 id="为什么要有分布式选举？"><a href="#为什么要有分布式选举？" class="headerlink" title="为什么要有分布式选举？"></a>为什么要有分布式选举？</h3><ul>
+<li>选举的作用就是选出一个主节点，由它来协调和管理其他节点，以保证集群有序运行和节点间数据的一致性。</li>
+</ul>
+<h3 id="分布式选举的算法"><a href="#分布式选举的算法" class="headerlink" title="分布式选举的算法"></a>分布式选举的算法</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.4idtb9gcp6g.png" width="100%">
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
 
 <br>
 
@@ -296,6 +465,14 @@
                 </div>
             
 
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/distributed/">#distributed</a>&nbsp;
+                        </li>
+                    
+                </ul>
             
 
             
@@ -413,7 +590,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">1.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BE%E5%89%8D%E5%BF%85%E8%AF%BB-3%E8%AE%B2"><span class="nav-number">1.</span> <span class="nav-text">课前必读 (3讲)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E7%AF%87%E8%AF%8D-%E5%9B%9B%E7%BA%B5%E5%9B%9B%E6%A8%AA%EF%BC%8C%E5%B8%A6%E4%BD%A0%E9%80%8F%E5%BD%BB%E7%90%86%E8%A7%A3%E5%88%86%E5%B8%83%E5%BC%8F%E6%8A%80%E6%9C%AF"><span class="nav-number">1.1.</span> <span class="nav-text">开篇词 | 四纵四横，带你透彻理解分布式技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#01-%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%98%E4%BD%95%E8%80%8C%E8%B5%B7%EF%BC%9A%E4%BB%8E%E5%8D%95%E5%85%B5%EF%BC%8C%E5%88%B0%E6%B8%B8%E5%87%BB%E9%98%9F%EF%BC%8C%E5%88%B0%E9%9B%86%E5%9B%A2%E5%86%9B"><span class="nav-number">1.2.</span> <span class="nav-text">01 | 分布式缘何而起：从单兵，到游击队，到集团军</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%B5%B7%E6%BA%90"><span class="nav-number">1.2.1.</span> <span class="nav-text">分布式起源</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E5%85%B5%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%8D%95%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">单兵模式：单机模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%B8%E5%87%BB%E9%98%9F%E6%A8%A1%E5%BC%8F%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C%E6%88%96%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E5%BC%8F"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">游击队模式：数据并行或数据分布式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E5%9B%A2%E5%86%9B%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%BB%BB%E5%8A%A1%E5%B9%B6%E8%A1%8C%E6%88%96%E4%BB%BB%E5%8A%A1%E5%88%86%E5%B8%83%E5%BC%8F"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">集团军模式：任务并行或任务分布式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">分布式是什么？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8C%87%E6%A0%87%EF%BC%9A%E5%95%A5%E6%98%AF%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E4%B8%89%E5%9B%B4"><span class="nav-number">1.3.</span> <span class="nav-text">02 | 分布式系统的指标：啥是分布式的三围</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8C%87%E6%A0%87"><span class="nav-number">1.3.1.</span> <span class="nav-text">分布式系统的指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%EF%BC%88Performance%EF%BC%89"><span class="nav-number">1.3.2.</span> <span class="nav-text">性能（Performance）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%9E%E5%90%90%E9%87%8F"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">吞吐量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">响应时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E6%97%B6%E9%97%B4"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">完成时间</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8%EF%BC%88Resource-Usage%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">资源占用（Resource Usage）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E7%94%A8%E6%80%A7%EF%BC%88Availability%EF%BC%89"><span class="nav-number">1.3.4.</span> <span class="nav-text">可用性（Availability）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7%EF%BC%88Scalability%EF%BC%89"><span class="nav-number">1.3.5.</span> <span class="nav-text">可扩展性（Scalability）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%90%8C%E5%9C%BA%E6%99%AF%E4%B8%8B%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%8C%87%E6%A0%87"><span class="nav-number">1.3.6.</span> <span class="nav-text">不同场景下分布式系统的指标</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%99%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F%E5%8D%8F%E8%B0%83%E4%B8%8E%E5%90%8C%E6%AD%A5-6%E8%AE%B2"><span class="nav-number">2.</span> <span class="nav-text">第一站：分布式协调与同步 (6讲)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#03-%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%92%E6%96%A5%EF%BC%9A%E6%9C%89%E4%BD%A0%E6%B2%A1%E6%88%91%EF%BC%8C%E6%9C%89%E6%88%91%E6%B2%A1%E4%BD%A0"><span class="nav-number">2.1.</span> <span class="nav-text">03 | 分布式互斥：有你没我，有我没你</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#04-%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%89%E4%B8%BE%EF%BC%9A%E5%9B%BD%E4%B8%8D%E5%8F%AF%E4%B8%80%E6%97%A5%E6%97%A0%E5%90%9B"><span class="nav-number">2.2.</span> <span class="nav-text">04 | 分布式选举：国不可一日无君</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%89%E4%B8%BE%EF%BC%9F"><span class="nav-number">2.2.1.</span> <span class="nav-text">为什么要有分布式选举？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%89%E4%B8%BE%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">分布式选举的算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">3.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
