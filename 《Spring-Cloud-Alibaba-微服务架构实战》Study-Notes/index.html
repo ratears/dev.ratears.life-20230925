@@ -9,7 +9,7 @@
     
     <title>
         
-            《阿里新零售数据库设计与实战》study notes |
+            《Spring Cloud / Alibaba 微服务架构实战》Study Notes |
         
         ratears&#39;s blog
     </title>
@@ -191,7 +191,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">《阿里新零售数据库设计与实战》study notes</span>
+                <span class="title-hover-animation">《Spring Cloud / Alibaba 微服务架构实战》Study Notes</span>
             </div>
 
             
@@ -213,57 +213,27 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2023-02-06 08:18:07</span>
-        <span class="mobile">2023-02-06 08:18</span>
+        <span class="pc">2023-05-26 01:07:46</span>
+        <span class="mobile">2023-05-26 01:07</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-02-06 08:18:07</span>
+        <span class="pc">2023-05-26 01:07:46</span>
     </span>
     
     
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="../Categories/DataBase/">DataBase</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="../Categories/DataBase/MySQL/">MySQL</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="../Tags/DataBase/">DataBase</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="../Tags/MySQL/">MySQL</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>804 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>18 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
         </span>
     
     
@@ -281,160 +251,11 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
-<li>从设计到落地，提升数据库“技术&amp;业务”综合能力</li>
-<li>相当于参与了真实项目的数据库设计[开发经验很难得]</li>
-<li>具备设计完整数据库平台的能力[设计思想要跟上]</li>
-<li>驾驭新零售数据库混合式集群[特别牛的技术]</li>
-</ul>
-<br>
+                <br>
 
 <br>
 
 <br>
-
-<h1 id="新零售是什么"><a href="#新零售是什么" class="headerlink" title="新零售是什么"></a>新零售是什么</h1><ul>
-<li>雷军：新零售是更高效率的零售，我们要从线上回到线下</li>
-<li>马云：线下与线上零售将深度结合，加上现代物流平台，构成未来的新零售</li>
-<li>商务部：以消费者为中心，以技术创新为驱动的零售模新式</li>
-</ul>
-<ul>
-<li>新零售线上业务仅是电商吗？</li>
-</ul>
-<blockquote>
-<p>线上业务不局限于电商，还包括了在线教育、医疗服务，以及金融业务等等</p>
-</blockquote>
-<ul>
-<li>新零售的线下业务</li>
-</ul>
-<blockquote>
-<p>利用云计算、大数据，以及人工智能技术，将客户分流到线下门店中，让用户体验到定制化的服务</p>
-</blockquote>
-<ul>
-<li>新零售平台构成</li>
-</ul>
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.2hkwqsnfv780.webp" width="60%">
-
-<br>
-
-<br>
-
-<br>
-
-<h1 id="前导知识"><a href="#前导知识" class="headerlink" title="前导知识"></a>前导知识</h1><h2 id="Linux环境准备"><a href="#Linux环境准备" class="headerlink" title="Linux环境准备"></a>Linux环境准备</h2><h3 id="关闭SELinux"><a href="#关闭SELinux" class="headerlink" title="关闭SELinux"></a>关闭SELinux</h3><ul>
-<li>SELinux是Linux2.6以上版本捆绑的一个安全模块</li>
-<li>SELinux配置复杂，容易跟其他程序冲突，所以建议关闭</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/selinux/config</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置SELINUX=disabled，重启系统</span></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h3 id="替换yum源"><a href="#替换yum源" class="headerlink" title="替换yum源"></a>替换yum源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo mirrors.163.com/.help/CentOS7-Base-163.repo</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新缓存</span></span><br><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><h3 id="在线安装MySQL"><a href="#在线安装MySQL" class="headerlink" title="在线安装MySQL"></a>在线安装MySQL</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载rpm文件</span></span><br><span class="line">yum localinstall https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装MySQL</span></span><br><span class="line">yum install mysal-community-server -y</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h3 id="本地安装MySQL"><a href="#本地安装MySQL" class="headerlink" title="本地安装MySQL"></a>本地安装MySQL</h3><ul>
-<li>离线下载安装</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载MySQL压缩包文件，并上传到/root/mysql目录</span></span><br><span class="line">mysql-8.0.11-1.el7.x86 64.rpm-bundle.tar</span><br><span class="line"></span><br><span class="line">tar xvf mysgl-8.0.11-1.el7.x86 64.rpm-bundle.tar</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装第三方依赖包</span></span><br><span class="line">yum install perl -y</span><br><span class="line">yum install net-tools -y</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">卸载系统自带的mariadb</span></span><br><span class="line">rpm -qa |grep mariadb</span><br><span class="line">rpm -e mariadb-libs-5.5.68-1.el7.x86_64 --nodeps</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装MySQL程序包</span></span><br><span class="line">rpm -ivh mysql-community-common-8.0.11-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-8.0.11-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-client-8.0.11-1.el7.x86 64.rpm</span><br><span class="line">rpm -ivh mysql-community-server-8.0.11-1.el7.x86 64.rpm</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改/var/lib/mysql目录访问权限</span></span><br><span class="line">chmod -R 777 /var/lib/mysql/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">初始化，初始化数据目录，生成必要的文件，生成root密码</span></span><br><span class="line">mysqld --initialize</span><br><span class="line">chmod -R 777 /var/lib/mysql/*</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>启动</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动数据库</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在线安装使用：</span></span><br><span class="line">service mysql start</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">离线本地安装使用：</span></span><br><span class="line">service mysqld start</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看初始化密码</span></span><br><span class="line">grep&#x27;temporary password’ /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>修改root密码</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">本地登录数据库</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改root密码</span></span><br><span class="line">alter user user)) identified by &quot;abc123456&quot;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>允许root远程登录</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">允许远程使用root账户</span></span><br><span class="line">UPDATE user SET host = %&#x27; WHERE user =&#x27;root&#x27;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改/etc/my.cnf文件</span></span><br><span class="line">character set server = utf8</span><br><span class="line">bind-address = 0.0.0.0</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>系统防火墙开放3306端口</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd--zone=public  --add-port=3306/tcp --permanent</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="业务数据库设计流程"><a href="#业务数据库设计流程" class="headerlink" title="业务数据库设计流程"></a>业务数据库设计流程</h2><ul>
-<li>需求分析：根据用户的需求，分析出需要记录的数据</li>
-<li>概要设计：根据分析出的数据，设计ER图</li>
-<li>详细设计：将ER图转换成数据库模型图和数据表</li>
-</ul>
-<br>
-
-<h2 id="业务数据设计模型"><a href="#业务数据设计模型" class="headerlink" title="业务数据设计模型"></a>业务数据设计模型</h2><ul>
-<li>瀑布模型</li>
-</ul>
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.3aas4yr220e0.webp" width="40%">
-
-<br>
-
-<ul>
-<li>螺旋模型</li>
-</ul>
-<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.66x4m6vejbk0.webp" width="40%">
-
-<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br>
-
-<br>
-
-<br>
-
 
 <h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote>
 <p>1</p>
@@ -452,16 +273,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">Post title</span>: <span class="content">《阿里新零售数据库设计与实战》study notes</span>
+            <span class="type">Post title</span>: <span class="content">《Spring Cloud / Alibaba 微服务架构实战》Study Notes</span>
         </li>
         <li class="post-author">
             <span class="type">Post author</span>: <span class="content">ratears</span>
         </li>
         <li class="post-time">
-            <span class="type">Create time</span>: <span class="content">2023-02-06 08:18:07</span>
+            <span class="type">Create time</span>: <span class="content">2023-05-26 01:07:46</span>
         </li>
         <li class="post-link">
-            <span class="type">Post link</span>: <span class="content">《阿里新零售数据库设计与实战》study-notes/</span>
+            <span class="type">Post link</span>: <span class="content">《Spring-Cloud-Alibaba-微服务架构实战》Study-Notes/</span>
         </li>
         <li class="post-license">
             <span class="type">Copyright notice</span>: <span class="content">All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.</span>
@@ -476,37 +297,25 @@
             
 
             
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="../Tags/DataBase/">#DataBase</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="../Tags/MySQL/">#MySQL</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
 
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="../Linux-%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/"
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="../%E3%80%8A%E5%88%86%E5%B8%83%E5%BC%8F%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90%E3%80%8BStudy-Notes/"
                             >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">《分布式技术原理与算法解析》Study Notes</span>
+                                <span class="post-nav-item">Next posts</span>
                             </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux 常用基础操作</span>
-                                <span class="post-nav-item">Prev posts</span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
                             </span>
                             </a>
                         </div>
-                    
                     
                 </div>
             
@@ -604,7 +413,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E9%9B%B6%E5%94%AE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">新零售是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E5%AF%BC%E7%9F%A5%E8%AF%86"><span class="nav-number">3.</span> <span class="nav-text">前导知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">3.1.</span> <span class="nav-text">Linux环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%ADSELinux"><span class="nav-number">3.1.1.</span> <span class="nav-text">关闭SELinux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2yum%E6%BA%90"><span class="nav-number">3.1.2.</span> <span class="nav-text">替换yum源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85MySQL"><span class="nav-number">3.2.</span> <span class="nav-text">安装MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85MySQL"><span class="nav-number">3.2.1.</span> <span class="nav-text">在线安装MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85MySQL"><span class="nav-number">3.2.2.</span> <span class="nav-text">本地安装MySQL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">业务数据库设计流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E6%95%B0%E6%8D%AE%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.4.</span> <span class="nav-text">业务数据设计模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">4.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">1.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
