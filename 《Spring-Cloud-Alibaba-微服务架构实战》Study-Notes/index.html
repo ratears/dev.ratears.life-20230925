@@ -223,17 +223,55 @@
     </span>
     
     
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Categories/microservice/">microservice</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="../Categories/microservice/Spring-Cloud/">Spring Cloud</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="../Categories/microservice/Spring-Cloud-Alibaba/">Spring Cloud Alibaba</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="../Tags/Spring-Cloud-Alibaba/">Spring Cloud Alibaba</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="../Tags/Spring-Cloud/">Spring Cloud</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="../Tags/microservice/">microservice</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>18 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.2k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>8 Mins</span>
         </span>
     
     
@@ -253,12 +291,227 @@
 
                 <br>
 
+<h1 id="第1章-课程介绍"><a href="#第1章-课程介绍" class="headerlink" title="第1章 课程介绍"></a>第1章 课程介绍</h1><h2 id="Spring体系概述"><a href="#Spring体系概述" class="headerlink" title="Spring体系概述"></a>Spring体系概述</h2><ul>
+<li>SpringCloud是基于Spring构建分布式系统的工具集</li>
+<li>Spring是以Bean为中心提供AOP、IOC等功能</li>
+<li>SpringBoot是以Application为中心提供自动配置、监控等功能</li>
+<li>SpringCloud是以Service为中心提供服务的注册与发现、服务的调用与负载均衡等功能</li>
+<li>SpringCloud提供了很强大的功能，但并不提供具体实现。而是通过SpringCloud Common子项目定义了统一的抽象API。不同厂商会有不同的实现</li>
+</ul>
+<h2 id="课程目标"><a href="#课程目标" class="headerlink" title="课程目标"></a>课程目标</h2><ol>
+<li>直面微服务落地过程中的各种问题，制定解决方案</li>
+<li>深究微服务架构设计，提高代码复用性</li>
+<li>落地企业级开发实战，透视微服务思想</li>
+</ol>
+<h2 id="通过工程架构图俯视课程核心知识点"><a href="#通过工程架构图俯视课程核心知识点" class="headerlink" title="通过工程架构图俯视课程核心知识点"></a>通过工程架构图俯视课程核心知识点</h2><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.40fb5l9hr2g0.webp" width="70%">
+
+<br>
+
+<h2 id="课程收获"><a href="#课程收获" class="headerlink" title="课程收获"></a>课程收获</h2><ol>
+<li>掌握微服务开发框架及企业级常用组件的集成与应用</li>
+<li>掌握微服务工程架构设计原则、业务拆分思想</li>
+<li>具备制定和实施微服务工程解决方案的能力</li>
+</ol>
+<h2 id="学习方法论"><a href="#学习方法论" class="headerlink" title="学习方法论"></a>学习方法论</h2><ol>
+<li>不要着急编码，先搞清楚套路和原则</li>
+<li>主动思考，提出更好的解决方案</li>
+<li>学以致用，站在巨人的肩膀上</li>
+<li>合理利用资源，课程的知识点多种多样</li>
+</ol>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第2章-理解微服务架构，清楚微服务设计原则"><a href="#第2章-理解微服务架构，清楚微服务设计原则" class="headerlink" title="第2章 理解微服务架构，清楚微服务设计原则"></a>第2章 理解微服务架构，清楚微服务设计原则</h1><h2 id="微服务架构的演进过程"><a href="#微服务架构的演进过程" class="headerlink" title="微服务架构的演进过程"></a>微服务架构的演进过程</h2><h3 id="最早的系统架构设计：单体架构"><a href="#最早的系统架构设计：单体架构" class="headerlink" title="最早的系统架构设计：单体架构"></a>最早的系统架构设计：单体架构</h3><ul>
+<li>单体架构设计：将整个业务功能实现写在一个工程中<ul>
+<li>优点：开发、部署、上线非常简单</li>
+<li>缺点：代码耦合严重，牵一发而动全身</li>
+</ul>
+</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.3nbo0t1njzc0.webp" width="70%">
+
+<br>
+
+<h3 id="单体架构的升级改进：垂直应用架构"><a href="#单体架构的升级改进：垂直应用架构" class="headerlink" title="单体架构的升级改进：垂直应用架构"></a>单体架构的升级改进：垂直应用架构</h3><ul>
+<li>垂直：指单一的业务场景</li>
+<li>垂直应用架构的思想<ul>
+<li>从单体应用按照功能业务垂直拆分出多个应用</li>
+<li>每一个应用都会独立的部署</li>
+<li>每一个应用都有独立的数据库</li>
+<li>每一个应用有自己独立的域名</li>
+</ul>
+</li>
+<li>优点：服务、部署独立，水平扩展容易</li>
+<li>缺点：搭建复杂，服务之间关系错综复杂，维护困难</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.5b568vziwqo0.webp" width="70%">
+
+<br>
+
+<h3 id="垂直应用架构的升级改进：SOA架构"><a href="#垂直应用架构的升级改进：SOA架构" class="headerlink" title="垂直应用架构的升级改进：SOA架构"></a>垂直应用架构的升级改进：SOA架构</h3><ul>
+<li>SOA（Service-Oriented Architecture，面向服务的架构）</li>
+<li>SOA架构是微服务出现前应用比较广泛的架构</li>
+<li>思想：在企业计算领域，将耦合的系统划分为面向业务的、粗粒度、松耦合、无状态服务，服务发布出来，供其它服务去调用。一组互相依赖的系统就构成了SOA架构下的系统</li>
+<li>SAO不是某一具体的技术实现，而是系统架构思想</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.tss5d4tsels.webp" width="70%">
+
+<br>
+
+<h3 id="业界最流行的软件开发架构：微服务架构"><a href="#业界最流行的软件开发架构：微服务架构" class="headerlink" title="业界最流行的软件开发架构：微服务架构"></a>业界最流行的软件开发架构：微服务架构</h3><img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.5ryj362wtvk0.webp" width="70%">
+
+<br>
+
+<h2 id="微服务架构需要遵循的原则"><a href="#微服务架构需要遵循的原则" class="headerlink" title="微服务架构需要遵循的原则"></a>微服务架构需要遵循的原则</h2><h3 id="微服务架构能够带来的收益（合理正确的将单体应用迁移到微服务）"><a href="#微服务架构能够带来的收益（合理正确的将单体应用迁移到微服务）" class="headerlink" title="微服务架构能够带来的收益（合理正确的将单体应用迁移到微服务）"></a>微服务架构能够带来的收益（合理正确的将单体应用迁移到微服务）</h3><ul>
+<li>单个服务，可以选择一门开发人员擅长的语言去开发，扩展性强</li>
+<li>对于整个应用而言，代码不再耦合，不会出现大量冲突</li>
+<li>微服务可以重用，应用发布时间可控性更强</li>
+<li>通过故障隔离，让错误在微服务中降级，不会影响到整个应用（或其它应用）</li>
+</ul>
+<h3 id="不遵循微服务架构原则会出现巨大的问题"><a href="#不遵循微服务架构原则会出现巨大的问题" class="headerlink" title="不遵循微服务架构原则会出现巨大的问题"></a>不遵循微服务架构原则会出现巨大的问题</h3><ul>
+<li>微服务之间的依赖错综复杂，难以维护</li>
+<li>开发过程[互相纠缠]，开发、上线时间严重影响</li>
+</ul>
+<h3 id="最佳实践：微服务架构需要遵循的原则"><a href="#最佳实践：微服务架构需要遵循的原则" class="headerlink" title="最佳实践：微服务架构需要遵循的原则"></a>最佳实践：微服务架构需要遵循的原则</h3><ul>
+<li>职责独立:每个微服务只做自己功能范围内的事，微服务之间的依赖链不要[过长]（建议单个微服务的依赖链路不要超过3）</li>
+<li>使用熔断器实现快速的故障容错和线程隔离，例如Hystrix、Sentinel</li>
+<li>通过网关代理微服务请求，网关是微服务架构对外暴露的唯一入口</li>
+<li>确保微服务API变更后能够向后兼容</li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第3章-设计电商工程，把握全局视角"><a href="#第3章-设计电商工程，把握全局视角" class="headerlink" title="第3章 设计电商工程，把握全局视角"></a>第3章 设计电商工程，把握全局视角</h1><h2 id="领域驱动设计（DDD）"><a href="#领域驱动设计（DDD）" class="headerlink" title="领域驱动设计（DDD）"></a>领域驱动设计（DDD）</h2><h3 id="DDD的相关概念"><a href="#DDD的相关概念" class="headerlink" title="DDD的相关概念"></a>DDD的相关概念</h3><ul>
+<li>DDD是一种软件架构设计方法，它并不定义软件开发过程（DevOps）</li>
+<li>DDD利用面向对象的特性，以业务为核心驱动。而不是传统的数据库（表）驱动开发</li>
+</ul>
+<h3 id="领域"><a href="#领域" class="headerlink" title="领域"></a>领域</h3><ul>
+<li>领域即业务。领域是对功能需求的划分，大的领域下面还有许多小的子领域</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.64796m8yqmo0.webp" width="70%">
+
+<br>
+
+
+
+<h3 id="理解领域概念，学习领域知识，对领域建模"><a href="#理解领域概念，学习领域知识，对领域建模" class="headerlink" title="理解领域概念，学习领域知识，对领域建模"></a>理解领域概念，学习领域知识，对领域建模</h3><ol>
+<li>分析领域模型，推演实体、值对象、领域服务</li>
+<li>找出聚合边界(降低服务合)</li>
+<li>为聚合配备存储仓库(数据持久化)</li>
+<li>实践 DDD，并不断推倒和重构</li>
+</ol>
+<h2 id="电商工程业务解读"><a href="#电商工程业务解读" class="headerlink" title="电商工程业务解读"></a>电商工程业务解读</h2><ul>
+<li>Tips:学习领域知识最好的方式就是参考和借鉴</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.6ohd5xzmkco0.webp" width="70%">
+
+<br>
+
+
+
+
+
+<h2 id="微服务模块拆分"><a href="#微服务模块拆分" class="headerlink" title="微服务模块拆分"></a>微服务模块拆分</h2><h3 id="工程入口及用户鉴权微服务"><a href="#工程入口及用户鉴权微服务" class="headerlink" title="工程入口及用户鉴权微服务"></a>工程入口及用户鉴权微服务</h3><ul>
+<li>网关是微服务架构的唯一入口</li>
+<li>鉴权：用户登录和注册</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.621dbmex1700.webp" width="70%">
+
+<br>
+
+
+
+<h2 id="电商功能微服务"><a href="#电商功能微服务" class="headerlink" title="电商功能微服务"></a>电商功能微服务</h2><ul>
+<li>四大功能微服务模块:账户、商品、订单、物流</li>
+</ul>
+<img src="https://cdn.staticaly.com/gh/ratears/image-hosting@main/blog-img-bed/image.30ejegjj6os0.webp" width="70%">
+
+<br>
+
+
+
+<h2 id="创建电商项目工程"><a href="#创建电商项目工程" class="headerlink" title="创建电商项目工程"></a>创建电商项目工程</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/ratears/len_project_code_repo" >https://github.com/ratears/len_project_code_repo<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第4章-Alibaba-Nacos：服务注册与配置中心"><a href="#第4章-Alibaba-Nacos：服务注册与配置中心" class="headerlink" title="第4章 Alibaba Nacos：服务注册与配置中心"></a>第4章 Alibaba Nacos：服务注册与配置中心</h1><h2 id="Alibaba-Nacos介绍"><a href="#Alibaba-Nacos介绍" class="headerlink" title="Alibaba Nacos介绍"></a>Alibaba Nacos介绍</h2><ul>
+<li>服务注册中心:它是服务，实例及元数据的数据库，服务注册中心可能会调用服务实例的健康检查API来验证它是否能够处理请求</li>
+<li>服务元数据:包括服务端点(endpoints)、服务标签、服务版本号、服务实例权重、路由规则安全策略等描述服务的数据</li>
+<li>服务提供、消费方:提供可复用和可调用服务的应用方，会发起对某个服务调用的应用方</li>
+<li>配置:在系统开发过程中通常会将一些需要变更的参数、变量等从代码中分离出来独立管理以独立的配置文件的形式存在</li>
+</ul>
+<h2 id="部署Alibaba-Nacos"><a href="#部署Alibaba-Nacos" class="headerlink" title="部署Alibaba Nacos"></a>部署Alibaba Nacos</h2><h3 id="单机部署Alibaba-Nacos"><a href="#单机部署Alibaba-Nacos" class="headerlink" title="单机部署Alibaba Nacos"></a>单机部署Alibaba Nacos</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src/</span><br><span class="line"></span><br><span class="line">wget https://github.com/alibaba/nacos/releases/download/2.0.0-bugfix/nacos-server-2.0.0.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf nacos-server-2.0.0.tar.gz</span><br><span class="line"></span><br><span class="line">mv nacos /usr/local/</span><br><span class="line"></span><br><span class="line">cd /usr/local/</span><br><span class="line"></span><br><span class="line">cd /usr/local/nacos/bin/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">单机模式启动(默认配置就可以):</span></span><br><span class="line">./startup.sh -m standalone</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="给Nacos-配置自定义的-MySQL-持久化"><a href="#给Nacos-配置自定义的-MySQL-持久化" class="headerlink" title="给Nacos 配置自定义的 MySQL 持久化"></a>给Nacos 配置自定义的 MySQL 持久化</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">（1）修改配置，指定 MySQL 地址、用户名、端口号</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">*************** Config Module Related Configurations ***************<span class="comment">#</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## If use MySQL as datasource:</span></span></span><br><span class="line">spring.datasource.platform=mysql</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## Count of DB:</span></span></span><br><span class="line">db.num=1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## Connect URL of DB:</span></span></span><br><span class="line">db.url.0=jdbc:mysql://192.168.61.221:3306/nacos?characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useUnicode=true&amp;useSSL=false&amp;serverTimezone=UTC</span><br><span class="line">db.user.0=root</span><br><span class="line">db.password.0=root</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">（2）在连接的数据库中执行nacos的脚本</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">（3）重启nacos</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="集群部署Alibaba-Nacos"><a href="#集群部署Alibaba-Nacos" class="headerlink" title="集群部署Alibaba Nacos"></a>集群部署Alibaba Nacos</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里演示用伪集群方式（集群方式略同）</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">（1）在cluster.conf文件中定义集群部署的ip 和端口，同时需要修改配置文件application.properties中的对外端口</span></span><br><span class="line">cd /usr/local/nacos/conf</span><br><span class="line"></span><br><span class="line">cp cluster.conf.example cluster.conf</span><br><span class="line"></span><br><span class="line">vim cluster.conf</span><br><span class="line"></span><br><span class="line">192.168.61.220:8848</span><br><span class="line">192.168.61.220:8858</span><br><span class="line">192.168.61.220:8868</span><br><span class="line"></span><br><span class="line">cd /usr/local/</span><br><span class="line"></span><br><span class="line">cp -R nacos/ nacos-8848</span><br><span class="line">cp -R nacos/ nacos-8858</span><br><span class="line">cp -R nacos/ nacos-8868</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">（2）集群必须要使用可以共同访问(例如 MySQL、PG等等)到的数据源作为持久化的方式,参考 给Nacos 配置自定义的 MySQL 持久化</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">（3）集群化启动没有额外的参数:./startup.sh</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Alibaba-Nacos-Client-服务注册与发现"><a href="#Alibaba-Nacos-Client-服务注册与发现" class="headerlink" title="Alibaba Nacos Client 服务注册与发现"></a>Alibaba Nacos Client 服务注册与发现</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/ratears/len_project_code_repo" >https://github.com/ratears/len_project_code_repo<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<br>
+
+<br>
+
+<br>
+
+<h1 id="第5章-SpringBoot-Admin-微服务应用监控"><a href="#第5章-SpringBoot-Admin-微服务应用监控" class="headerlink" title="第5章 SpringBoot Admin 微服务应用监控"></a>第5章 SpringBoot Admin 微服务应用监控</h1><h2 id="SpringBoot-Actuator"><a href="#SpringBoot-Actuator" class="headerlink" title="SpringBoot Actuator"></a>SpringBoot Actuator</h2><h3 id="Actuator-Endpoints"><a href="#Actuator-Endpoints" class="headerlink" title="Actuator Endpoints"></a>Actuator Endpoints</h3><ul>
+<li>Endpoints 是 Actuator 的核心部分，它用来监视应用程序及交互;SpringBoot Actuator 内置了很多 Endpoints，并支持扩展</li>
+<li>SpringBoot Actuator 提供的原生端点有三类：<ul>
+<li>应用配置类:自动配置信息、Spring Bean 信息yml文件信息、环境信息等等</li>
+<li>度量指标类:主要是运行期间的动态信息，例如堆栈、健康指标、metrics 信息等等</li>
+<li>操作控制类:主要是指shutdown，用户可以发送一个请求将应用的监控功能关闭</li>
+</ul>
+</li>
+</ul>
+<h2 id="SpringBoot-Admin"><a href="#SpringBoot-Admin" class="headerlink" title="SpringBoot Admin"></a>SpringBoot Admin</h2><ul>
+<li>搭建监控服务器的步骤<ul>
+<li>添加SpringBoot Admin Starter 自动配置依赖</li>
+<li>添加启动注解:@EnableAdminServer</li>
+</ul>
+</li>
+</ul>
+<h2 id="应用注册到-SpringBoot-Admin-Server"><a href="#应用注册到-SpringBoot-Admin-Server" class="headerlink" title="应用注册到 SpringBoot Admin Server"></a>应用注册到 SpringBoot Admin Server</h2><h3 id="被监控和管理的应用-微服务-，注册到Admin-Server-的两种方式"><a href="#被监控和管理的应用-微服务-，注册到Admin-Server-的两种方式" class="headerlink" title="被监控和管理的应用(微服务)，注册到Admin Server 的两种方式"></a>被监控和管理的应用(微服务)，注册到Admin Server 的两种方式</h3><ul>
+<li>方式一:被监控和管理的应用程序，使用 SpringBoot Admin Client 库，通过HTTP调用注册到 SpringBoot Admin Server 上</li>
+<li>方式二:首先，被监控和管理的应用程序，注册到 SpringCloud 集成的注册中心;然后SpringBoot Admin Server 通过注册中心获取到被监控和管理的应用程序</li>
+</ul>
+<h2 id="监控中心服务器添加安全访问控制"><a href="#监控中心服务器添加安全访问控制" class="headerlink" title="监控中心服务器添加安全访问控制"></a>监控中心服务器添加安全访问控制</h2><ul>
+<li>略（见代码）</li>
+<li>自定义监控告警<ul>
+<li>邮件配置</li>
+<li>其它配置（参考视频）</li>
+</ul>
+</li>
+</ul>
+<br>
+
 <br>
 
 <br>
 
 <h1 id="学习备注"><a href="#学习备注" class="headerlink" title="学习备注"></a>学习备注</h1><blockquote>
-<p>1</p>
+<ol>
+<li>某些spring的注解还不够熟悉</li>
+<li>maven还需要加强</li>
+<li>Security还需要认真学习，熟悉</li>
+</ol>
 </blockquote>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">red</span>&gt;</span><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="symbol">&amp;emsp;</span><span class="symbol">&amp;emsp;</span></span><br></pre></td></tr></table></figure>
 
@@ -297,9 +550,40 @@
             
 
             
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/Spring-Cloud-Alibaba/">#Spring Cloud Alibaba</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/Spring-Cloud/">#Spring Cloud</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="../Tags/microservice/">#microservice</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="../%E3%80%8ASpring-Security-OAuth2-%E7%B2%BE%E8%AE%B2%EF%BC%8C%E6%89%93%E9%80%A0%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83%E3%80%8BStudy-Notes/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">《Spring Security+OAuth2 精讲，打造企业级认证与授权》Study Notes</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
@@ -413,7 +697,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">1.</span> <span class="nav-text">学习备注</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">第1章 课程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E4%BD%93%E7%B3%BB%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">Spring体系概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E6%A0%87"><span class="nav-number">1.2.</span> <span class="nav-text">课程目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%B7%A5%E7%A8%8B%E6%9E%B6%E6%9E%84%E5%9B%BE%E4%BF%AF%E8%A7%86%E8%AF%BE%E7%A8%8B%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">通过工程架构图俯视课程核心知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E6%94%B6%E8%8E%B7"><span class="nav-number">1.4.</span> <span class="nav-text">课程收获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="nav-number">1.5.</span> <span class="nav-text">学习方法论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E7%90%86%E8%A7%A3%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%EF%BC%8C%E6%B8%85%E6%A5%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">第2章 理解微服务架构，清楚微服务设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">微服务架构的演进过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E6%97%A9%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%EF%BC%9A%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84"><span class="nav-number">2.1.1.</span> <span class="nav-text">最早的系统架构设计：单体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%BD%93%E6%9E%B6%E6%9E%84%E7%9A%84%E5%8D%87%E7%BA%A7%E6%94%B9%E8%BF%9B%EF%BC%9A%E5%9E%82%E7%9B%B4%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">单体架构的升级改进：垂直应用架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9E%82%E7%9B%B4%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%E7%9A%84%E5%8D%87%E7%BA%A7%E6%94%B9%E8%BF%9B%EF%BC%9ASOA%E6%9E%B6%E6%9E%84"><span class="nav-number">2.1.3.</span> <span class="nav-text">垂直应用架构的升级改进：SOA架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9A%E7%95%8C%E6%9C%80%E6%B5%81%E8%A1%8C%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%9E%B6%E6%9E%84%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-number">2.1.4.</span> <span class="nav-text">业界最流行的软件开发架构：微服务架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E9%9C%80%E8%A6%81%E9%81%B5%E5%BE%AA%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-number">2.2.</span> <span class="nav-text">微服务架构需要遵循的原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E8%83%BD%E5%A4%9F%E5%B8%A6%E6%9D%A5%E7%9A%84%E6%94%B6%E7%9B%8A%EF%BC%88%E5%90%88%E7%90%86%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%B0%86%E5%8D%95%E4%BD%93%E5%BA%94%E7%94%A8%E8%BF%81%E7%A7%BB%E5%88%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">微服务架构能够带来的收益（合理正确的将单体应用迁移到微服务）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E9%81%B5%E5%BE%AA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E5%8E%9F%E5%88%99%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%B7%A8%E5%A4%A7%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.2.</span> <span class="nav-text">不遵循微服务架构原则会出现巨大的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E9%9C%80%E8%A6%81%E9%81%B5%E5%BE%AA%E7%9A%84%E5%8E%9F%E5%88%99"><span class="nav-number">2.2.3.</span> <span class="nav-text">最佳实践：微服务架构需要遵循的原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-%E8%AE%BE%E8%AE%A1%E7%94%B5%E5%95%86%E5%B7%A5%E7%A8%8B%EF%BC%8C%E6%8A%8A%E6%8F%A1%E5%85%A8%E5%B1%80%E8%A7%86%E8%A7%92"><span class="nav-number">3.</span> <span class="nav-text">第3章 设计电商工程，把握全局视角</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%86%E5%9F%9F%E9%A9%B1%E5%8A%A8%E8%AE%BE%E8%AE%A1%EF%BC%88DDD%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">领域驱动设计（DDD）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DDD%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.1.</span> <span class="nav-text">DDD的相关概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%86%E5%9F%9F"><span class="nav-number">3.1.2.</span> <span class="nav-text">领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E9%A2%86%E5%9F%9F%E6%A6%82%E5%BF%B5%EF%BC%8C%E5%AD%A6%E4%B9%A0%E9%A2%86%E5%9F%9F%E7%9F%A5%E8%AF%86%EF%BC%8C%E5%AF%B9%E9%A2%86%E5%9F%9F%E5%BB%BA%E6%A8%A1"><span class="nav-number">3.1.3.</span> <span class="nav-text">理解领域概念，学习领域知识，对领域建模</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E5%95%86%E5%B7%A5%E7%A8%8B%E4%B8%9A%E5%8A%A1%E8%A7%A3%E8%AF%BB"><span class="nav-number">3.2.</span> <span class="nav-text">电商工程业务解读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9D%97%E6%8B%86%E5%88%86"><span class="nav-number">3.3.</span> <span class="nav-text">微服务模块拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E5%85%A5%E5%8F%A3%E5%8F%8A%E7%94%A8%E6%88%B7%E9%89%B4%E6%9D%83%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.3.1.</span> <span class="nav-text">工程入口及用户鉴权微服务</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E5%95%86%E5%8A%9F%E8%83%BD%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.4.</span> <span class="nav-text">电商功能微服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE%E5%B7%A5%E7%A8%8B"><span class="nav-number">3.5.</span> <span class="nav-text">创建电商项目工程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-Alibaba-Nacos%EF%BC%9A%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="nav-number">4.</span> <span class="nav-text">第4章 Alibaba Nacos：服务注册与配置中心</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Alibaba-Nacos%E4%BB%8B%E7%BB%8D"><span class="nav-number">4.1.</span> <span class="nav-text">Alibaba Nacos介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Alibaba-Nacos"><span class="nav-number">4.2.</span> <span class="nav-text">部署Alibaba Nacos</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2Alibaba-Nacos"><span class="nav-number">4.2.1.</span> <span class="nav-text">单机部署Alibaba Nacos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99Nacos-%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84-MySQL-%E6%8C%81%E4%B9%85%E5%8C%96"><span class="nav-number">4.2.2.</span> <span class="nav-text">给Nacos 配置自定义的 MySQL 持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2Alibaba-Nacos"><span class="nav-number">4.2.3.</span> <span class="nav-text">集群部署Alibaba Nacos</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alibaba-Nacos-Client-%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0"><span class="nav-number">4.3.</span> <span class="nav-text">Alibaba Nacos Client 服务注册与发现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC5%E7%AB%A0-SpringBoot-Admin-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7"><span class="nav-number">5.</span> <span class="nav-text">第5章 SpringBoot Admin 微服务应用监控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot-Actuator"><span class="nav-number">5.1.</span> <span class="nav-text">SpringBoot Actuator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Actuator-Endpoints"><span class="nav-number">5.1.1.</span> <span class="nav-text">Actuator Endpoints</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot-Admin"><span class="nav-number">5.2.</span> <span class="nav-text">SpringBoot Admin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E6%B3%A8%E5%86%8C%E5%88%B0-SpringBoot-Admin-Server"><span class="nav-number">5.3.</span> <span class="nav-text">应用注册到 SpringBoot Admin Server</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A2%AB%E7%9B%91%E6%8E%A7%E5%92%8C%E7%AE%A1%E7%90%86%E7%9A%84%E5%BA%94%E7%94%A8-%E5%BE%AE%E6%9C%8D%E5%8A%A1-%EF%BC%8C%E6%B3%A8%E5%86%8C%E5%88%B0Admin-Server-%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">5.3.1.</span> <span class="nav-text">被监控和管理的应用(微服务)，注册到Admin Server 的两种方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7%E4%B8%AD%E5%BF%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E5%AE%89%E5%85%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="nav-number">5.4.</span> <span class="nav-text">监控中心服务器添加安全访问控制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E5%A4%87%E6%B3%A8"><span class="nav-number">6.</span> <span class="nav-text">学习备注</span></a></li></ol>
     </div>
 </div>
 
